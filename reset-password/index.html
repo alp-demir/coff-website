@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Şifre Sıfırlama | Coff</title>
+  <meta name="description" content="Coff hesabının şifresini sıfırla.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#2c3639">
+  <link rel="canonical" href="https://coffcircle.com/reset-password">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-tab.png?v=7">
+  <link rel="shortcut icon" href="/favicon-tab.ico?v=7">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    /* Reset form — built on the site design tokens (:root in styles.css) so it
+       reads as part of coffcircle.com, not a bolt-on page. */
+    .reset-wrap { width: min(560px, calc(100% - 36px)); }
+    .reset-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 84% 8%, rgba(33, 141, 188, 0.14), transparent 20rem),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 250, 243, 0.80));
+      box-shadow: var(--shadow);
+    }
+
+    .reset-field { margin-bottom: 18px; }
+    .reset-field > label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+      font-weight: 850;
+      color: var(--ink);
+    }
+
+    .pw-wrap { position: relative; }
+    .pw-wrap input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 15px 76px 15px 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 16px;
+      font: inherit;
+      font-size: 16px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.78);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    }
+    .pw-wrap input::placeholder { color: var(--caramel); }
+    .pw-wrap input:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(33, 141, 188, 0.14);
+    }
+
+    .pw-toggle {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: transparent;
+      color: var(--cyan-deep);
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 850;
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    .pw-toggle:hover { background: rgba(33, 141, 188, 0.12); }
+
+    .pw-strength {
+      margin-top: 8px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--line);
+      overflow: hidden;
+    }
+    .pw-strength span {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: 999px;
+      background: var(--rose);
+      transition: width 0.22s ease, background-color 0.22s ease;
+    }
+
+    /* Reuse the global .button pill; just make form actions full width. */
+    .reset-card .button { width: 100%; margin-top: 4px; }
+    .reset-card .button + .button { margin-top: 12px; }
+
+    .reset-msg {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      display: none;
+    }
+    .reset-msg.error {
+      display: block;
+      border-left: 4px solid var(--rose);
+      background: rgba(179, 38, 30, 0.08);
+      color: var(--rose);
+    }
+    .reset-msg.success {
+      display: block;
+      border-left: 4px solid #2e7d52;
+      background: rgba(46, 125, 82, 0.10);
+      color: #226845;
+    }
+
+    .post-actions { margin-top: 16px; display: none; }
+    .post-actions.show { display: block; }
+
+    .reset-hint {
+      margin-top: 22px;
+      font-size: 0.82rem;
+      color: var(--caramel);
+      line-height: 1.6;
+    }
+    .reset-hint a { color: var(--cyan-deep); font-weight: 850; }
+  </style>
+</head>
+<body class="legal">
+  <a class="skip-link" href="#icerik">İçeriğe geç</a>
+  <header class="site-header"><nav class="nav" aria-label="Ana menü"><a class="brand" href="/"><img src="/assets/apple-touch-icon.png" alt="" width="38" height="38" decoding="async"><span>Coff</span></a><div class="nav-links"><a href="/">Ana sayfa</a><a href="/privacy/">Gizlilik</a><a href="/support/">Destek</a></div><a class="nav-cta" href="mailto:destek@coffcircle.com">Destek al</a></nav></header>
+
+  <main id="icerik" class="legal-wrap reset-wrap">
+    <div class="legal-title">
+      <span class="eyebrow">Hesap güvenliği</span>
+      <h1>Şifreni sıfırla</h1>
+      <p>Hesabın için yeni bir şifre belirle. En az 6 karakter olmalı. Yeni şifrenle tüm cihazlarda yeniden giriş yapman gerekir.</p>
+    </div>
+
+    <article class="legal-card reset-card">
+      <form id="reset-form" novalidate>
+        <div class="reset-field">
+          <label for="pw">Yeni şifre</label>
+          <div class="pw-wrap">
+            <input id="pw" name="pw" type="password" autocomplete="new-password" minlength="6" placeholder="En az 6 karakter" required>
+            <button type="button" class="pw-toggle" data-target="pw" aria-label="Şifreyi göster">Göster</button>
+          </div>
+          <div class="pw-strength" aria-hidden="true"><span id="pw-bar"></span></div>
+        </div>
+        <div class="reset-field">
+          <label for="pw2">Yeni şifre (tekrar)</label>
+          <div class="pw-wrap">
+            <input id="pw2" name="pw2" type="password" autocomplete="new-password" minlength="6" placeholder="Şifreni tekrar gir" required>
+            <button type="button" class="pw-toggle" data-target="pw2" aria-label="Şifreyi göster">Göster</button>
+          </div>
+        </div>
+        <button id="submit-btn" class="button" type="submit">Şifremi güncelle</button>
+      </form>
+
+      <div id="msg" class="reset-msg" role="status" aria-live="polite"></div>
+
+      <div id="post-actions" class="post-actions">
+        <a id="app-cta" class="button secondary" href="coff://">coff'u aç</a>
+      </div>
+
+      <p class="reset-hint">Bu sayfayı yanlışlıkla açtıysan kapatman yeterli; şifren değişmez. Sorun yaşarsan <a href="mailto:destek@coffcircle.com">destek@coffcircle.com</a> ile iletişime geç.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><a class="brand" href="/"><img src="/assets/apple-touch-icon.png" alt="" width="38" height="38" loading="lazy" decoding="async"><span>Coff</span></a><div class="footer-links"><a href="/privacy/">Gizlilik Politikası</a><a href="/terms/">Kullanım Şartları</a><a href="/support/">Destek</a><a href="/delete-account/">Hesap Silme</a></div></div></footer>
+
+  <script>
+    (function () {
+      var API = "https://api.coffcircle.com/api/auth/reset-password";
+      var params = new URLSearchParams(window.location.search);
+      var token = params.get("token");
+
+      var form = document.getElementById("reset-form");
+      var pw = document.getElementById("pw");
+      var pw2 = document.getElementById("pw2");
+      var bar = document.getElementById("pw-bar");
+      var btn = document.getElementById("submit-btn");
+      var msg = document.getElementById("msg");
+      var postActions = document.getElementById("post-actions");
+      var appCta = document.getElementById("app-cta");
+
+      function show(kind, text) {
+        msg.className = "reset-msg " + kind;
+        msg.textContent = text;
+      }
+
+      // Reveal the "open app" / "request new link" button. label + href differ
+      // by context so the same element serves success and expired-token states.
+      function showAppAction(label, href) {
+        appCta.textContent = label;
+        appCta.href = href;
+        postActions.className = "post-actions show";
+      }
+
+      // Show/hide toggle for each password field.
+      var toggles = document.querySelectorAll(".pw-toggle");
+      for (var i = 0; i < toggles.length; i++) {
+        toggles[i].addEventListener("click", function () {
+          var input = document.getElementById(this.getAttribute("data-target"));
+          var reveal = input.type === "password";
+          input.type = reveal ? "text" : "password";
+          this.textContent = reveal ? "Gizle" : "Göster";
+          this.setAttribute("aria-label", reveal ? "Şifreyi gizle" : "Şifreyi göster");
+        });
+      }
+
+      // Lightweight strength meter — purely visual feedback, no gating beyond
+      // the 6-char minimum the backend enforces.
+      pw.addEventListener("input", function () {
+        var v = pw.value, score = 0;
+        if (v.length >= 6) score++;
+        if (v.length >= 10) score++;
+        if (/[0-9]/.test(v) && /[a-zA-Z]/.test(v)) score++;
+        if (/[^a-zA-Z0-9]/.test(v)) score++;
+        var pct = [0, 30, 55, 80, 100][score];
+        var color = score >= 3 ? "#2e7d52" : score === 2 ? "#c9892e" : "#b3261e";
+        bar.style.width = pct + "%";
+        bar.style.background = color;
+      });
+
+      if (!token) {
+        form.style.display = "none";
+        show("error", "Bağlantı geçersiz veya eksik. Lütfen e-postandaki bağlantıyı tekrar aç.");
+        showAppAction("coff'u aç", "coff://");
+        return;
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        msg.className = "reset-msg";
+
+        var p1 = pw.value, p2 = pw2.value;
+        if (p1.length < 6) { show("error", "Şifre en az 6 karakter olmalı."); return; }
+        if (p1 !== p2) { show("error", "Şifreler eşleşmiyor."); return; }
+
+        btn.disabled = true;
+        btn.textContent = "Güncelleniyor…";
+
+        fetch(API, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: token, newPassword: p1 })
+        })
+          .then(function (res) {
+            return res.json().catch(function () { return {}; }).then(function (data) {
+              return { ok: res.ok, status: res.status, data: data };
+            });
+          })
+          .then(function (r) {
+            if (r.ok) {
+              form.style.display = "none";
+              show("success", (r.data && r.data.message) || "Şifren güncellendi. Yeni şifrenle giriş yapabilirsin.");
+              showAppAction("coff'u aç ve giriş yap", "coff://");
+            } else {
+              btn.disabled = false;
+              btn.textContent = "Şifremi güncelle";
+              if (r.status === 400) {
+                // Covers expired/used token AND "same as current password" — the
+                // server message says which; the CTA stays neutral so it never
+                // misdirects (user can retry inline or open the app as needed).
+                show("error", (r.data && r.data.message) || "İşlem tamamlanamadı. Bağlantının süresi dolmuş olabilir, uygulamadan yeni bir bağlantı iste.");
+                showAppAction("coff'u aç", "coff://");
+              } else {
+                show("error", (r.data && r.data.message) || "İşlem tamamlanamadı. Tekrar dene.");
+              }
+            }
+          })
+          .catch(function () {
+            btn.disabled = false;
+            btn.textContent = "Şifremi güncelle";
+            show("error", "Bağlantı hatası. İnternetini kontrol edip tekrar dene.");
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
