@@ -972,14 +972,31 @@ h1 {
     overflow: visible;
   }
 
+  /* Single column: take the phone out of absolute centering so it occupies its
+     real (tall) height in flow. Keeping it absolute inside a short dvh-capped
+     box made the image overflow and overlap the hero copy on non-tall phones. */
   .hero-visual {
-    min-height: min(610px, 76dvh);
+    min-height: 0;
+    margin-top: clamp(28px, 7vw, 56px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .hero-map-layer {
+    display: none;
   }
 
   .product-shot-wrap {
-    left: 50%;
-    width: min(350px, 72vw);
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    animation: none;
+    opacity: 1;
+    width: min(330px, 64vw);
     min-width: 0;
+    margin: 0 auto;
   }
 
   .story-band,
@@ -1049,13 +1066,13 @@ h1 {
   }
 
   .hero-visual {
-    min-height: min(520px, 66dvh);
-    margin-top: clamp(46px, 12vw, 72px);
+    min-height: 0;
+    margin-top: clamp(30px, 9vw, 52px);
   }
 
   .product-shot-wrap {
-    width: min(286px, 78vw);
-    top: calc(50% + 22px);
+    width: min(272px, 70vw);
+    top: auto;
   }
 
   .section {
@@ -1226,11 +1243,15 @@ h1 {
     filter: none;
   }
 
-  .product-shot-wrap {
-    transform: translate(-50%, -50%);
-  }
-
   .hero-map-layer {
     transform: none;
+  }
+}
+
+/* Desktop only: restore the centered overlay transform for reduced-motion.
+   On <=980 the phone flows in-document (transform:none) so it never overlaps. */
+@media (prefers-reduced-motion: reduce) and (min-width: 981px) {
+  .product-shot-wrap {
+    transform: translate(-50%, -50%);
   }
 }
