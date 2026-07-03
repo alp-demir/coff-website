@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-posta Doğrulandı | Coff</title>
+  <meta name="description" content="Coff hesabının e-posta adresi doğrulandı.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#2c3639">
+  <link rel="canonical" href="https://coffcircle.com/email-verified">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-tab.png?v=7">
+  <link rel="shortcut icon" href="/favicon-tab.ico?v=7">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    /* Static Universal Link fallback for /email-verified — shown only when the
+       app is not installed. Mirrors the verify-email card styling. */
+    .verify-wrap { width: min(560px, calc(100% - 36px)); }
+    .verify-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 84% 8%, rgba(33, 141, 188, 0.14), transparent 20rem),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 250, 243, 0.80));
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .verify-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 4px auto 22px;
+      font-size: 34px;
+      font-weight: 700;
+      background: rgba(46, 125, 82, 0.12);
+      color: #226845;
+    }
+
+    .verify-card h2 { margin: 0 0 10px; font-size: 1.35rem; color: var(--ink); }
+    .verify-card p.lead { margin: 0; font-size: 0.98rem; line-height: 1.6; color: var(--caramel); }
+
+    .post-actions { margin-top: 24px; }
+    .verify-card .button { width: 100%; }
+
+    .verify-hint {
+      margin-top: 22px;
+      font-size: 0.82rem;
+      color: var(--caramel);
+      line-height: 1.6;
+    }
+    .verify-hint a { color: var(--cyan-deep); font-weight: 850; }
+  </style>
+</head>
+<body class="legal">
+  <a class="skip-link" href="#icerik">İçeriğe geç</a>
+  <header class="site-header"><nav class="nav" aria-label="Ana menü"><a class="brand" href="/"><img src="/assets/apple-touch-icon.png" alt="" width="38" height="38" decoding="async"><span>Coff</span></a><div class="nav-links"><a href="/">Ana sayfa</a><a href="/privacy/">Gizlilik</a><a href="/support/">Destek</a></div><a class="nav-cta" href="mailto:destek@coffcircle.com">Destek al</a></nav></header>
+
+  <main id="icerik" class="legal-wrap verify-wrap">
+    <div class="legal-title">
+      <span class="eyebrow">Hesap güvenliği</span>
+      <h1>E-posta doğrulandı</h1>
+      <p>Hesabın hazır. Coff uygulamasına dönüp devam edebilirsin.</p>
+    </div>
+
+    <article class="legal-card verify-card">
+      <div class="verify-icon" aria-hidden="true">✓</div>
+      <h2>E-postan doğrulandı</h2>
+      <p class="lead">Coff yüklüyse bu bağlantı uygulamada açılır. Yüklü değilse uygulamayı indirip aynı e-posta ile giriş yapman yeterli.</p>
+
+      <div class="post-actions">
+        <a class="button" href="coff://email-verified">coff'u aç</a>
+      </div>
+
+      <p class="verify-hint">Sorun yaşarsan <a href="mailto:destek@coffcircle.com">destek@coffcircle.com</a> ile iletişime geç.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><a class="brand" href="/"><img src="/assets/apple-touch-icon.png" alt="" width="38" height="38" loading="lazy" decoding="async"><span>Coff</span></a><div class="footer-links"><a href="/privacy/">Gizlilik Politikası</a><a href="/terms/">Kullanım Şartları</a><a href="/support/">Destek</a><a href="/delete-account/">Hesap Silme</a></div></div></footer>
+</body>
+</html>
