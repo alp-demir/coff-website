@@ -12,6 +12,14 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Code changes must propagate quickly; images stay immutable above.
+# Keep bumping ?v=N on link/script tags when these change.
+/assets/styles.css
+  Cache-Control: public, max-age=300, must-revalidate
+
+/assets/site.js
+  Cache-Control: public, max-age=300, must-revalidate
+
 /favicon.ico
   Content-Type: image/x-icon
   Cache-Control: public, max-age=31536000, immutable

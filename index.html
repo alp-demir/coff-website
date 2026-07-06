@@ -17,11 +17,11 @@
   <meta name="twitter:image" content="https://coffcircle.com/assets/og-image.png">
   <meta name="theme-color" content="#2c3639">
   <link rel="canonical" href="https://coffcircle.com">
-  <link rel="preload" as="image" href="/assets/coff-hero-phone.png" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/coff-hero-phone.webp" type="image/webp" fetchpriority="high">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-tab.png?v=7">
   <link rel="shortcut icon" href="/favicon-tab.ico?v=7">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/styles.css?v=2">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -152,7 +152,10 @@
         </div>
         <div class="product-shot-wrap">
           <div class="product-phone">
-            <img class="product-shot" src="/assets/coff-hero-phone.png" alt="Coff iOS uygulamasının Bugün ekranı" width="922" height="1834" decoding="async" fetchpriority="high">
+            <picture>
+              <source srcset="/assets/coff-hero-phone.webp" type="image/webp">
+              <img class="product-shot" src="/assets/coff-hero-phone.png" alt="Coff iOS uygulamasının Bugün ekranı" width="922" height="1834" decoding="async" fetchpriority="high">
+            </picture>
           </div>
         </div>
       </div>
@@ -370,6 +373,6 @@
       <span class="footer-note">İstanbul'dan sevgiyle demlendi ☕</span>
     </div>
   </footer>
-  <script src="/assets/site.js" defer></script>
+  <script src="/assets/site.js?v=2" defer></script>
 </body>
 </html>
