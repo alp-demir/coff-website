@@ -8,6 +8,7 @@
   <meta property="og:title" content="Coff | Kahveyle başlayan sosyal çevre">
   <meta property="og:description" content="Kahve tercihlerin, günlük kahve anların ve sosyal niyetlerin üzerinden daha doğal bağlantılar kur.">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
   <meta property="og:url" content="https://coffcircle.com">
   <meta property="og:image" content="https://coffcircle.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -21,6 +22,65 @@
   <link rel="shortcut icon" href="/favicon-tab.ico?v=7">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <link rel="stylesheet" href="/assets/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://coffcircle.com/#org",
+        "name": "Coff",
+        "url": "https://coffcircle.com",
+        "logo": "https://coffcircle.com/assets/apple-touch-icon.png",
+        "email": "destek@coffcircle.com"
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "Coff",
+        "operatingSystem": "iOS",
+        "applicationCategory": "SocialNetworkingApplication",
+        "description": "Kahve tercihleri, yakınındaki kahve mekanları ve güvenli sosyal araçlarla yeni insanlarla tanışmanı sağlayan iOS sosyal kahve uygulaması.",
+        "publisher": { "@id": "https://coffcircle.com/#org" },
+        "inLanguage": "tr"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Coff nedir?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Coff, günlük kahve alışkanlıkların üzerinden yeni insanlarla tanışmanı sağlayan iOS sosyal kahve uygulamasıdır. Bugün ne içtiğini kaydeder, çevrendeki kahve trendini görür ve ortak zevkler üzerinden doğal bağlantılar kurarsın." }
+          },
+          {
+            "@type": "Question",
+            "name": "Coff ücretsiz mi?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Coff'u indirmek ve temel deneyimi kullanmak ücretsizdir. Bazı gelişmiş özellikler isteğe bağlı premium abonelikle sunulur." }
+          },
+          {
+            "@type": "Question",
+            "name": "Coff ne zaman yayında olacak?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Coff ilk sürümüyle Türkiye'de, iPhone için App Store'da yayına hazırlanıyor. Lansman duyuruları bu sayfadan ve destek kanalından paylaşılacak." }
+          },
+          {
+            "@type": "Question",
+            "name": "Android sürümü olacak mı?",
+            "acceptedAnswer": { "@type": "Answer", "text": "İlk sürüm iOS önceliklidir. Android desteği yol haritasında değerlendirilmektedir." }
+          },
+          {
+            "@type": "Question",
+            "name": "Mesajlarım ve verilerim güvende mi?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Özel mesajlar normal şartlarda Coff ekibi tarafından incelenmez. Yalnızca bir güvenlik şikayeti olduğunda, şikayetle ilişkili sınırlı kanıt yetkili ekip tarafından değerlendirilir. Profil fotoğrafları yayınlanmadan önce moderasyondan geçebilir; hesap silme uygulama içinden yapılabilir." }
+          },
+          {
+            "@type": "Question",
+            "name": "Konumum başkalarıyla paylaşılıyor mu?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Konum, yakın çevrendeki kahve trendlerini gösterebilmek için kullanılır. Kahve kaydında bağlamı (ev, ofis veya mekan) sen seçersin; tam konumun diğer kullanıcılara gösterilmez." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#icerik">İçeriğe geç</a>
@@ -30,14 +90,21 @@
         <img src="/assets/apple-touch-icon.png" alt="" width="38" height="38" decoding="async">
         <span>Coff</span>
       </a>
-      <div class="nav-links" aria-label="Sayfalar">
+      <div class="nav-links" id="navLinks" aria-label="Sayfalar">
         <a href="#bugun">Bugün</a>
         <a href="#hikaye">Hikaye</a>
         <a href="#ozellikler">Özellikler</a>
         <a href="#guvenlik">Güvenlik</a>
+        <a href="#sss">SSS</a>
         <a href="/privacy/">Gizlilik</a>
       </div>
-      <a class="nav-cta" href="#yakinda">Yakında</a>
+      <div class="nav-side">
+        <a class="nav-cta" href="#yakinda">Yakında</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menüyü aç">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
     </nav>
   </header>
 
@@ -227,6 +294,39 @@
       </div>
     </section>
 
+    <section class="section faq-section" id="sss" aria-labelledby="faq-title">
+      <div class="section-heading center">
+        <p class="eyebrow">Sık sorulanlar</p>
+        <h2 id="faq-title">Merak edilenler.</h2>
+      </div>
+      <div class="faq-list reveal" aria-label="Sık sorulan sorular">
+        <details class="faq-item" open>
+          <summary>Coff nedir?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Coff, günlük kahve alışkanlıkların üzerinden yeni insanlarla tanışmanı sağlayan iOS sosyal kahve uygulamasıdır. Bugün ne içtiğini kaydeder, çevrendeki kahve trendini görür ve ortak zevkler üzerinden doğal bağlantılar kurarsın.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Coff ücretsiz mi?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Coff'u indirmek ve temel deneyimi kullanmak ücretsizdir. Bazı gelişmiş özellikler isteğe bağlı premium abonelikle sunulur.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Coff ne zaman yayında olacak?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Coff ilk sürümüyle Türkiye'de, iPhone için App Store'da yayına hazırlanıyor. Lansman duyuruları bu sayfadan ve destek kanalından paylaşılacak.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Android sürümü olacak mı?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>İlk sürüm iOS önceliklidir. Android desteği yol haritasında değerlendirilmektedir.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Mesajlarım ve verilerim güvende mi?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Özel mesajlar normal şartlarda Coff ekibi tarafından incelenmez. Yalnızca bir güvenlik şikayeti olduğunda, şikayetle ilişkili sınırlı kanıt yetkili ekip tarafından değerlendirilir. Profil fotoğrafları yayınlanmadan önce moderasyondan geçebilir; hesap silme uygulama içinden yapılabilir.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Konumum başkalarıyla paylaşılıyor mu?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Konum, yakın çevrendeki kahve trendlerini gösterebilmek için kullanılır. Kahve kaydında bağlamı (ev, ofis veya mekan) sen seçersin; tam konumun diğer kullanıcılara gösterilmez.</p>
+        </details>
+      </div>
+    </section>
+
     <section class="section" id="yakinda" aria-labelledby="coming-title">
       <div class="coming-card reveal">
         <p class="eyebrow">iOS öncelikli</p>
@@ -250,10 +350,13 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <a class="brand" href="/">
-        <img src="/assets/apple-touch-icon.png" alt="" width="38" height="38" loading="lazy" decoding="async">
-        <span>Coff</span>
-      </a>
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <img src="/assets/apple-touch-icon.png" alt="" width="38" height="38" loading="lazy" decoding="async">
+          <span>Coff</span>
+        </a>
+        <p>Kahveyle başlayan sosyal çevre.<br>Türkiye'den, iPhone için.</p>
+      </div>
       <div class="footer-links" aria-label="Yasal ve destek bağlantıları">
         <a href="/privacy/">Gizlilik Politikası</a>
         <a href="/terms/">Kullanım Şartları</a>
@@ -261,6 +364,10 @@
         <a href="/delete-account/">Hesap Silme</a>
         <a href="mailto:destek@coffcircle.com">destek@coffcircle.com</a>
       </div>
+    </div>
+    <div class="footer-base">
+      <span>© <span id="footerYear">2026</span> Coff. Tüm hakları saklıdır.</span>
+      <span class="footer-note">İstanbul'dan sevgiyle demlendi ☕</span>
     </div>
   </footer>
   <script src="/assets/site.js" defer></script>
