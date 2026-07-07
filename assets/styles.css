@@ -1436,7 +1436,7 @@ h1 {
 
 /* ── FAQ ── */
 .faq-list {
-  max-width: 760px;
+  max-width: none;
   margin: 0 auto;
   display: grid;
   gap: 12px;
@@ -1518,7 +1518,7 @@ h1 {
 .faq-item p {
   margin: 0;
   padding: 0 22px 20px;
-  max-width: 640px;
+  max-width: 920px;
   color: var(--ink-soft);
   line-height: 1.66;
 }
