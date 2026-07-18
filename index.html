@@ -21,7 +21,7 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-tab.png?v=8">
   <link rel="shortcut icon" href="/favicon-tab.ico?v=8">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/styles.css?v=5">
+  <link rel="stylesheet" href="/assets/styles.css?v=6">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -82,7 +82,7 @@
   }
   </script>
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#icerik">İçeriğe geç</a>
   <header class="site-header">
     <nav class="nav" aria-label="Ana menü">
@@ -96,7 +96,7 @@
         <a href="#ozellikler">Özellikler</a>
         <a href="#guvenlik">Güvenlik</a>
         <a href="#sss">SSS</a>
-        <a href="/privacy/">Gizlilik</a>
+        <a href="/investors/">Yatırımcılar</a>
       </div>
       <div class="nav-side">
         <a class="nav-cta" href="#yakinda">Yakında</a>
@@ -106,11 +106,12 @@
         </button>
       </div>
     </nav>
+    <div class="page-progress" aria-hidden="true"><span></span></div>
   </header>
 
   <main id="icerik">
-    <section class="hero" aria-labelledby="hero-title">
-      <div>
+    <section class="hero" aria-labelledby="hero-title" data-scroll-hero>
+      <div class="hero-content">
         <p class="eyebrow">Türkiye için tasarlanan sosyal kahve uygulaması</p>
         <h1 id="hero-title">Kahveyle başlayan sosyal çevre.</h1>
         <p class="hero-copy">
@@ -159,9 +160,13 @@
           </div>
         </div>
       </div>
+      <div class="scroll-cue" aria-hidden="true">
+        <span>Kaydır ve keşfet</span>
+        <i></i>
+      </div>
     </section>
 
-    <section class="section today-section" id="bugun" aria-labelledby="today-title">
+    <section class="section today-section" id="bugun" aria-labelledby="today-title" data-scroll-scene="today">
       <div class="today-panel reveal">
         <div class="today-copy">
           <p class="eyebrow">Bugün ekranı</p>
@@ -170,17 +175,17 @@
             Coff’ta gün, içtiğin kahveyi işaretlemekle başlar. Evde hazırladığın filtre kahveyi, ofisteki molanı veya yakınındaki bir kahve mekanında içtiğin latteyi kaydedebilir; kendi kahve geçmişini ve çevrende en çok hangi kahvelerin seçildiğini görebilirsin.
           </p>
           <div class="today-flow" aria-label="Bugün ekranı özellikleri">
-            <div>
+            <div data-scroll-step>
               <span>01</span>
               <strong>Ne içtiğini ekle</strong>
               <p>Bugünün kahvesini kısa bir seçimle kaydet.</p>
             </div>
-            <div>
+            <div data-scroll-step>
               <span>02</span>
               <strong>Nerede olduğunu seç</strong>
               <p>Ev, ofis veya yakınındaki kahve mekanı gibi bağlamı sen belirlersin.</p>
             </div>
-            <div>
+            <div data-scroll-step>
               <span>03</span>
               <strong>Çevrendeki trendi gör</strong>
               <p>Yakın çevrende hangi kahvenin öne çıktığını ve kaç kişinin işaretlediğini takip et.</p>
@@ -226,7 +231,7 @@
       </div>
     </section>
 
-    <section class="section" id="hikaye" aria-labelledby="story-title">
+    <section class="section" id="hikaye" aria-labelledby="story-title" data-scroll-scene="story">
       <div class="story-band reveal">
         <div class="story-media">
           <img src="/assets/coffee-ice-latte.jpg" alt="Soğuk kahve bardağı" width="1200" height="1800" loading="lazy" decoding="async">
@@ -242,7 +247,7 @@
     </section>
 
     <section class="section" id="ozellikler" aria-labelledby="features-title">
-      <div class="section-heading">
+      <div class="section-heading reveal">
         <p class="eyebrow">Bağlantı deneyimi</p>
         <h2 id="features-title">Kahve kaydı başlangıç. Asıl değer sonrasında.</h2>
         <p>Bugün akışı ortak bir bağlam oluşturur; Coff bu bağlamı niyet, tercih ve güvenli iletişim araçlarıyla gerçek bir sosyal deneyime dönüştürür.</p>
@@ -279,7 +284,7 @@
       </div>
     </section>
 
-    <section class="section" id="guvenlik" aria-labelledby="safety-title">
+    <section class="section" id="guvenlik" aria-labelledby="safety-title" data-scroll-scene="safety">
       <div class="safety-panel reveal">
         <div>
           <p class="eyebrow">Gizlilik ve güvenlik</p>
@@ -298,7 +303,7 @@
     </section>
 
     <section class="section faq-section" id="sss" aria-labelledby="faq-title">
-      <div class="section-heading center">
+      <div class="section-heading center reveal">
         <p class="eyebrow">Sık sorulanlar</p>
         <h2 id="faq-title">Merak edilenler.</h2>
       </div>
@@ -373,6 +378,6 @@
       <span>© <span id="footerYear">2026</span> Coff. Tüm hakları saklıdır.</span>
     </div>
   </footer>
-  <script src="/assets/site.js?v=2" defer></script>
+  <script src="/assets/site.js?v=3" defer></script>
 </body>
 </html>

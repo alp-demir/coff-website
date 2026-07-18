@@ -35,6 +35,102 @@ if (header) {
   window.addEventListener("scroll", syncHeader, { passive: true });
 }
 
+// ── Premium scroll continuity ─────────────────────────────────
+const scrollHero = document.querySelector("[data-scroll-hero]");
+const scrollScenes = Array.from(document.querySelectorAll("[data-scroll-scene]")).map((element) => ({
+  element,
+  name: element.dataset.scrollScene,
+  steps: Array.from(element.querySelectorAll("[data-scroll-step]")),
+}));
+const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+let scrollFrame = 0;
+
+const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+
+const updateScrollContinuity = () => {
+  scrollFrame = 0;
+
+  const viewportHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight - viewportHeight;
+  const pageProgress = documentHeight > 0 ? clamp(window.scrollY / documentHeight) : 0;
+  const headerHeight = header ? header.offsetHeight : 0;
+  const heroRect = scrollHero ? scrollHero.getBoundingClientRect() : null;
+  const sceneStates = scrollScenes.map((scene) => {
+    const rect = scene.element.getBoundingClientRect();
+    const progress = clamp((viewportHeight - rect.top) / (viewportHeight + rect.height));
+    return { ...scene, progress };
+  });
+
+  document.documentElement.style.setProperty("--page-progress", pageProgress.toFixed(4));
+
+  if (motionPreference.matches) {
+    scrollHero?.style.removeProperty("--hero-phone-y");
+    scrollHero?.style.removeProperty("--hero-phone-rotate");
+    scrollHero?.style.removeProperty("--hero-map-y");
+    scrollHero?.style.removeProperty("--hero-map-scale");
+    scrollHero?.style.removeProperty("--hero-cue-opacity");
+    scrollHero?.style.removeProperty("--hero-cue-y");
+    sceneStates.forEach(({ element, steps }) => {
+      element.style.removeProperty("--scene-shift");
+      element.style.removeProperty("--today-glow-shift");
+      element.style.removeProperty("--today-map-shift");
+      element.style.removeProperty("--story-media-shift");
+      element.style.removeProperty("--safety-orb-shift");
+      steps.forEach((step) => step.classList.remove("is-active"));
+    });
+    return;
+  }
+
+  if (scrollHero && heroRect) {
+    const heroDistance = Math.max(heroRect.height * 0.78, 1);
+    const heroProgress = clamp((-heroRect.top + headerHeight) / heroDistance);
+    const phoneTravel = window.innerWidth <= 720 ? -8 : window.innerWidth <= 980 ? -14 : -26;
+    const phoneRotation = window.innerWidth <= 720 ? -0.18 : window.innerWidth <= 980 ? -0.34 : -0.7;
+    scrollHero.style.setProperty("--hero-phone-y", `${(phoneTravel * heroProgress).toFixed(2)}px`);
+    scrollHero.style.setProperty("--hero-phone-rotate", `${(phoneRotation * heroProgress).toFixed(3)}deg`);
+    scrollHero.style.setProperty("--hero-map-y", `${(-12 * heroProgress).toFixed(2)}px`);
+    scrollHero.style.setProperty("--hero-map-scale", (1 + (0.018 * heroProgress)).toFixed(4));
+    scrollHero.style.setProperty("--hero-cue-opacity", clamp(1 - (heroProgress * 4)).toFixed(3));
+    scrollHero.style.setProperty("--hero-cue-y", `${(-6 * heroProgress).toFixed(2)}px`);
+  }
+
+  sceneStates.forEach(({ element, name, progress, steps }) => {
+    const shift = (0.5 - progress) * 28;
+    element.style.setProperty("--scene-shift", `${shift.toFixed(2)}px`);
+
+    if (name === "today") {
+      element.style.setProperty("--today-glow-shift", `${(-0.35 * shift).toFixed(2)}px`);
+      element.style.setProperty("--today-map-shift", `${(0.42 * shift).toFixed(2)}px`);
+    }
+
+    if (name === "story") {
+      element.style.setProperty("--story-media-shift", `${(0.55 * shift).toFixed(2)}px`);
+    }
+
+    if (name === "safety") {
+      element.style.setProperty("--safety-orb-shift", `${(0.75 * shift).toFixed(2)}px`);
+    }
+
+    if (name === "today" && steps.length > 0) {
+      const stepProgress = clamp((progress - 0.12) / 0.62);
+      const activeIndex = Math.min(steps.length - 1, Math.floor(stepProgress * steps.length));
+      steps.forEach((step, index) => step.classList.toggle("is-active", index === activeIndex));
+    }
+  });
+};
+
+const requestScrollContinuity = () => {
+  if (scrollFrame) return;
+  scrollFrame = window.requestAnimationFrame(updateScrollContinuity);
+};
+
+if (scrollHero || scrollScenes.length > 0 || document.querySelector(".page-progress")) {
+  updateScrollContinuity();
+  window.addEventListener("scroll", requestScrollContinuity, { passive: true });
+  window.addEventListener("resize", requestScrollContinuity);
+  motionPreference.addEventListener?.("change", requestScrollContinuity);
+}
+
 // ── Mobile nav ─────────────────────────────────────────────────
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector("#navLinks");
