@@ -24,15 +24,56 @@ if ("IntersectionObserver" in window && reveals.length > 0) {
   reveals.forEach((item) => item.classList.add("visible"));
 }
 
-// ── Header scroll state ────────────────────────────────────────
+// ── Page chrome: header, footer edge, mobile browser color ────
 const header = document.querySelector(".site-header");
+const footer = document.querySelector(".site-footer");
+const themeColor = document.querySelector('meta[name="theme-color"]');
 
-if (header) {
-  const syncHeader = () => {
-    header.classList.toggle("scrolled", window.scrollY > 8);
+if (header || footer || themeColor) {
+  const topThemeColor = themeColor?.dataset.themeTop || "#fffaf3";
+  const footerThemeColor = themeColor?.dataset.themeFooter || "#1f2c31";
+  let chromeFrame = 0;
+  let headerScrolled = false;
+
+  document.documentElement.classList.toggle("has-site-footer", Boolean(footer));
+
+  const syncPageChrome = () => {
+    chromeFrame = 0;
+
+    const scrollTop = Math.max(0, window.scrollY);
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const remainingScroll = Math.max(0, maxScroll - scrollTop);
+    const footerRect = footer?.getBoundingClientRect();
+    const footerVisible = Boolean(footerRect && footerRect.top < window.innerHeight && footerRect.bottom > 0);
+    const footerThemeActive = Boolean(
+      footerVisible
+      && footer
+      && scrollTop > 2
+      && remainingScroll <= Math.max(96, footer.offsetHeight * 0.65)
+    );
+
+    if (!headerScrolled && scrollTop > 16) headerScrolled = true;
+    if (headerScrolled && scrollTop < 4) headerScrolled = false;
+
+    header?.classList.toggle("scrolled", headerScrolled);
+    document.documentElement.classList.toggle("footer-in-view", footerVisible);
+    document.documentElement.classList.toggle("footer-theme-active", footerThemeActive);
+
+    const nextThemeColor = footerThemeActive ? footerThemeColor : topThemeColor;
+    if (themeColor && themeColor.content !== nextThemeColor) {
+      themeColor.content = nextThemeColor;
+    }
   };
-  syncHeader();
-  window.addEventListener("scroll", syncHeader, { passive: true });
+
+  const requestPageChromeSync = () => {
+    if (chromeFrame) return;
+    chromeFrame = window.requestAnimationFrame(syncPageChrome);
+  };
+
+  syncPageChrome();
+  window.addEventListener("scroll", requestPageChromeSync, { passive: true });
+  window.addEventListener("resize", requestPageChromeSync);
+  window.addEventListener("pageshow", requestPageChromeSync);
 }
 
 // ── Premium scroll continuity ─────────────────────────────────
@@ -160,6 +201,77 @@ if (navToggle && navLinks) {
     if (!event.target.closest(".nav")) closeMenu();
   });
 }
+
+// ── FAQ: interruptible expand/collapse motion ─────────────────
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach((details) => {
+  const summary = details.querySelector("summary");
+  const content = details.querySelector("p");
+  if (!summary || !content) return;
+
+  let targetOpen = details.open;
+  let finishTimer = 0;
+
+  const finish = (open) => {
+    if (targetOpen !== open) return;
+    window.clearTimeout(finishTimer);
+    details.open = open;
+    details.classList.remove("is-animating", "is-preparing", "is-expanding", "is-closing");
+    details.style.height = "";
+    details.style.overflow = "";
+    details.style.removeProperty("--faq-duration");
+    details.style.removeProperty("--faq-easing");
+  };
+
+  const animate = (open) => {
+    targetOpen = open;
+    window.clearTimeout(finishTimer);
+
+    const startHeight = details.getBoundingClientRect().height;
+    const duration = open ? 320 : 220;
+    const easing = open ? "cubic-bezier(0.16, 1, 0.3, 1)" : "cubic-bezier(0.4, 0, 1, 1)";
+
+    details.classList.remove("is-preparing", "is-expanding", "is-closing");
+    details.classList.add("is-animating");
+    details.style.overflow = "hidden";
+    details.style.height = `${startHeight}px`;
+
+    if (open) {
+      details.open = true;
+      details.classList.add("is-preparing");
+    }
+
+    details.style.height = "auto";
+    const borderHeight = details.offsetHeight - details.clientHeight;
+    const endHeight = open
+      ? details.getBoundingClientRect().height
+      : summary.getBoundingClientRect().height + borderHeight;
+    details.style.height = `${startHeight}px`;
+    details.style.setProperty("--faq-duration", `${duration}ms`);
+    details.style.setProperty("--faq-easing", easing);
+
+    void details.offsetHeight;
+    details.classList.remove("is-preparing");
+    details.classList.add(open ? "is-expanding" : "is-closing");
+    details.style.height = `${endHeight}px`;
+    finishTimer = window.setTimeout(() => finish(open), duration + 60);
+  };
+
+  summary.addEventListener("click", (event) => {
+    if (motionPreference.matches) return;
+    event.preventDefault();
+    animate(!targetOpen);
+  });
+
+  details.addEventListener("toggle", () => {
+    if (!details.classList.contains("is-animating")) targetOpen = details.open;
+  });
+
+  details.addEventListener("transitionend", (event) => {
+    if (event.target === details && event.propertyName === "height") finish(targetOpen);
+  });
+});
 
 // ── Scrollspy: highlight active section in nav ─────────────────
 const sectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));

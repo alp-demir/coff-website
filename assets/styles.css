@@ -14,11 +14,13 @@
   --cyan-deep: #1b7ba3;
   --info-soft: #cfe2ef;
   --rose: #b3261e;
+  --edge-top: #fffaf3;
+  --edge-bottom: #fffaf3;
+  --footer-surface: #1f2c31;
   --shadow: 0 26px 80px rgba(44, 54, 57, 0.12);
   --radius: 28px;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
-  background: var(--cream);
 }
 
 * {
@@ -28,6 +30,25 @@
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
+  overscroll-behavior-x: none;
+  background:
+    linear-gradient(
+      to bottom,
+      var(--edge-top) 0%,
+      var(--edge-top) 50%,
+      var(--edge-bottom) 50%,
+      var(--edge-bottom) 100%
+    );
+}
+
+html.has-site-footer {
+  --edge-bottom: var(--footer-surface);
+}
+
+@supports selector(html:has(.site-footer)) {
+  html:has(.site-footer) {
+    --edge-bottom: var(--footer-surface);
+  }
 }
 
 section[id] {
@@ -80,9 +101,10 @@ a {
   top: 0;
   z-index: 5;
   border-bottom: 1px solid rgba(64, 45, 29, 0.08);
-  background: rgba(255, 250, 243, 0.82);
-  backdrop-filter: blur(22px);
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  background: rgba(255, 250, 243, 0.78);
+  -webkit-backdrop-filter: saturate(160%) blur(22px);
+  backdrop-filter: saturate(160%) blur(22px);
+  transition: box-shadow 0.26s ease, background-color 0.26s ease, border-color 0.26s ease;
 }
 
 .page-progress {
@@ -107,8 +129,9 @@ a {
 }
 
 .site-header.scrolled {
-  background: rgba(255, 250, 243, 0.92);
-  box-shadow: 0 10px 40px rgba(44, 54, 57, 0.08);
+  border-bottom-color: rgba(44, 54, 57, 0.12);
+  background: rgba(255, 250, 243, 0.95);
+  box-shadow: 0 12px 38px rgba(31, 44, 49, 0.09);
 }
 
 .nav {
@@ -125,6 +148,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-height: 44px;
   font-weight: 900;
   text-decoration: none;
   letter-spacing: 0;
@@ -986,11 +1010,39 @@ h1 {
 }
 
 .site-footer {
-  border-top: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.78);
+  position: relative;
+  isolation: isolate;
+  border-top: 0;
+  color: rgba(255, 255, 255, 0.94);
+  background:
+    radial-gradient(circle at 14% -35%, rgba(33, 141, 188, 0.32), transparent 28rem),
+    linear-gradient(145deg, #2c3b40 0%, var(--footer-surface) 72%);
+  box-shadow: 0 -24px 72px rgba(31, 44, 49, 0.09);
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 4%, rgba(105, 202, 238, 0.86) 50%, transparent 96%);
+  opacity: 0.42;
+  transform: scaleX(0.28);
+  transform-origin: center;
+  transition: opacity 0.32s ease, transform 0.48s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.footer-in-view .site-footer::before {
+  opacity: 0.9;
+  transform: scaleX(1);
 }
 
 .footer-inner {
+  position: relative;
+  z-index: 2;
   width: min(1160px, calc(100% - 36px));
   margin: 0 auto;
   padding: 34px 0;
@@ -1004,13 +1056,19 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.92rem;
   font-weight: 700;
 }
 
 .footer-links a {
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: #ffffff;
 }
 
 .legal-wrap {
@@ -1134,6 +1192,12 @@ h1 {
 }
 
 @media (min-width: 721px) and (max-width: 980px) {
+  .nav-links a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
   .today-flow {
     grid-template-columns: 1fr;
   }
@@ -1416,6 +1480,35 @@ h1 {
   gap: 12px;
 }
 
+/* The browser chrome, sticky header and footer become one surface at the page edge. */
+html.footer-theme-active .site-header {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  background: rgba(31, 44, 49, 0.96);
+  box-shadow: 0 12px 38px rgba(12, 22, 26, 0.2);
+}
+
+html.footer-theme-active .site-header .nav-links {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+html.footer-theme-active .site-header .nav-links a:hover,
+html.footer-theme-active .site-header .nav-links a:focus-visible,
+html.footer-theme-active .site-header .nav-links a.active {
+  color: #ffffff;
+}
+
+html.footer-theme-active .site-header .nav-cta {
+  color: var(--ink);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 14px 34px rgba(8, 16, 19, 0.24);
+}
+
+html.footer-theme-active .site-header .page-progress span {
+  background: linear-gradient(90deg, var(--cyan), #8edcf5);
+}
+
 /* ── Hamburger (mobile only) ── */
 .nav-toggle {
   display: none;
@@ -1568,7 +1661,15 @@ h1 {
   background: rgba(255, 255, 255, 0.82);
   box-shadow: 0 14px 44px rgba(44, 54, 57, 0.05);
   overflow: hidden;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.26s ease, box-shadow 0.26s ease, background-color 0.26s ease;
+}
+
+.faq-item.is-animating {
+  transition:
+    height var(--faq-duration) var(--faq-easing),
+    border-color 0.26s ease,
+    box-shadow 0.26s ease,
+    background-color 0.26s ease;
 }
 
 .faq-item[open] {
@@ -1587,6 +1688,7 @@ h1 {
   font-weight: 800;
   font-size: 1.04rem;
   color: var(--ink);
+  transition: color 0.22s ease, background-color 0.22s ease;
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -1595,6 +1697,11 @@ h1 {
 
 .faq-item summary:hover {
   color: var(--coffee);
+  background: rgba(33, 141, 188, 0.035);
+}
+
+.faq-item summary:active {
+  background: rgba(33, 141, 188, 0.075);
 }
 
 .faq-icon {
@@ -1626,6 +1733,14 @@ h1 {
   transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.faq-item.is-animating .faq-icon {
+  transition-duration: var(--faq-duration), var(--faq-duration);
+}
+
+.faq-item.is-animating .faq-icon::after {
+  transition-duration: var(--faq-duration);
+}
+
 .faq-item[open] .faq-icon {
   background: rgba(33, 141, 188, 0.12);
   transform: rotate(180deg);
@@ -1633,6 +1748,15 @@ h1 {
 
 .faq-item[open] .faq-icon::after {
   transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faq-item.is-closing .faq-icon {
+  background: rgba(255, 250, 243, 0.9);
+  transform: rotate(0deg);
+}
+
+.faq-item.is-closing .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .faq-item p {
@@ -1643,6 +1767,23 @@ h1 {
   line-height: 1.66;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .faq-item p {
+    transition: opacity 0.2s ease, transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .faq-item.is-preparing p,
+  .faq-item.is-closing p {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  .faq-item.is-expanding p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ── Footer ── */
 .footer-brand {
   display: grid;
@@ -1651,7 +1792,7 @@ h1 {
 
 .footer-brand p {
   margin: 0;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.64);
   font-size: 0.94rem;
   line-height: 1.55;
 }
@@ -1664,12 +1805,21 @@ h1 {
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  border-top: 1px solid rgba(232, 222, 210, 0.7);
-  color: var(--muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.58);
   font-size: 0.85rem;
 }
 
 @media (max-width: 720px) {
+  .site-header {
+    background: rgba(255, 250, 243, 0.9);
+  }
+
+  .site-header.scrolled {
+    background: rgba(255, 250, 243, 0.97);
+    box-shadow: 0 10px 30px rgba(31, 44, 49, 0.1);
+  }
+
   .footer-base {
     flex-direction: column;
     align-items: flex-start;
@@ -1729,6 +1879,19 @@ h1 {
     background: rgba(33, 141, 188, 0.10);
   }
 
+  html.footer-theme-active .site-header .nav-links {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(31, 44, 49, 0.98);
+    box-shadow: 0 30px 80px rgba(8, 16, 19, 0.3);
+  }
+
+  html.footer-theme-active .site-header .nav-links a:hover,
+  html.footer-theme-active .site-header .nav-links a:focus-visible,
+  html.footer-theme-active .site-header .nav-links a.active {
+    color: #ffffff;
+    background: rgba(33, 141, 188, 0.2);
+  }
+
   .nav-links a::after {
     display: none;
   }
@@ -1753,6 +1916,12 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-footer::before,
+  .footer-links a {
+    transition: none;
+  }
+
   .page-progress span {
     will-change: auto;
   }
@@ -1779,6 +1948,13 @@ h1 {
   .scroll-cue i::after {
     animation: none;
     transform: none;
+  }
+
+  .faq-item,
+  .faq-item summary,
+  .faq-icon,
+  .faq-icon::after {
+    transition: none;
   }
 }
 
