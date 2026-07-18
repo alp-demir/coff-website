@@ -5,6 +5,7 @@ Static public website for `https://coffcircle.com`.
 ## Routes
 
 - `/`
+- `/investors/`
 - `/privacy/`
 - `/terms/`
 - `/support/`
