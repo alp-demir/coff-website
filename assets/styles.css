@@ -1052,22 +1052,40 @@ html.footer-in-view .site-footer::before {
   gap: 22px;
 }
 
-.footer-links {
+.footer-nav {
+  width: min(100%, 680px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.footer-group {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.92rem;
   font-weight: 700;
 }
 
-.footer-links a {
+.footer-group-title {
+  margin: 0 0 2px;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.footer-group a {
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.footer-links a:hover,
-.footer-links a:focus-visible {
+.footer-group a:hover,
+.footer-group a:focus-visible {
   color: #ffffff;
 }
 
@@ -1826,6 +1844,11 @@ html.footer-theme-active .site-header .page-progress span {
     gap: 6px;
   }
 
+  .footer-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 24px;
+  }
+
   .faq-item summary {
     padding: 16px 18px;
     font-size: 0.98rem;
@@ -1833,6 +1856,12 @@ html.footer-theme-active .site-header .page-progress span {
 
   .faq-item p {
     padding: 0 18px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-nav {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1918,7 +1947,7 @@ html.footer-theme-active .site-header .page-progress span {
 @media (prefers-reduced-motion: reduce) {
   .site-header,
   .site-footer::before,
-  .footer-links a {
+  .footer-group a {
     transition: none;
   }
 
