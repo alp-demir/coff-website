@@ -1063,19 +1063,20 @@ html.footer-in-view .site-footer::before {
 
 .footer-group {
   min-width: 0;
-  padding-top: 16px;
   display: grid;
   align-content: start;
   justify-items: start;
   gap: 2px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
   color: rgba(255, 255, 255, 0.68);
   font-size: 0.93rem;
   font-weight: 650;
 }
 
 .footer-group-title {
+  width: 100%;
   margin: 0 0 15px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   color: rgba(255, 255, 255, 0.96);
   font-size: 0.76rem;
   font-weight: 850;
