@@ -7,13 +7,13 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://coffcircle.com/investors</loc>
+    <loc>https://coffcircle.com/investors/</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://coffcircle.com/privacy</loc>
+    <loc>https://coffcircle.com/privacy/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -25,19 +25,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://coffcircle.com/terms</loc>
+    <loc>https://coffcircle.com/terms/</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://coffcircle.com/support</loc>
+    <loc>https://coffcircle.com/support/</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://coffcircle.com/delete-account</loc>
+    <loc>https://coffcircle.com/delete-account/</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
