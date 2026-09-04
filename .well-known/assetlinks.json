@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.coffcircle.CoffAndroid",
+      "sha256_cert_fingerprints": [
+        "9D:FF:9F:D7:0D:26:9D:C9:0D:3C:C8:96:2E:A1:0F:8E:EE:D1:83:C0:52:6E:1D:F5:0B:4F:F9:ED:0F:B9:45:A4"
+      ]
+    }
+  }
+]
