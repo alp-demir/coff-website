@@ -1,5 +1,11 @@
 (function () {
   var API = "https://api.coffcircle.com/api/auth/verify-email";
+  var t = window.coffT;
+  var headers = { "Content-Type": "application/json" };
+  // Only English asks: the backend answers Turkish without it, and a Turkish
+  // visit then sends nothing a pre-English backend's CORS policy would refuse.
+  if (window.coffLang === "en") headers["X-Coff-Language"] = "en";
+  var openApp = t("coff'u aç", "Open coff");
   var params = new URLSearchParams(window.location.search);
   var token = params.get("token");
 
@@ -22,13 +28,13 @@
   }
 
   if (!token) {
-    done("error", "Bağlantı geçersiz", "Doğrulama bağlantısı eksik ya da bozuk. E-postandaki bağlantıyı tekrar aç.", "coff'u aç");
+    done("error", t("Bağlantı geçersiz", "Invalid link"), t("Doğrulama bağlantısı eksik ya da bozuk. E-postandaki bağlantıyı tekrar aç.", "The verification link is missing or broken. Open the link in your email again."), openApp);
     return;
   }
 
   fetch(API, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: headers,
     body: JSON.stringify({ token: token })
   })
     .then(function (res) {
@@ -38,18 +44,18 @@
     })
     .then(function (r) {
       if (r.ok) {
-        done("success", "E-posta doğrulandı",
-          (r.data && r.data.message) || "Hesabın etkinleştirildi. Uygulamaya dönebilirsin.",
-          "coff'u aç");
+        done("success", t("E-posta doğrulandı", "Email verified"),
+          (r.data && r.data.message) || t("Hesabın etkinleştirildi. Uygulamaya dönebilirsin.", "Your account is active. You can go back to the app."),
+          openApp);
       } else {
-        done("error", "Bağlantı geçersiz",
-          (r.data && r.data.message) || "Bu doğrulama bağlantısı geçersiz veya süresi dolmuş. Uygulamadan yeni bir bağlantı iste.",
-          "coff'u aç");
+        done("error", t("Bağlantı geçersiz", "Invalid link"),
+          (r.data && r.data.message) || t("Bu doğrulama bağlantısı geçersiz veya süresi dolmuş. Uygulamadan yeni bir bağlantı iste.", "This verification link is invalid or has expired. Request a new one from the app."),
+          openApp);
       }
     })
     .catch(function () {
-      done("error", "Bağlantı hatası",
-        "İnternet bağlantını kontrol edip sayfayı yenile.",
-        "coff'u aç");
+      done("error", t("Bağlantı hatası", "Connection error"),
+        t("İnternet bağlantını kontrol edip sayfayı yenile.", "Check your internet connection and refresh the page."),
+        openApp);
     });
 })();

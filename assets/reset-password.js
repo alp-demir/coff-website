@@ -1,5 +1,12 @@
 (function () {
   var API = "https://api.coffcircle.com/api/auth/reset-password";
+  var t = window.coffT;
+  var headers = { "Content-Type": "application/json" };
+  // Only English asks: the backend answers Turkish without it, and a Turkish
+  // visit then sends nothing a pre-English backend's CORS policy would refuse.
+  if (window.coffLang === "en") headers["X-Coff-Language"] = "en";
+  var openApp = t("coff'u aç", "Open coff");
+  var updateLabel = t("Şifremi güncelle", "Update my password");
   var params = new URLSearchParams(window.location.search);
   var token = params.get("token");
 
@@ -32,8 +39,8 @@
       var input = document.getElementById(this.getAttribute("data-target"));
       var reveal = input.type === "password";
       input.type = reveal ? "text" : "password";
-      this.textContent = reveal ? "Gizle" : "Göster";
-      this.setAttribute("aria-label", reveal ? "Şifreyi gizle" : "Şifreyi göster");
+      this.textContent = reveal ? t("Gizle", "Hide") : t("Göster", "Show");
+      this.setAttribute("aria-label", reveal ? t("Şifreyi gizle", "Hide password") : t("Şifreyi göster", "Show password"));
     });
   }
 
@@ -53,8 +60,8 @@
 
   if (!token) {
     form.style.display = "none";
-    show("error", "Bağlantı geçersiz veya eksik. Lütfen e-postandaki bağlantıyı tekrar aç.");
-    showAppAction("coff'u aç", "coff://");
+    show("error", t("Bağlantı geçersiz veya eksik. Lütfen e-postandaki bağlantıyı tekrar aç.", "The link is invalid or incomplete. Please open the link in your email again."));
+    showAppAction(openApp, "coff://");
     return;
   }
 
@@ -63,15 +70,15 @@
     msg.className = "reset-msg";
 
     var p1 = pw.value, p2 = pw2.value;
-    if (p1.length < 6) { show("error", "Şifre en az 6 karakter olmalı."); return; }
-    if (p1 !== p2) { show("error", "Şifreler eşleşmiyor."); return; }
+    if (p1.length < 6) { show("error", t("Şifre en az 6 karakter olmalı.", "Password must be at least 6 characters.")); return; }
+    if (p1 !== p2) { show("error", t("Şifreler eşleşmiyor.", "Passwords don't match.")); return; }
 
     btn.disabled = true;
-    btn.textContent = "Güncelleniyor…";
+    btn.textContent = t("Güncelleniyor…", "Updating…");
 
     fetch(API, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: headers,
       body: JSON.stringify({ token: token, newPassword: p1 })
     })
       .then(function (res) {
@@ -82,26 +89,26 @@
       .then(function (r) {
         if (r.ok) {
           form.style.display = "none";
-          show("success", (r.data && r.data.message) || "Şifren güncellendi. Yeni şifrenle giriş yapabilirsin.");
-          showAppAction("coff'u aç ve giriş yap", "coff://");
+          show("success", (r.data && r.data.message) || t("Şifren güncellendi. Yeni şifrenle giriş yapabilirsin.", "Your password is updated. You can sign in with your new password."));
+          showAppAction(t("coff'u aç ve giriş yap", "Open coff and sign in"), "coff://");
         } else {
           btn.disabled = false;
-          btn.textContent = "Şifremi güncelle";
+          btn.textContent = updateLabel;
           if (r.status === 400) {
             // Covers expired/used token AND "same as current password" — the
             // server message says which; the CTA stays neutral so it never
             // misdirects (user can retry inline or open the app as needed).
-            show("error", (r.data && r.data.message) || "İşlem tamamlanamadı. Bağlantının süresi dolmuş olabilir, uygulamadan yeni bir bağlantı iste.");
-            showAppAction("coff'u aç", "coff://");
+            show("error", (r.data && r.data.message) || t("İşlem tamamlanamadı. Bağlantının süresi dolmuş olabilir, uygulamadan yeni bir bağlantı iste.", "Couldn't complete that. The link may have expired; request a new one from the app."));
+            showAppAction(openApp, "coff://");
           } else {
-            show("error", (r.data && r.data.message) || "İşlem tamamlanamadı. Tekrar dene.");
+            show("error", (r.data && r.data.message) || t("İşlem tamamlanamadı. Tekrar dene.", "Couldn't complete that. Try again."));
           }
         }
       })
       .catch(function () {
         btn.disabled = false;
-        btn.textContent = "Şifremi güncelle";
-        show("error", "Bağlantı hatası. İnternetini kontrol edip tekrar dene.");
+        btn.textContent = updateLabel;
+        show("error", t("Bağlantı hatası. İnternetini kontrol edip tekrar dene.", "Connection error. Check your internet and try again."));
       });
   });
 })();

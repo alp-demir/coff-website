@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Şifre Sıfırlama | Coff</title>
-  <meta name="description" content="Coff hesabının şifresini sıfırla.">
+  <title data-en="Password Reset | Coff">Şifre Sıfırlama | Coff</title>
+  <meta name="description" data-en="Reset your Coff account password." content="Coff hesabının şifresini sıfırla.">
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#fffaf3" data-theme-top="#fffaf3" data-theme-footer="#1f2c31">
   <link rel="canonical" href="https://coffcircle.com/reset-password">
@@ -16,59 +16,61 @@
   <link rel="stylesheet" href="/assets/reset-password.css?v=1">
 </head>
 <body class="legal">
-  <a class="skip-link" href="#icerik">İçeriğe geç</a>
-  <header class="site-header"><nav class="nav" aria-label="Ana menü"><a class="brand" href="/"><img src="/assets/apple-touch-icon-v4.png" alt="" width="38" height="38" decoding="async"><span>Coff</span></a><div class="nav-links"><a href="/">Ana sayfa</a><a href="/privacy/">Gizlilik</a><a href="/support/">Destek</a></div><a class="nav-cta" href="mailto:destek@coffcircle.com">Destek al</a></nav></header>
+  <a class="skip-link" href="#icerik" data-en="Skip to content">İçeriğe geç</a>
+  <header class="site-header"><nav class="nav" aria-label="Ana menü" data-en-aria-label="Main menu"><a class="brand" href="/"><img src="/assets/apple-touch-icon-v4.png" alt="" width="38" height="38" decoding="async"><span>Coff</span></a><div class="nav-links"><a href="/" data-en="Home">Ana sayfa</a><a href="/privacy/" data-en="Privacy">Gizlilik</a><a href="/support/" data-en="Support">Destek</a></div><a class="nav-cta" href="mailto:destek@coffcircle.com" data-en="Get support">Destek al</a></nav></header>
 
   <main id="icerik" class="legal-wrap reset-wrap">
     <div class="legal-title">
-      <span class="eyebrow">Hesap güvenliği</span>
-      <h1>Şifreni sıfırla</h1>
-      <p>Hesabın için yeni bir şifre belirle. En az 6 karakter olmalı. Yeni şifrenle tüm cihazlarda yeniden giriş yapman gerekir.</p>
+      <span class="eyebrow" data-en="Account security">Hesap güvenliği</span>
+      <h1 data-en="Reset your password">Şifreni sıfırla</h1>
+      <p data-en="Set a new password for your account. It must be at least 6 characters. You&#x27;ll need to sign in again on every device with the new password.">Hesabın için yeni bir şifre belirle. En az 6 karakter olmalı. Yeni şifrenle tüm cihazlarda yeniden giriş yapman gerekir.</p>
     </div>
 
     <article class="legal-card reset-card">
       <form id="reset-form" novalidate>
         <div class="reset-field">
-          <label for="pw">Yeni şifre</label>
+          <label for="pw" data-en="New password">Yeni şifre</label>
           <div class="pw-wrap">
-            <input id="pw" name="pw" type="password" autocomplete="new-password" minlength="6" placeholder="En az 6 karakter" required>
-            <button type="button" class="pw-toggle" data-target="pw" aria-label="Şifreyi göster">Göster</button>
+            <input id="pw" name="pw" type="password" autocomplete="new-password" minlength="6" placeholder="En az 6 karakter" data-en-placeholder="At least 6 characters" required>
+            <button type="button" class="pw-toggle" data-target="pw" aria-label="Şifreyi göster" data-en-aria-label="Show password" data-en="Show">Göster</button>
           </div>
           <div class="pw-strength" aria-hidden="true"><span id="pw-bar"></span></div>
         </div>
         <div class="reset-field">
-          <label for="pw2">Yeni şifre (tekrar)</label>
+          <label for="pw2" data-en="New password (again)">Yeni şifre (tekrar)</label>
           <div class="pw-wrap">
-            <input id="pw2" name="pw2" type="password" autocomplete="new-password" minlength="6" placeholder="Şifreni tekrar gir" required>
-            <button type="button" class="pw-toggle" data-target="pw2" aria-label="Şifreyi göster">Göster</button>
+            <input id="pw2" name="pw2" type="password" autocomplete="new-password" minlength="6" placeholder="Şifreni tekrar gir" data-en-placeholder="Enter your password again" required>
+            <button type="button" class="pw-toggle" data-target="pw2" aria-label="Şifreyi göster" data-en-aria-label="Show password" data-en="Show">Göster</button>
           </div>
         </div>
-        <button id="submit-btn" class="button" type="submit">Şifremi güncelle</button>
+        <button id="submit-btn" class="button" type="submit" data-en="Update my password">Şifremi güncelle</button>
       </form>
 
       <div id="msg" class="reset-msg" role="status" aria-live="polite"></div>
 
       <div id="post-actions" class="post-actions">
-        <a id="app-cta" class="button secondary" href="coff://">coff'u aç</a>
+        <a id="app-cta" class="button secondary" href="coff://" data-en="Open coff">coff'u aç</a>
       </div>
 
-      <p class="reset-hint">Bu sayfayı yanlışlıkla açtıysan kapatman yeterli; şifren değişmez. Sorun yaşarsan <a href="mailto:destek@coffcircle.com">destek@coffcircle.com</a> ile iletişime geç.</p>
+      <p class="reset-hint" data-en-html="If you opened this page by mistake, just close it; your password stays the same. If you run into a problem, contact &lt;a href=&quot;mailto:destek@coffcircle.com&quot;&gt;destek@coffcircle.com&lt;/a&gt;.">Bu sayfayı yanlışlıkla açtıysan kapatman yeterli; şifren değişmez. Sorun yaşarsan <a href="mailto:destek@coffcircle.com">destek@coffcircle.com</a> ile iletişime geç.</p>
     </article>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-brand"><a class="brand" href="/"><img src="/assets/apple-touch-icon-v4.png" alt="" width="38" height="38" loading="lazy" decoding="async"><span>Coff</span></a><p>Kahveyle başlayan sosyal çevre.</p></div>
-      <nav class="footer-nav" aria-label="Alt bilgi bağlantıları">
-        <section class="footer-group" aria-labelledby="footer-coff"><h2 class="footer-group-title" id="footer-coff">Coff</h2><a href="/">Ana Sayfa</a><a href="/#bugun">Ürün</a><a href="/investors/">Yatırımcılar</a></section>
-        <section class="footer-group" aria-labelledby="footer-safety"><h2 class="footer-group-title" id="footer-safety">Güvenlik &amp; Destek</h2><a href="/terms/#topluluk-ve-guvenlik">Topluluk ve Güvenlik</a><a href="/support/">Destek ve İletişim</a><a href="mailto:destek@coffcircle.com">destek@coffcircle.com</a></section>
-        <section class="footer-group" aria-labelledby="footer-legal"><h2 class="footer-group-title" id="footer-legal">Yasal</h2><a href="/privacy/">Gizlilik Politikası</a><a href="/kvkk/">KVKK Aydınlatma Metni</a><a href="/terms/">Kullanım Şartları</a><a href="/delete-account/">Hesap Silme</a></section>
+      <div class="footer-brand"><a class="brand" href="/"><img src="/assets/apple-touch-icon-v4.png" alt="" width="38" height="38" loading="lazy" decoding="async"><span>Coff</span></a><p data-en="A social circle that starts with coffee.">Kahveyle başlayan sosyal çevre.</p></div>
+      <nav class="footer-nav" aria-label="Alt bilgi bağlantıları" data-en-aria-label="Footer links">
+        <section class="footer-group" aria-labelledby="footer-coff"><h2 class="footer-group-title" id="footer-coff">Coff</h2><a href="/" data-en="Home">Ana Sayfa</a><a href="/#bugun" data-en="Product">Ürün</a><a href="/investors/" data-en="Investors">Yatırımcılar</a></section>
+        <section class="footer-group" aria-labelledby="footer-safety"><h2 class="footer-group-title" id="footer-safety" data-en="Safety &amp; Support">Güvenlik &amp; Destek</h2><a href="/terms/#topluluk-ve-guvenlik" data-en="Community &amp; Safety">Topluluk ve Güvenlik</a><a href="/support/" data-en="Support &amp; Contact">Destek ve İletişim</a><a href="mailto:destek@coffcircle.com">destek@coffcircle.com</a></section>
+        <section class="footer-group" aria-labelledby="footer-legal"><h2 class="footer-group-title" id="footer-legal" data-en="Legal">Yasal</h2><a href="/privacy/" data-en="Privacy Policy">Gizlilik Politikası</a><a href="/kvkk/" data-en="KVKK Privacy Notice">KVKK Aydınlatma Metni</a><a href="/terms/" data-en="Terms of Use">Kullanım Şartları</a><a href="/delete-account/" data-en="Account Deletion">Hesap Silme</a></section>
       </nav>
     </div>
-    <div class="footer-base"><span>© 2026 Coff. Tüm hakları saklıdır.</span></div>
+    <div class="footer-base"><span data-en="© 2026 Coff. All rights reserved.">© 2026 Coff. Tüm hakları saklıdır.</span></div>
   </footer>
 
-  <script src="/assets/reset-password.js?v=1"></script>
+  <script src="/assets/i18n.js?v=1"></script>
+
+  <script src="/assets/reset-password.js?v=2"></script>
   <script src="/assets/site.js?v=5" defer></script>
 </body>
 </html>
