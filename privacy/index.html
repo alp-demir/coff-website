@@ -36,7 +36,7 @@
   </header>
   <main id="icerik" class="legal-wrap">
     <div class="legal-title">
-      <span class="updated">Son güncelleme: 14 Eylül 2026</span>
+      <span class="updated">Son güncelleme: 29 Eylül 2026</span>
       <h1>Gizlilik Politikası</h1>
       <p>Bu metin Coff’un hangi verileri topladığını, neden kullandığını ve kullanıcı kontrolünü nasıl ele aldığını sade bir dille açıklar.</p>
       <p>KVKK kapsamındaki veri işleme bilgileri ve ilgili kişi hakları için <a href="/kvkk/">KVKK Aydınlatma Metni</a>ni inceleyebilirsin.</p>
@@ -46,7 +46,7 @@
       <p>Coff hesabı oluşturduğunda ad, soyad, e-posta, telefon, şifrenin güvenli özeti, hesap rolü, e-posta doğrulama durumu, hesap durumu ve hesap oluşturma tarihi işlenir. Giriş, e-posta doğrulama ve şifre sıfırlama için geçici doğrulama kayıtları ve token özetleri tutulabilir.</p>
 
       <h2>2. Profil ve tercih bilgileri</h2>
-      <p>Profilini tamamladığında doğum tarihi, yaş bilgisi, şehir, ilçe, cinsiyet, görmek istediğin cinsiyet tercihi, biyografi, eğitim durumu, üniversite, çalışma durumu, sektör, sosyal kahve amacı, ilgi alanları, uygunluk bilgisi, eşleşme mesafesi tercihi, kahve tercihleri ve favori kahve mekanı gibi profil detaylarını saklayabiliriz.</p>
+      <p>Profilini tamamladığında doğum tarihi, yaş bilgisi, şehir, ilçe, cinsiyet, biyografi, eğitim durumu, üniversite, çalışma durumu, sektör, sosyal kahve amacı, ilgi alanları, uygunluk bilgisi, kahve tercihleri ve favori kahve mekanı gibi profil detaylarını saklayabiliriz. Coff keşfi cinsiyete göre filtrelemez; cinsel yönelim bilgisi toplamaz ve bu yönde çıkarım yapmaz.</p>
       <p>Coff 18 yaşından küçükler için değildir ve bilerek 18 yaş altından veri toplamaz. Doğum tarihi kayıt sırasında beyan edilir, sonradan uygulama içinden değiştirilemez ve yaş şartı buna göre uygulanır. Bir kullanıcıyı <strong>18 yaşından küçük</strong> nedeniyle şikayet edebilirsin; 18 yaş altı olduğu anlaşılan hesaplar kapatılır ve verileri hesap silme kurallarına göre temizlenir.</p>
 
       <h2>3. Profil fotoğrafları ve doğrulama</h2>
@@ -69,25 +69,45 @@
       <p>Bir kullanıcıyı şikayet ettiğinde veya engellediğinde bu işlem, şikayet nedeni, açıklama, ilgili kullanıcılar, işlem zamanı, şikayet durumu, yetkili ekip notu ve güvenlik incelemesi için gerekli sınırlı kanıt bilgileriyle birlikte saklanabilir. Yetkili yöneticiler şikayetleri inceleyebilir, içerik veya hesaplar hakkında uyarı, inceleme, askıya alma ya da kapatma gibi işlemler yapabilir.</p>
 
       <h2>8. Hizmet sağlayıcıları</h2>
-      <p>Coff; e-posta gönderimi, bildirim, abonelik ve satın alma durumunun doğrulanması, harita/mekan arama, fotoğraf depolama, fotoğrafların otomatik ön taraması, sunucu barındırma ve içerik dağıtımı için üçüncü taraf altyapı sağlayıcılarından yararlanabilir. Bildirim jetonun bu amaçla bildirim sağlayıcısına, abonelik durumun ise yalnız satın alma doğrulaması için abonelik sağlayıcısına iletilir. Bu sağlayıcılar yalnızca hizmeti sunmak için gerekli teknik verileri işler. Bu public web sitesine şu an harici takip veya reklam analitiği eklemiyoruz.</p>
+      <p>Coff; e-posta gönderimi, bildirim, abonelik ve satın alma durumunun doğrulanması, harita/mekan arama, fotoğraf depolama, fotoğrafların otomatik ön taraması, sunucu barındırma ve içerik dağıtımı için üçüncü taraf altyapı sağlayıcılarından yararlanır. Bildirim jetonun bu amaçla bildirim sağlayıcısına, abonelik durumun ise yalnız satın alma doğrulaması için abonelik sağlayıcısına iletilir. Bu sağlayıcılar yalnızca hizmeti sunmak için gerekli teknik verileri işler. Güncel başlıca sağlayıcılar:</p>
+      <ul>
+        <li><strong>Railway</strong> (ABD şirketi; sunucular Avrupa Birliği'nde, Hollanda): uygulama sunucusu, veritabanı ve yedekleme işi.</li>
+        <li><strong>Cloudflare</strong> (ABD): alan adı, güvenli içerik dağıtımı, profil fotoğrafı ve şifreli veritabanı yedeklerinin depolanması.</li>
+        <li><strong>Resend</strong> (ABD): doğrulama ve şifre sıfırlama e-postaları.</li>
+        <li><strong>Sentry</strong> (ABD şirketi; veriler Avrupa Birliği bölgesinde): hata ve performans kayıtları.</li>
+        <li><strong>RevenueCat</strong> (ABD): abonelik durumunun doğrulanması.</li>
+        <li><strong>OpenAI</strong> (ABD): profil fotoğraflarının otomatik ön taraması; fotoğraflar sağlayıcının model eğitiminde kullanılmaz.</li>
+        <li><strong>Google</strong> (ABD): Android bildirimleri (Firebase Cloud Messaging), harita ve mekan arama.</li>
+        <li><strong>Apple</strong> (ABD): iPhone bildirimleri ve harita.</li>
+        <li><strong>GitHub</strong> (ABD): veritabanı yedeğinin ikinci kopyasını alan otomatik iş ve haftalık yedekten geri yükleme testi.</li>
+      </ul>
+      <p>App Store ve Google Play üzerinden yaptığın satın alımlarda ödeme bilgilerin Apple veya Google tarafından, kendi gizlilik politikalarına göre işlenir; Coff ödeme kartı bilgisi almaz. Bu sağlayıcıların sistemleri Türkiye dışında olduğundan kişisel verilerin yurt dışına aktarılır; bu aktarımın hukuki çerçevesi <a href="/kvkk/">KVKK Aydınlatma Metni</a>nin 6. bölümünde açıklanır. Bu public web sitesine şu an harici takip veya reklam analitiği eklemiyoruz.</p>
 
       <h2>9. Analitik, günlükler ve hata kayıtları</h2>
       <p>Ürün analitiği, hesabına giriş yaptığın andan itibaren, ayrı bir onay istenmeden işlenir; bu, reklam veya pazarlama amaçlı bir izleme değil, hizmetin kendisini çalıştırmak ve iyileştirmek için gerekli meşru menfaate dayalı bir işlemdir. Aşağıdaki 10. bölümdeki hesap silme işlemiyle bu kayıtların doğrudan kimlik bilgilerinden nasıl ayrıştırıldığını, KVKK Aydınlatma Metni'ndeki ilgili kişi haklarıyla ise itiraz hakkını nasıl kullanabileceğini okuyabilirsin.</p>
       <p>Coff; eşleşme ve keşif akışının nasıl çalıştığını anlamak, boş sonuçları ve kullanıcıların karşılaştığı sorunları tespit etmek, abonelik akışını ölçmek ve hizmeti geliştirmek için sınırlı ürün kullanım bilgileri işler. Bunlar; belirli bir ekranın veya durumun gösterilmesi, bir keşif kartının konumu, arama kapsamının genişletilmesi ve abonelik akışındaki adımlar gibi olayları ve bunlara ait önceden belirlenmiş sınırlı bağlam bilgilerini içerebilir. Ürün analitiği olaylarına ait ek alanlarda başka kullanıcıları doğrudan tanımlayan bilgiler saklanmaz.</p>
       <p>Ürün analitiği kayıtları Coff’un iç kullanıcı numarasıyla ilişkilendirilebilir. Hesap silindiğinde ad, e-posta ve telefon gibi doğrudan kimlik ve iletişim bilgileri bu iç numaraya bağlı hesap kaydından çıkarılır; sınırlı analitik olayları ise kullanıcı yolculuğu, eşleşme hunisi ve hizmetten ayrılma eğilimlerini değerlendirebilmek için aynı iç numarayla ilişkili kalabilir. Bu kayıtlar tümüyle anonim değildir; silinen profili yeniden oluşturmak veya kullanıcıyla iletişim kurmak için kullanılmaz ve yalnızca yetkili erişimle ürün/hizmet analizi amacıyla değerlendirilir.</p>
       <p>Coff ayrıca güvenlik, kötüye kullanımı önleme, hata giderme ve hizmetin kararlı çalışmasını sağlama amacıyla IP adresi, istek zamanı, uygulama veya cihaz sürümü, hata, çökme ve performans bilgileri gibi sınırlı teknik verileri işleyebilir. Bu amaçlarla çökme/performans ve abonelik altyapısı sağlayıcılarından yararlanılabilir. Bu verileri reklam hedefleme, uygulamalar arası takip veya veri satışı için kullanmayız.</p>
+      <p id="trafik-kayitlari">Coff, kullanıcıların paylaştığı profil, fotoğraf ve mesajlara yer sağladığı için 5651 sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Hakkında Kanun kapsamında yer sağlayıcıdır. Bu Kanun gereği hangi hesabın hangi IP adresinden ve hangi gün, hangi saat aralığında hizmeti kullandığını gösteren trafik bilgilerini <strong>1 yıl</strong> saklarız. Bu kayıtlar hesap silinse de bu süre boyunca tutulur, yalnızca yetkili makamların usulüne uygun talepleri ve güvenlik incelemeleri için kullanılır ve süre sonunda silinir.</p>
 
       <h2 id="hesap-silme">10. Hesap silme ve verilerin saklanması</h2>
       <p>Hesap ve profil verileri, hesabın aktif olduğu ve Coff hizmetlerinin sunulması için gerekli olduğu sürece saklanır. Hesabını sildiğinde hesabın kapatılır; ad, e-posta ve telefon gibi doğrudan iletişim ve kimlik bilgilerinin gerçek değerleri sistemden çıkarılır ve eski şifren geçersiz hale getirilir. Doğum tarihi, şehir, biyografi, ilgi alanları, eşleşme mesafesi ve benzeri profil içerikleri temizlenir; profil fotoğrafı, fotoğrafa ait depolama ve işlem bilgileri, kahve tercihleri, favori mekanlar, kişisel check-in kayıtları ve cihaz bildirim jetonları silinir. Gönderdiğin mesajların sohbet kaydındaki içeriği silinmiş mesaj bildirimiyle değiştirilir ve sohbet listesindeki son mesaj önizlemeleri ile gönderici bilgileri temizlenir.</p>
       <p>Hesap silindikten sonra bazı sınırlı kayıtlar korunabilir. Bunlar; kullanıcı güvenliğini sağlamak ve kötüye kullanımı önlemek için engelleme ve şikayet kayıtlarını, şikayet anında dondurulmuş sınırlı kanıtları, diğer kullanıcıların eşleşme ve sohbet geçmişinin bütünlüğü için gerekli ilişki kayıtlarını, ürün ve eşleşme performansını değerlendirmek amacıyla tutulan sınırlı aday aksiyonu ve ürün analitiği kayıtlarını, süresi dolana kadar geçersiz kılınmış oturum kayıtlarını ve yasal, mali veya abonelik işlemlerinin doğrulanması için gerekli kayıtları içerebilir. Bu kayıtlar doğrudan iletişim bilgilerinden arındırılmış bir iç kayıt numarasıyla ilişkili kalabilir; bu nedenle bunları tümüyle anonim olarak tanımlamayız.</p>
-      <p>Bu kayıtlar yalnızca ilgili amaç için gerekli olduğu sürece tutulur. Süre; verinin niteliği, güvenlik ve kötüye kullanım riski, teknik kaydın geçerlilik süresi, olası hak talepleri ve uygulanabilir yasal yükümlülükler dikkate alınarak veri kategorisine göre belirlenir. İlgili amaç sona erdiğinde ve saklamayı gerektiren başka bir neden kalmadığında kayıt silinir veya kişiyle ilişkilendirilemeyecek hale getirilir.</p>
+      <p>Bu kayıtlar yalnızca ilgili amaç için gerekli olduğu sürece tutulur. Süre; verinin niteliği, güvenlik ve kötüye kullanım riski, teknik kaydın geçerlilik süresi, olası hak talepleri ve uygulanabilir yasal yükümlülükler dikkate alınarak veri kategorisine göre belirlenir. İlgili amaç sona erdiğinde ve saklamayı gerektiren başka bir neden kalmadığında kayıt silinir veya kişiyle ilişkilendirilemeyecek hale getirilir. Belirlenmiş süreler şunlardır:</p>
+      <ul>
+        <li>Sonlandırılan bir bağlantının mesaj içeriği: sonlandırmadan <strong>30 gün</strong> sonra silinir.</li>
+        <li>Şikayet anında dondurulan mesaj kanıtı: şikayet incelendikten <strong>60 gün</strong> sonra silinir; şikayetin kendisi (kim, kimi, hangi gerekçeyle) güvenlik kaydı olarak kalır.</li>
+        <li>Silinen hesabın e-posta özeti: <strong>7 gün</strong>.</li>
+        <li>5651 sayılı Kanun kapsamındaki trafik bilgileri: <strong>1 yıl</strong>.</li>
+        <li>Veritabanı yedekleri: depolandığı yerde şifrelenmiş olarak en fazla <strong>30 gün</strong>. Silinen bir hesabın verileri bu süre dolana kadar yedeklerde kalabilir; yedekler yalnızca sistemi geri yüklemek için kullanılır.</li>
+      </ul>
       <p>Hesap silindiğinde e-posta adresin hesabından çıkarılır. Aynı adresle hemen yeni hesap açılıp kapatılmasını önlemek için, adresin kendisi değil yalnızca sunucu tarafındaki gizli bir anahtarla üretilmiş <strong>geri çevrilemez bir özeti</strong> ayrı bir kayıtta <strong>7 gün</strong> boyunca tutulur. Bu özet e-posta adresine dönüştürülemez, bildirim veya iletişim için kullanılmaz ve süre dolduğunda kayıt tamamen silinir. Bu süre içinde aynı adresle yeni kayıt denendiğinde ne kadar beklenmesi gerektiği bildirilir.</p>
 
       <h2>11. Hesap silme</h2>
       <p>Hesabını uygulama içinden silebilirsin. Profil ekranındaki menüden <strong>Hesap güvenliği</strong> bölümüne girip <strong>Hesabı sil</strong> seçeneğini kullanabilirsin. Yardıma ihtiyacın olursa <a href="/delete-account/">Hesap Silme</a> sayfasındaki adımları takip edebilir veya destek ekibine yazabilirsin.</p>
 
       <h2>12. İletişim</h2>
-      <p>Gizlilik talepleri ve sorular için bize <a href="mailto:destek@coffcircle.com">destek@coffcircle.com</a> adresinden ulaşabilirsin.</p>
+      <p>Gizlilik talepleri ve sorular için bize <a href="mailto:destek@coffcircle.com">destek@coffcircle.com</a> adresinden ulaşabilirsin. KVKK kapsamındaki başvurular için <a href="mailto:kvkk@coffcircle.com">kvkk@coffcircle.com</a> adresini ve <a href="/kvkk/#basvuru">KVKK Aydınlatma Metni</a>ndeki başvuru yollarını kullanabilirsin.</p>
     </article>
   </main>
   <footer class="site-footer">
