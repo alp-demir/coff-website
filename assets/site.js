@@ -177,16 +177,20 @@ const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector("#navLinks");
 
 if (navToggle && navLinks) {
+  const english = document.documentElement.lang === "en";
+  const openLabel = english ? "Open menu" : "Menüyü aç";
+  const closeLabel = english ? "Close menu" : "Menüyü kapat";
+
   const closeMenu = () => {
     navLinks.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
-    navToggle.setAttribute("aria-label", "Menüyü aç");
+    navToggle.setAttribute("aria-label", openLabel);
   };
 
   navToggle.addEventListener("click", () => {
     const open = navLinks.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(open));
-    navToggle.setAttribute("aria-label", open ? "Menüyü kapat" : "Menüyü aç");
+    navToggle.setAttribute("aria-label", open ? closeLabel : openLabel);
   });
 
   navLinks.addEventListener("click", (event) => {

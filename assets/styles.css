@@ -1143,6 +1143,15 @@ html.footer-in-view .site-footer::before {
   padding-left: 20px;
 }
 
+/* "This translation is for convenience" line under an English legal text. */
+.legal-card .legal-note {
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(44, 54, 57, 0.12);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .callout {
   margin: 24px 0;
   padding: 20px;
@@ -1846,6 +1855,21 @@ html.footer-theme-active .site-header .page-progress span {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.58);
   font-size: 0.85rem;
+}
+
+/* Link to the same page in the other language (Türkçe / English). */
+.footer-base .lang-switch {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.footer-base .lang-switch:hover,
+.footer-base .lang-switch:focus-visible {
+  color: #ffffff;
 }
 
 @media (max-width: 900px) {
