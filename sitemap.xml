@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://coffcircle.com/investors/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -86,6 +86,12 @@
   </url>
   <url>
     <loc>https://coffcircle.com/en/child-safety/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://coffcircle.com/en/investors/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
