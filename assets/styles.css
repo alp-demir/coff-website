@@ -437,7 +437,10 @@ h1 {
   width: 100%;
   height: auto;
   image-rendering: auto;
-  filter: drop-shadow(0 30px 58px rgba(44, 54, 57, 0.18));
+  /* CSS blur radius is a Gaussian sigma: the old 58px reached ~170px past the
+     phone and was cut off in a straight line at the page edge (html/body
+     overflow-x: clip), which read as a rectangular veil on narrow screens. */
+  filter: drop-shadow(0 24px 32px rgba(44, 54, 57, 0.12));
 }
 
 .scroll-cue {
@@ -1210,6 +1213,11 @@ html.footer-in-view .site-footer::before {
     width: min(330px, 64vw);
     min-width: 0;
     margin: 0 auto;
+  }
+
+  /* Keep the shadow inside the gutter beside the phone so nothing clips it. */
+  .product-shot {
+    filter: drop-shadow(0 14px 18px rgba(44, 54, 57, 0.14));
   }
 
   .story-band,
