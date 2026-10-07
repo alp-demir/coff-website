@@ -350,6 +350,10 @@ h1 {
   transform: translate3d(0, var(--hero-map-y), 0) scale(var(--hero-map-scale));
   transform-origin: center;
   will-change: transform;
+  /* The strokes run past the svg box and were cut off in a straight line at
+     its edge; fade them out before they reach it. */
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 52%, transparent 98%);
+  mask-image: radial-gradient(ellipse at center, #000 52%, transparent 98%);
 }
 
 .hero-map-layer path {
