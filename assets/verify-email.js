@@ -5,7 +5,7 @@
   // Only English asks: the backend answers Turkish without it, and a Turkish
   // visit then sends nothing a pre-English backend's CORS policy would refuse.
   if (window.coffLang === "en") headers["X-Coff-Language"] = "en";
-  var openApp = t("coff'u aç", "Open coff");
+  var openApp = t("Coff Circle'ı aç", "Open Coff Circle");
   var params = new URLSearchParams(window.location.search);
   var token = params.get("token");
 

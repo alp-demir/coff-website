@@ -5,7 +5,7 @@
   // Only English asks: the backend answers Turkish without it, and a Turkish
   // visit then sends nothing a pre-English backend's CORS policy would refuse.
   if (window.coffLang === "en") headers["X-Coff-Language"] = "en";
-  var openApp = t("coff'u aç", "Open coff");
+  var openApp = t("Coff Circle'ı aç", "Open Coff Circle");
   var updateLabel = t("Şifremi güncelle", "Update my password");
   var params = new URLSearchParams(window.location.search);
   var token = params.get("token");
@@ -90,7 +90,7 @@
         if (r.ok) {
           form.style.display = "none";
           show("success", (r.data && r.data.message) || t("Şifren güncellendi. Yeni şifrenle giriş yapabilirsin.", "Your password is updated. You can sign in with your new password."));
-          showAppAction(t("coff'u aç ve giriş yap", "Open coff and sign in"), "coff://");
+          showAppAction(t("Coff Circle'ı aç ve giriş yap", "Open Coff Circle and sign in"), "coff://");
         } else {
           btn.disabled = false;
           btn.textContent = updateLabel;

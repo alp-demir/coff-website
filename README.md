@@ -1,42 +1,106 @@
-# Coff public website
+# Coff Circle website
 
-Static public website for `https://coffcircle.com`.
+Static site for `https://coffcircle.com`. Plain HTML, CSS and JS, with no build
+step. It is served by Cloudflare Pages.
+
+## Name
+
+- In text, the product is always **Coff Circle**: titles, descriptions, copy,
+  the footer © line.
+- **coff.** (lowercase, with the dot) is the wordmark. It appears only as the
+  logo: the app icon, the header icon and images. Never put it in a sentence.
+- Legal pages (`privacy`, `terms`, `kvkk`) define "Coff" as a short term in
+  their own text. Change that wording only with a legal review.
 
 ## Routes
 
-- `/`
-- `/investors/`
-- `/privacy/`
-- `/terms/`
-- `/support/`
-- `/delete-account/`
+Every Turkish page has an English twin under `/en/`.
 
-The App Store Connect URLs can omit the trailing slash:
+| Turkish | English | Notes |
+| --- | --- | --- |
+| `/` | `/en/` | Home |
+| `/investors/` | `/en/investors/` | |
+| `/support/` | `/en/support/` | App Store support URL |
+| `/privacy/` | `/en/privacy/` | App Store / Play privacy URL |
+| `/terms/` | `/en/terms/` | Current terms |
+| `/terms/2026-09-12/` | `/en/terms/2026-09-12/` | Archived version. Never edit its text. |
+| `/kvkk/` | `/en/kvkk/` | KVKK notice |
+| `/delete-account/` | `/en/delete-account/` | Play account deletion URL |
+| `/child-safety/` | `/en/child-safety/` | Play CSAE declaration |
 
-- Marketing URL: `https://coffcircle.com`
-- Privacy Policy URL: `https://coffcircle.com/privacy`
-- Support URL: `https://coffcircle.com/support`
-- Terms URL: `https://coffcircle.com/terms`
-- Account Deletion URL: `https://coffcircle.com/delete-account`
+App-flow pages that mail links open: `/verify-email/`, `/reset-password/` and
+`/email-verified/`. Each is one file for both languages. English copy sits in
+`data-en*` attributes, and `assets/i18n.js` swaps it in when the URL has
+`?lang=en`.
 
-## Deployment
+Other files: `404.html`, `sitemap.xml`, `robots.txt`, `_headers` (security
+headers and caching), and `.well-known/` (iOS universal links and Android app
+links).
 
-Recommended deployment is Cloudflare Pages with this folder as the project root.
+## Header and footer
 
-Cloudflare DNS state verified during implementation:
+Every page carries the same header and footer. They are generated from
+`tools/website/sync-chrome.mjs` (at the monorepo root). Do not hand-edit them
+in one page:
 
-- `api.coffcircle.com` exists as a proxied CNAME to Railway.
-- `cdn.coffcircle.com` exists as a proxied CNAME to `public.r2.dev`.
-- `coffcircle.com` did not have an apex website record.
-- `admin.coffcircle.com` did not have a DNS record.
+```sh
+node tools/website/sync-chrome.mjs           # rewrite every page
+node tools/website/sync-chrome.mjs --check   # exit 1 if a page is out of sync
+```
 
-Recommended records:
+To change a menu item or a footer link, edit the templates in that script and
+run it.
 
-1. Deploy `coff-website/` to Cloudflare Pages.
-2. Attach custom domain `coffcircle.com` to the Pages project.
-3. Optionally attach `www.coffcircle.com` and redirect it to `https://coffcircle.com`.
-4. Preserve `api.coffcircle.com` for the Spring Boot backend.
-5. Preserve `cdn.coffcircle.com` for public profile-photo delivery.
-6. Keep admin on the backend origin, currently `/admin/` on the API service, or add `admin.coffcircle.com` to the same backend later with the admin same-origin API assumptions checked first.
+## Rules for changes
 
-No analytics or third-party tracking scripts are included.
+- **TR and EN together.** Change a Turkish page, and change its `/en/` twin in
+  the same PR. That includes images: `index.html` and `en/index.html` share
+  every image slot.
+- **Bump the asset version.** `_headers` caches `/assets/*` for a long time. If
+  you change `styles.css`, `site.js` or any other asset, bump its `?v=N` in
+  every page that loads it. Otherwise production keeps serving the old file:
+
+  ```sh
+  grep -rl "styles.css?v=" coff-website | xargs sed -i '' 's/styles.css?v=14/styles.css?v=15/'
+  ```
+
+- **No inline script or style.** The CSP in `_headers` blocks them. Put page code
+  in `/assets/`. Fonts and scripts load from `'self'` only. Self-host any
+  font.
+- **No analytics or third-party tracking scripts.**
+
+## Deploy
+
+The source of truth is `coff-website/` in this monorepo. The
+`.github/workflows/deploy-website.yml` workflow mirrors it into the
+`alp-demir/coff-website` repo on every push to `main`. Cloudflare Pages deploys
+that repo in about a minute.
+
+The workflow first runs `sync-chrome.mjs --check` and stops if a page's
+header or footer was edited by hand.
+
+If the workflow cannot run (for example, the Actions minutes are used up),
+mirror by hand after the merge:
+
+```sh
+node tools/website/sync-chrome.mjs --check
+gh repo clone alp-demir/coff-website /tmp/coff-website-deploy
+rsync -a --delete --exclude=.git coff-website/ /tmp/coff-website-deploy/
+cd /tmp/coff-website-deploy
+git add -A
+git commit -m "deploy: mirror coff-website from coff.@<sha>"
+git push
+```
+
+Then check production with a cache-busting request that follows redirects:
+
+```sh
+curl -sL "https://coffcircle.com/?nocache=$(date +%s)" | grep "styles.css?v="
+```
+
+## DNS
+
+- `coffcircle.com` is the Pages project, and `www` redirects to the apex.
+- `api.coffcircle.com` points to the Spring Boot backend on Railway. The admin
+  console is at `/admin/`.
+- `cdn.coffcircle.com` points to R2 and serves public profile photos.

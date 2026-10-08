@@ -24,56 +24,26 @@ if ("IntersectionObserver" in window && reveals.length > 0) {
   reveals.forEach((item) => item.classList.add("visible"));
 }
 
-// ── Page chrome: header, footer edge, mobile browser color ────
+// ── Page chrome: header line once the page scrolls ────────────
 const header = document.querySelector(".site-header");
-const footer = document.querySelector(".site-footer");
-const themeColor = document.querySelector('meta[name="theme-color"]');
 
-if (header || footer || themeColor) {
-  const topThemeColor = themeColor?.dataset.themeTop || "#fffaf3";
-  const footerThemeColor = themeColor?.dataset.themeFooter || "#1f2c31";
-  let chromeFrame = 0;
+if (header) {
+  let headerFrame = 0;
   let headerScrolled = false;
-
-  document.documentElement.classList.toggle("has-site-footer", Boolean(footer));
-
-  const syncPageChrome = () => {
-    chromeFrame = 0;
-
-    const scrollTop = Math.max(0, window.scrollY);
-    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-    const remainingScroll = Math.max(0, maxScroll - scrollTop);
-    const footerRect = footer?.getBoundingClientRect();
-    const footerVisible = Boolean(footerRect && footerRect.top < window.innerHeight && footerRect.bottom > 0);
-    const footerThemeActive = Boolean(
-      footerVisible
-      && footer
-      && scrollTop > 2
-      && remainingScroll <= Math.max(96, footer.offsetHeight * 0.65)
-    );
-
-    if (!headerScrolled && scrollTop > 16) headerScrolled = true;
-    if (headerScrolled && scrollTop < 4) headerScrolled = false;
-
-    header?.classList.toggle("scrolled", headerScrolled);
-    document.documentElement.classList.toggle("footer-in-view", footerVisible);
-    document.documentElement.classList.toggle("footer-theme-active", footerThemeActive);
-
-    const nextThemeColor = footerThemeActive ? footerThemeColor : topThemeColor;
-    if (themeColor && themeColor.content !== nextThemeColor) {
-      themeColor.content = nextThemeColor;
-    }
+  // Two thresholds so iOS rubber-band settling near the top does not flicker the line.
+  const syncHeader = () => {
+    headerFrame = 0;
+    const y = Math.max(0, window.scrollY);
+    if (!headerScrolled && y > 16) headerScrolled = true;
+    if (headerScrolled && y < 4) headerScrolled = false;
+    header.classList.toggle("scrolled", headerScrolled);
   };
-
-  const requestPageChromeSync = () => {
-    if (chromeFrame) return;
-    chromeFrame = window.requestAnimationFrame(syncPageChrome);
+  const requestHeaderSync = () => {
+    if (!headerFrame) headerFrame = window.requestAnimationFrame(syncHeader);
   };
-
-  syncPageChrome();
-  window.addEventListener("scroll", requestPageChromeSync, { passive: true });
-  window.addEventListener("resize", requestPageChromeSync);
-  window.addEventListener("pageshow", requestPageChromeSync);
+  syncHeader();
+  window.addEventListener("scroll", requestHeaderSync, { passive: true });
+  window.addEventListener("pageshow", requestHeaderSync);
 }
 
 // ── Premium scroll continuity ─────────────────────────────────
@@ -92,8 +62,6 @@ const updateScrollContinuity = () => {
   scrollFrame = 0;
 
   const viewportHeight = window.innerHeight;
-  const documentHeight = document.documentElement.scrollHeight - viewportHeight;
-  const pageProgress = documentHeight > 0 ? clamp(window.scrollY / documentHeight) : 0;
   const headerHeight = header ? header.offsetHeight : 0;
   const heroRect = scrollHero ? scrollHero.getBoundingClientRect() : null;
   const sceneStates = scrollScenes.map((scene) => {
@@ -101,8 +69,6 @@ const updateScrollContinuity = () => {
     const progress = clamp((viewportHeight - rect.top) / (viewportHeight + rect.height));
     return { ...scene, progress };
   });
-
-  document.documentElement.style.setProperty("--page-progress", pageProgress.toFixed(4));
 
   if (motionPreference.matches) {
     scrollHero?.style.removeProperty("--hero-phone-y");
@@ -165,7 +131,7 @@ const requestScrollContinuity = () => {
   scrollFrame = window.requestAnimationFrame(updateScrollContinuity);
 };
 
-if (scrollHero || scrollScenes.length > 0 || document.querySelector(".page-progress")) {
+if (scrollHero || scrollScenes.length > 0) {
   updateScrollContinuity();
   window.addEventListener("scroll", requestScrollContinuity, { passive: true });
   window.addEventListener("resize", requestScrollContinuity);
@@ -177,9 +143,9 @@ const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector("#navLinks");
 
 if (navToggle && navLinks) {
-  const english = document.documentElement.lang === "en";
-  const openLabel = english ? "Open menu" : "Menüyü aç";
-  const closeLabel = english ? "Close menu" : "Menüyü kapat";
+  // The open label comes from the markup (tools/website/sync-chrome.mjs).
+  const openLabel = navToggle.getAttribute("aria-label");
+  const closeLabel = document.documentElement.lang === "en" ? "Close menu" : "Menüyü kapat";
 
   const closeMenu = () => {
     navLinks.classList.remove("open");

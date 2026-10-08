@@ -7,6 +7,7 @@
 // English copy sits next to the Turkish in the markup:
 //   data-en            → textContent
 //   data-en-html       → innerHTML (authored copy with a link in it)
+//   data-en-href       → href (header/footer links to the /en/ pages)
 //   data-en-placeholder, data-en-aria-label → those attributes
 (function () {
   var lang = new URLSearchParams(window.location.search).get("lang") === "en" ? "en" : "tr";
@@ -24,6 +25,7 @@
   }
   each("[data-en]", function (el) { if (el.tagName !== "TITLE" && el.tagName !== "META") el.textContent = el.getAttribute("data-en"); });
   each("[data-en-html]", function (el) { el.innerHTML = el.getAttribute("data-en-html"); });
+  each("[data-en-href]", function (el) { el.setAttribute("href", el.getAttribute("data-en-href")); });
   each("[data-en-placeholder]", function (el) { el.setAttribute("placeholder", el.getAttribute("data-en-placeholder")); });
   each("[data-en-aria-label]", function (el) { el.setAttribute("aria-label", el.getAttribute("data-en-aria-label")); });
   each('meta[name="description"][data-en]', function (el) { el.setAttribute("content", el.getAttribute("data-en")); });

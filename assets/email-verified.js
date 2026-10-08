@@ -2,7 +2,7 @@
 // to the app directly. Verification already succeeded by the time it
 // renders, so there is nothing here for the user to act on — bounce
 // straight back into Coff instead of making them read a banner and tap
-// "coff'u aç". The button stays as the fallback for when the scheme is
+// "Coff Circle'ı aç". The button stays as the fallback for when the scheme is
 // unhandled (app not installed), which is also why we don't hide it.
 // iOS only: on a desktop browser, or anywhere Coff cannot be installed, a
 // custom-scheme navigation raises a "cannot open the page" system alert,
