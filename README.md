@@ -64,11 +64,12 @@ run it.
   grep -rl "styles.css?v=" coff-website | xargs sed -i '' 's/styles.css?v=14/styles.css?v=15/'
   ```
 
-- **Look:** the palette, radii and type come from the app
-  (`coff-frontend/coff/DesignSystem/DesignSystem.swift`). Surfaces are flat
-  (cream, white cards, charcoal); no gradients, glow or blur. Headings and
-  buttons use Nunito (`assets/fonts/`, subset to Latin + Turkish, the same
-  face the Android app uses); body text uses the system font.
+- **Look:** the palette comes from the app
+  (`coff-frontend/coff/DesignSystem/DesignSystem.swift`). The page design is
+  the original one (white panels, the Today panel with the map, soft
+  gradients, scroll motion); a flat redesign was tried in October 2026 and
+  rolled back. Page text uses Inter or the system font. The Nunito files in
+  `assets/fonts/` are used only by the og image renderer.
 - **Images:** the home hero is the real app on the store-screenshot
   backend (see `docs/` and the hero recipe), pasted into the phone frame.
   Link previews (`og-image-v2-{tr,en}.png`) are rendered from
@@ -82,7 +83,8 @@ run it.
 ## Launch switch
 
 `STORE_STATE` in `tools/website/sync-chrome.mjs` drives the header button,
-the store buttons, the home hero note and the launch card (TR and EN):
+the home hero button, the store buttons in the launch card and the launch
+card text (TR and EN):
 
 | State | When | Store buttons |
 | --- | --- | --- |

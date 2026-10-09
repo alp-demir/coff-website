@@ -25,8 +25,7 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-bw-v1.png?v=1">
   <link rel="shortcut icon" href="/favicon-bw-v1.ico?v=1">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-v4.png">
-  <link rel="preload" href="/assets/fonts/nunito-extrabold-v1.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/styles.css?v=20">
+  <link rel="stylesheet" href="/assets/styles.css?v=21">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,7 +42,7 @@
   }
   </script>
 </head>
-<body>
+<body class="investor-page">
   <a class="skip-link" href="#icerik">İçeriğe geç</a>
   <header class="site-header">
     <nav class="nav" aria-label="Ana menü">
@@ -62,88 +61,163 @@
     </nav>
   </header>
 
-  <main id="icerik">
-    <section class="inv-hero panel card" aria-labelledby="investor-title">
-      <div>
+  <main id="icerik" class="investor-main">
+    <section class="investor-hero" aria-labelledby="investor-title">
+      <div class="investor-hero-copy">
         <p class="eyebrow">Yatırımcılar ve stratejik ortaklar için</p>
-        <h1 id="investor-title">Kahve etrafında, gerçek hayatta tanışmak için bir sosyal ağ.</h1>
-        <p class="hero-copy">Coff Circle, insanlarla gerçek hayatta tanışmayı çevrim içi birini takip etmek kadar kolay hale getirmek için Türkiye’de başlıyor.</p>
+        <h1 id="investor-title">Kahve etrafında gerçek dünyaya açılan bir sosyal ağ.</h1>
+        <p class="investor-lead">Coff Circle, insanlarla gerçek hayatta tanışmayı çevrim içi birini takip etmek kadar doğal hale getirmek için Türkiye'de başlıyor.</p>
         <div class="hero-actions">
-          <a class="button" href="mailto:destek@coffcircle.com?subject=Coff%20Circle%20yat%C4%B1r%C4%B1mc%C4%B1%20g%C3%B6r%C3%BC%C5%9Fmesi">Görüşme planlayalım</a>
-          <a class="button secondary" href="/">Ürünü incele</a>
+          <a class="button" href="mailto:destek@coffcircle.com?subject=Coff%20Circle%20yatırımcı%20görüşmesi">Görüşme planlayalım</a>
+          <a class="button secondary" href="/#bugun">Ürünü keşfet</a>
         </div>
       </div>
-      <aside class="fact-card card" aria-label="Yatırım yaklaşımı">
-        <dl>
-            <div><dt>Tekrarlanan davranış</dt><dd>Her gün yaşanan kahve molası</dd></div>
-            <div><dt>Gerçek dünya bağlamı</dt><dd>Kahve mekanları ve yakın çevre</dd></div>
-            <div><dt>Güven</dt><dd>Moderasyon, şikayet, engelleme ve konum kontrolü</dd></div>
+
+      <aside class="thesis-card reveal" aria-label="Coff Circle yatırım yaklaşımı">
+        <span class="thesis-label">Yatırım yaklaşımı</span>
+        <h2>Gündelik bir alışkanlıktan yerel bir sosyal ağa.</h2>
+        <dl class="thesis-list">
+          <div>
+            <dt>Tekrarlanan davranış</dt>
+            <dd>Her gün gerçekleşen kahve molası</dd>
+          </div>
+          <div>
+            <dt>Gerçek dünya bağlamı</dt>
+            <dd>Kahve mekanları ve yakın çevre</dd>
+          </div>
+          <div>
+            <dt>Güven odaklı tasarım</dt>
+            <dd>Kontrollü konum ve güvenlik araçları</dd>
+          </div>
         </dl>
       </aside>
     </section>
 
-    <section class="section" aria-labelledby="why-title">
-      <div class="panel card">
-        <div class="section-head reveal">
-          <p class="eyebrow">Fırsat</p>
-          <h2 id="why-title">Tanışmayı günlük hayatın içine geri taşıyoruz.</h2>
-        </div>
-        <ul class="row-list reveal">
-          <li class="card"><h3>Problem</h3><p>Yeni insanlarla tanışmak çoğu üründe günlük hayattan kopuk, yüksek niyetli ve yorucu bir karara dönüşüyor.</p></li>
-          <li class="card"><h3>Neden şimdi?</h3><p>Yerel keşif, ortak ilgi alanları ve daha kontrollü sosyal deneyimler aynı ihtiyaca yaklaşıyor. Kahve kültürü bu kesişim için her gün tekrarlanan, tanıdık bir zemin.</p></li>
-          <li class="card"><h3>Çözüm</h3><p>Coff Circle günlük kahve kayıtlarını, yakın çevredeki kahve hareketini, sosyal tercihleri ve güvenlik araçlarını tek bir mobil uygulamada birleştiriyor.</p></li>
-        </ul>
-
+    <section class="investor-section" aria-labelledby="opportunity-title">
+      <div class="investor-heading">
+        <p class="eyebrow">Fırsat</p>
+        <h2 id="opportunity-title">Sosyal keşfi günlük hayatın içine geri getiriyoruz.</h2>
+      </div>
+      <div class="investor-card-grid">
+        <article class="investor-card reveal">
+          <span class="investor-card-index">01</span>
+          <h3>Problem</h3>
+          <p>Yeni insanlarla tanışma deneyimi çoğu üründe günlük hayattan kopuk, yüksek niyetli ve yorucu bir karar sürecine dönüşüyor.</p>
+        </article>
+        <article class="investor-card reveal">
+          <span class="investor-card-index">02</span>
+          <h3>Neden şimdi?</h3>
+          <p>Yerel keşif, ortak ilgi alanları ve daha kontrollü sosyal deneyimler aynı ihtiyaca yaklaşıyor. Kahve kültürü bu kesişim için tekrarlanan, tanıdık bir zemin sunuyor.</p>
+        </article>
+        <article class="investor-card reveal">
+          <span class="investor-card-index">03</span>
+          <h3>Çözümümüz</h3>
+          <p>Coff Circle; günlük kahve kayıtlarını, yakın çevre sinyallerini, sosyal tercihleri ve güvenlik araçlarını tek bir mobil deneyimde birleştiriyor.</p>
+        </article>
       </div>
     </section>
 
-    <section class="section">
-      <figure class="photo-band photo-frame card reveal">
-        <img src="/assets/investor-cafe-network.jpg" alt="Akşam saatlerinde İstanbul’da sohbet eden insanlarla dolu bir kahve mekanı" width="1536" height="1024" loading="lazy" decoding="async">
-        <figcaption>Her kahve mekanı, aynı semtte yaşayan ve çalışan insanların her gün uğradığı bir yer.</figcaption>
+    <section class="investor-section investor-scene-section" id="network" aria-labelledby="network-title">
+      <figure class="investor-scene reveal">
+        <div class="investor-scene-media">
+          <img src="/assets/investor-cafe-network.jpg" alt="Akşam saatlerinde İstanbul'da sohbet eden insanlarla dolu bir kahve mekanı" width="1536" height="1024" loading="lazy" decoding="async">
+          <div class="scene-network" aria-hidden="true">
+            <svg viewBox="0 0 1200 600" preserveAspectRatio="none" focusable="false">
+              <path pathLength="1" d="M125 442 C310 310 425 384 585 250 S880 128 1080 206" />
+              <path pathLength="1" d="M238 150 C392 226 480 152 650 334 S912 448 1054 376" />
+            </svg>
+            <span class="scene-node node-one"></span>
+            <span class="scene-node node-two"></span>
+            <span class="scene-node node-three"></span>
+            <span class="scene-node node-four"></span>
+          </div>
+        </div>
+        <figcaption class="scene-caption">
+          <p class="eyebrow">Gerçek dünya ağı</p>
+          <h2 id="network-title">Her kahve mekanı yeni bir sosyal düğüm.</h2>
+          <div class="scene-pills" aria-label="Coff Circle ağının temel bileşenleri">
+            <span>Günlük ritim</span>
+            <span>Yerel yoğunluk</span>
+            <span>Gerçek bağlantılar</span>
+          </div>
+        </figcaption>
       </figure>
     </section>
 
-    <section class="section" aria-labelledby="market-title">
-      <div class="panel card">
-        <div class="section-head reveal">
+    <section class="investor-section" aria-labelledby="market-title">
+      <div class="market-panel reveal">
+        <div class="market-copy">
           <p class="eyebrow">Pazar yaklaşımı</p>
           <h2 id="market-title">Önce yoğunluk, sonra ölçek.</h2>
-          <p>Coff Circle pazara geniş ama yüzeysel bir sosyal ağ olarak değil, şehir ve mekan yoğunluğu üreten odaklı bir kullanım senaryosuyla giriyor. İlk hedef, Türkiye’deki kullanıcıların her gün tekrarlanan kahve ritmini güçlü bir yerel ağa dönüştürmek.</p>
+          <p>Coff Circle pazara geniş ama yüzeysel bir sosyal ağ olarak değil, şehir ve mekan yoğunluğu üreten odaklı bir kullanım senaryosuyla giriyor. İlk hedef, Türkiye'deki kullanıcılar arasında tekrar eden kahve ritmini güçlü bir yerel ağa dönüştürmek.</p>
         </div>
-        <ol class="step-list reveal">
-          <li class="card"><h3>Mağaza lansmanı</h3><p>Temel deneyimi Türkiye’de App Store ve Google Play’de birlikte açmak, erken kullanıcılarla doğrulamak.</p></li>
-          <li class="card"><h3>Şehir bazlı yoğunluk</h3><p>Yerel kullanımı, geri dönüşü ve mekan keşfini güçlendirmek.</p></li>
-          <li class="card"><h3>Topluluk katmanları</h3><p>Rozetler, kahve rotaları ve mekan keşfiyle deneyimi derinleştirmek.</p></li>
-          <li class="card"><h3>Yeni pazarlar</h3><p>Doğrulanan modeli yeni şehirlere ve ülkelere taşımak.</p></li>
+        <ol class="market-steps">
+          <li>
+            <span>01</span>
+            <div><strong>Türkiye'de iPhone ve Android lansmanı</strong><small>Ürün deneyimini erken kullanıcılarla doğrulamak</small></div>
+          </li>
+          <li>
+            <span>02</span>
+            <div><strong>Şehir bazlı yoğunluk</strong><small>Yerel kullanım, geri dönüş ve mekan keşfini güçlendirmek</small></div>
+          </li>
+          <li>
+            <span>03</span>
+            <div><strong>Yeni şehirler ve ortaklıklar</strong><small>Tekrarlanabilir büyüme modelini kademeli olarak genişletmek</small></div>
+          </li>
         </ol>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="stage-title">
-      <div class="split reveal">
-        <div class="split-copy card">
+    <section class="investor-section" aria-labelledby="stage-title">
+      <div class="stage-layout">
+        <div class="stage-summary reveal">
           <p class="eyebrow">Mevcut aşama</p>
-          <h2 id="stage-title">Lansman öncesi.</h2>
-          <p>Coff Circle, Türkiye’de iPhone ve Android için ilk App Store ve Google Play sürümüne hazırlanıyor. Ürün akışları, güvenlik kontrolleri ve lansman altyapısı bu ilk pazar için tamamlanıyor.</p>
-          <span class="stage-tag">Lansman öncesi · iPhone ve Android · Türkiye</span>
+          <h2 id="stage-title">Lansman öncesi ürün ve güven altyapısı.</h2>
+          <p>Coff Circle, Türkiye'de iPhone ve Android için ilk App Store ve Google Play sürümüne hazırlanıyor. Ürün akışları, sosyal güvenlik kontrolleri ve lansman altyapısı bu ilk pazar odağında tamamlanıyor.</p>
+          <span class="stage-badge">Pre-launch · iPhone ve Android · Türkiye</span>
         </div>
-        <div class="split-copy card">
+        <div class="stage-principles reveal" aria-label="Coff Circle'ın mevcut öncelikleri">
+          <div><strong>Ürün</strong><span>Günlük kullanımın sade ve tekrar edilebilir olması</span></div>
+          <div><strong>Güven</strong><span>Moderasyon, şikayet, engelleme ve hesap kontrolü</span></div>
+          <div><strong>Yoğunluk</strong><span>Yerel sinyallerin kullanıcı için anlamlı hale gelmesi</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="investor-section" aria-labelledby="roadmap-title">
+      <div class="investor-heading">
+        <p class="eyebrow">Yol haritası</p>
+        <h2 id="roadmap-title">Adım adım büyüyen bir kahve çevresi.</h2>
+      </div>
+      <ol class="investor-roadmap">
+        <li class="reveal"><span>01</span><strong>Mağaza lansmanı</strong><p>Temel sosyal kahve deneyimini Türkiye'de App Store ve Google Play'de kullanıma açmak.</p></li>
+        <li class="reveal"><span>02</span><strong>Yoğunluk ve öğrenme</strong><p>Şehir bazlı kullanım davranışını ve geri dönüşü güçlendirmek.</p></li>
+        <li class="reveal"><span>03</span><strong>Topluluk katmanları</strong><p>Rozetler, kahve rotaları ve mekan keşfiyle deneyimi derinleştirmek.</p></li>
+        <li class="reveal"><span>04</span><strong>Yeni pazarlar</strong><p>Doğrulanan modeli yeni şehirlere ve ülkelere taşımak.</p></li>
+      </ol>
+    </section>
+
+    <section class="investor-section" aria-labelledby="team-title">
+      <div class="founder-panel reveal">
+        <div>
           <p class="eyebrow">Kurucu ekip</p>
-          <h2 id="team-title">Ürün, mobil ve teknik geliştirme tek ekipte.</h2>
+          <h2 id="team-title">Ürün, teknoloji ve güven tek ekipte.</h2>
+        </div>
+        <div class="founder-copy">
+          <p>Coff Circle; ürün vizyonu, mobil deneyim ve teknik geliştirmeyi tek bir odakta ilerleten kurucu bir yapı tarafından geliştiriliyor.</p>
           <p>Kurucu ekip profili, ürün demosu ve ayrıntılı yatırımcı materyalleri doğrudan görüşmelerde paylaşılır.</p>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="contact-title">
-      <div class="launch card reveal">
+    <section class="investor-section investor-contact" aria-labelledby="contact-title">
+      <div class="investor-contact-card reveal">
         <p class="eyebrow">Birlikte konuşalım</p>
-        <h2 id="contact-title">Coff Circle’ı daha yakından tanımak ister misiniz?</h2>
+        <h2 id="contact-title">Coff Circle'ı daha yakından tanımak ister misiniz?</h2>
         <p>Melek yatırımcılar, girişim sermayesi fonları ve stratejik ortaklarla tanışmaktan memnuniyet duyarız.</p>
         <div class="hero-actions">
-          <a class="button" href="mailto:destek@coffcircle.com?subject=Coff%20Circle%20yat%C4%B1r%C4%B1mc%C4%B1%20g%C3%B6r%C3%BC%C5%9Fmesi">destek@coffcircle.com</a>
-          <a class="button secondary" href="/">Ana sayfa</a>
+          <a class="button" href="mailto:destek@coffcircle.com?subject=Coff%20Circle%20yatırımcı%20görüşmesi">destek@coffcircle.com</a>
+          <a class="button secondary" href="/">Ana sayfaya dön</a>
         </div>
       </div>
     </section>
@@ -183,6 +257,6 @@
       <a class="lang-switch" href="/en/investors/" hreflang="en" lang="en">English</a>
     </div>
   </footer>
-  <script src="/assets/site.js?v=9" defer></script>
+  <script src="/assets/site.js?v=10" defer></script>
 </body>
 </html>

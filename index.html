@@ -26,8 +26,7 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-bw-v1.png?v=1">
   <link rel="shortcut icon" href="/favicon-bw-v1.ico?v=1">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-v4.png">
-  <link rel="preload" href="/assets/fonts/nunito-extrabold-v1.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/styles.css?v=20">
+  <link rel="stylesheet" href="/assets/styles.css?v=21">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -109,7 +108,7 @@
   }
   </script>
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#icerik">İçeriğe geç</a>
   <header class="site-header">
     <nav class="nav" aria-label="Ana menü">
@@ -129,131 +128,244 @@
   </header>
 
   <main id="icerik">
-    <section class="hero panel card" aria-labelledby="hero-title">
+    <section class="hero" aria-labelledby="hero-title" data-scroll-hero>
       <div class="hero-content">
-        <p class="eyebrow">Sosyal kahve uygulaması</p>
+        <p class="eyebrow">Türkiye için tasarlanan sosyal kahve uygulaması</p>
         <h1 id="hero-title">Kahveyle başlayan sosyal çevre.</h1>
-        <p class="hero-copy">Her gün ne içtiğini ve nerede içtiğini işaretle. Yakınındaki kahve alışkanlıklarını gör, kahve zevki ve amacı sana yakın insanlarla bağlantı kur.</p>
-        <div class="hero-actions">
-          <div class="store-buttons" data-sync="stores" role="group" aria-label="Mağazalar"><span class="store-button is-soon"><small>Yakında</small>App Store</span><span class="store-button is-soon"><small>Yakında</small>Google Play</span></div>
-          <a class="button secondary" href="#bugun">Nasıl çalışır?</a>
+        <p class="hero-copy">
+          Coff Circle, bugün ne içtiğini ve nerede kahve molası verdiğini daha anlamlı bir sosyal sinyale dönüştürür. Evde, ofiste veya yakınındaki bir kahve mekanında başlayan küçük bir kayıt; çevrendeki kahve ritmini, trendleri ve doğal tanışma fırsatlarını görünür kılar.
+        </p>
+        <div class="hero-actions" aria-label="Öne çıkan bağlantılar">
+          <a class="button" data-sync="hero-cta" href="#yakinda">App Store ve Google Play’de yakında</a>
+          <a class="button secondary" href="/privacy/">Gizlilik Politikası</a>
         </div>
-        <p class="hero-note" data-sync="hero-note">iPhone ve Android’de birlikte yayına giriyor. Türkçe ve İngilizce.</p>
+        <div class="hero-meta" aria-label="Coff Circle özet özellikleri">
+          <div class="mini-stat">
+            <strong>Bugün akışı</strong>
+            <span>Tanışma, ortak bir zevk ve gerçek bir günlük alışkanlık üzerinden başlar.</span>
+          </div>
+          <div class="mini-stat">
+            <strong>Çevre trendi</strong>
+            <span>Kahve mekanları, check-in’ler ve şehir ritmi aynı akışta buluşur.</span>
+          </div>
+          <div class="mini-stat">
+            <strong>Güvenlik araçları</strong>
+            <span>Profil moderasyonu, şikayet ve engelleme araçları deneyimin parçasıdır.</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-visual">
-        <picture>
-          <source srcset="/assets/coff-hero-phone-v3.webp" type="image/webp">
-          <img class="product-shot" src="/assets/coff-hero-phone-v3.png" alt="Coff Circle uygulamasının Bugün ekranı" width="922" height="1834" decoding="async" fetchpriority="high">
-        </picture>
+
+      <div class="hero-visual" aria-label="Coff Circle ürün görseli">
+        <div class="hero-map-layer" aria-hidden="true">
+          <svg viewBox="0 0 620 620" focusable="false">
+            <path d="M-40 166 C92 108 172 124 260 182 C344 236 434 218 662 128" />
+            <path d="M18 430 C132 352 224 350 322 392 C428 438 506 410 662 322" />
+            <path d="M132 -28 C168 88 166 188 148 292 C132 398 166 486 238 650" />
+            <path d="M436 -38 C394 98 394 214 432 318 C470 422 462 520 394 660" />
+            <path d="M-28 302 C118 276 248 288 364 328 C474 366 548 358 654 316" />
+          </svg>
+          <span class="hero-zone"></span>
+          <span class="hero-map-pin primary"></span>
+          <span class="hero-map-pin left"></span>
+          <span class="hero-map-pin right"></span>
+        </div>
+        <div class="product-shot-wrap">
+          <div class="product-phone">
+            <picture>
+              <source srcset="/assets/coff-hero-phone-v3.webp" type="image/webp">
+              <img class="product-shot" src="/assets/coff-hero-phone-v3.png" alt="Coff Circle uygulamasının Bugün ekranı" width="922" height="1834" decoding="async" fetchpriority="high">
+            </picture>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true">
+        <span>Kaydır ve keşfet</span>
+        <i></i>
       </div>
     </section>
 
-    <section class="section" id="bugun" aria-labelledby="how-title">
-      <div class="panel card">
-        <div class="section-head reveal">
-          <p class="eyebrow">Uygulamada</p>
-          <h2 id="how-title">Dört sekme, bir kahve rutini.</h2>
-          <p>Coff Circle’da her şey alttaki dört sekmeden açılır.</p>
+    <section class="section today-section" id="bugun" aria-labelledby="today-title" data-scroll-scene="today">
+      <div class="today-panel reveal">
+        <div class="today-copy">
+          <p class="eyebrow">Bugün ekranı</p>
+          <h2 id="today-title">Kahve günlüğün ve çevrenin nabzı aynı yerde.</h2>
+          <p>
+            Coff Circle’da gün, içtiğin kahveyi işaretlemekle başlar. Evde hazırladığın filtre kahveyi, ofisteki molanı veya yakınındaki bir kahve mekanında içtiğin latteyi kaydedebilir; kendi kahve geçmişini ve çevrende en çok hangi kahvelerin seçildiğini görebilirsin.
+          </p>
+          <div class="today-flow" aria-label="Bugün ekranı özellikleri">
+            <div data-scroll-step>
+              <span>01</span>
+              <strong>Ne içtiğini ekle</strong>
+              <p>Bugünün kahvesini kısa bir seçimle kaydet.</p>
+            </div>
+            <div data-scroll-step>
+              <span>02</span>
+              <strong>Nerede olduğunu seç</strong>
+              <p>Ev, ofis veya yakınındaki kahve mekanı gibi bağlamı sen belirlersin.</p>
+            </div>
+            <div data-scroll-step>
+              <span>03</span>
+              <strong>Çevrendeki trendi gör</strong>
+              <p>Yakın çevrende hangi kahvenin öne çıktığını ve kaç kişinin işaretlediğini takip et.</p>
+            </div>
+          </div>
         </div>
-        <ul class="tab-grid">
-            <li class="tab-card card reveal">
-              <div class="tab-label"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg><h3>Bugün</h3></div>
-              <p>Bugünkü kahveni ekle: ne içtin, evde mi, ofiste mi, bir kahvecide mi. Yakınında bugün kaç kişinin kahve içtiğini ve en çok neyin seçildiğini gör.</p>
-            </li>
-            <li class="tab-card card reveal">
-              <div class="tab-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h13v3.5A5.5 5.5 0 0 1 11.5 19h-2A5.5 5.5 0 0 1 4 13.5Z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H16.5"/><path d="M8 3.5c-.8 1 .8 2-.1 3M12 3.5c-.8 1 .8 2-.1 3"/></svg><h3>Keşfet</h3></div>
-              <p>Kahve zevki, amacı ve şehri sana yakın kişileri gör. Tanışmak istediğin kişiye Bağlan de.</p>
-            </li>
-            <li class="tab-card card reveal">
-              <div class="tab-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M19 9h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2v2.5L17 18h-4"/></svg><h3>Bağlantılar</h3></div>
-              <p>İkiniz de bağlanmak isterseniz sohbet açılır. Engelleme ve şikayet her sohbetin içinde.</p>
-            </li>
-            <li class="tab-card card reveal">
-              <div class="tab-label"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg><h3>Profil</h3></div>
-              <p>Kahve sıralaman, favori mekanın ve neden burada olduğun. Fotoğraflar yayınlanmadan önce incelenebilir.</p>
-            </li>
-        </ul>
+        <div class="today-map-showcase" aria-label="Yakın çevredeki kahve kayıtları ve trend haritası">
+          <div class="coffee-map" aria-hidden="true">
+            <svg class="map-lines" viewBox="0 0 520 520" focusable="false">
+              <path d="M-20 138 C94 84 154 92 230 142 C310 194 382 182 542 98" />
+              <path d="M26 384 C126 320 196 318 276 352 C368 392 426 370 540 292" />
+              <path d="M102 -14 C132 86 132 168 118 248 C104 326 126 410 188 540" />
+              <path d="M356 -20 C324 86 320 172 350 256 C382 346 378 438 330 548" />
+              <path d="M-12 252 C110 232 208 238 298 270 C394 304 472 306 536 276" />
+              <path d="M74 70 L444 438" />
+            </svg>
+            <span class="map-ring"></span>
+            <span class="map-pin pin-home"><i></i></span>
+            <span class="map-pin pin-office"><i></i></span>
+            <span class="map-pin pin-shop"><i></i></span>
+            <span class="map-pin pin-trend"><i></i></span>
+            <div class="map-center">
+              <span>Yakın çevre</span>
+              <strong>2 km</strong>
+            </div>
+          </div>
+          <div class="trend-card trend-main" aria-hidden="true">
+            <span>Bugünün trendi</span>
+            <strong>Latte</strong>
+            <small>Örnek görünüm · İlgi görüyor</small>
+          </div>
+          <div class="trend-card trend-log" aria-hidden="true">
+            <span>Kahve geçmişi</span>
+            <strong>Ev · Ofis · Mekan</strong>
+            <small>Günlük kayıtların tek yerde</small>
+          </div>
+          <div class="trend-card trend-place" aria-hidden="true">
+            <span>Kahve mekanı</span>
+            <strong>Cold Brew</strong>
+            <small>Bu bölgede yükseliyor</small>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="hikaye" aria-labelledby="story-title">
-      <div class="split reveal">
-        <div class="split-media photo-frame card">
+    <section class="section" id="hikaye" aria-labelledby="story-title" data-scroll-scene="story">
+      <div class="story-band reveal">
+        <div class="story-media">
           <img src="/assets/coffee-latte-art.jpg" alt="Latte art ile servis edilen bir fincan kahve" width="1000" height="1500" loading="lazy" decoding="async">
         </div>
-        <div class="split-copy card">
-          <p class="eyebrow">Flört uygulaması değil</p>
-          <h2 id="story-title">Tanışmak, her gün yaptığın bir şeyden başlasın.</h2>
-          <p>Profilinde neden burada olduğunu sen seçersin. Keşfet bunu kahve zevkin ve şehrinle birlikte değerlendirir; ortak bir kahve, ilk mesajı kolaylaştırır.</p>
-          <ul class="purpose-list" aria-label="Profilde seçilebilen amaçlar">
-            <li>Yeni insanlarla tanışmak</li>
-            <li>Sohbet edip kahve içmek</li>
-            <li>Ders veya birlikte çalışmak</li>
-            <li>Profesyonel çevre edinmek</li>
-            <li>Yeni kafeler keşfetmek</li>
-          </ul>
+        <div class="story-copy">
+          <p class="eyebrow">Flört kalıbının dışında</p>
+          <h2 id="story-title">Coff Circle, tanışmayı gündelik hayatın içine yerleştirir.</h2>
+          <p>
+            Her yeni bağlantı büyük bir karar gibi hissettirmek zorunda değil. Bazen aynı kahveyi sevmek, aynı semtte yeni bir mekan keşfetmek veya bugün nerede kahve içtiğini paylaşmak yeter. Coff Circle bu küçük ama gerçek sosyal işaretleri daha güvenli ve daha rafine bir akışa dönüştürür.
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="guvenlik" aria-labelledby="safety-title">
+    <section class="section" id="ozellikler" aria-labelledby="features-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Bağlantı deneyimi</p>
+        <h2 id="features-title">Kahve kaydı başlangıç. Asıl değer sonrasında.</h2>
+        <p>Bugün akışı ortak bir bağlam oluşturur; Coff Circle bu bağlamı niyet, tercih ve güvenli iletişim araçlarıyla gerçek bir sosyal deneyime dönüştürür.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <div>
+            <div class="feature-icon" aria-hidden="true">01</div>
+            <h3>Sosyal niyetini sen belirlersin</h3>
+            <p>Yeni insanlarla nasıl bir bağ kurmak istediğini profilinde açıkça ifade eder, deneyimin yönünü baştan belirlersin.</p>
+          </div>
+        </article>
+        <article class="feature-card reveal">
+          <div>
+            <div class="feature-icon" aria-hidden="true">02</div>
+            <h3>Ortak zevk konuşmayı kolaylaştırır</h3>
+            <p>Benzer kahve tercihleri ve mekan ilgileri, ilk mesajı daha doğal hale getiren gerçek bir bağlam sunar.</p>
+          </div>
+        </article>
+        <article class="feature-card reveal">
+          <div>
+            <div class="feature-icon" aria-hidden="true">03</div>
+            <h3>Tercihler uyumu belirler</h3>
+            <p>Kahve sıralaman, sosyal niyetlerin ve profil detayların daha uyumlu bağlantılar için birlikte çalışır.</p>
+          </div>
+        </article>
+        <article class="feature-card reveal">
+          <div>
+            <div class="feature-icon" aria-hidden="true">04</div>
+            <h3>Profilden sohbete kontrollü ilerle</h3>
+            <p>Bağlantı kurduğunda sohbet, engelleme ve şikayet araçları her adımda erişilebilir kalır.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="guvenlik" aria-labelledby="safety-title" data-scroll-scene="safety">
       <div class="safety-panel reveal">
         <div>
           <p class="eyebrow">Gizlilik ve güvenlik</p>
-          <h2 id="safety-title">Kontrol sende.</h2>
-          <p>Özel mesajların normal şartlarda Coff Circle ekibi tarafından okunmaz. Bir kullanıcı güvenlik nedeniyle şikayette bulunursa, yalnızca o şikayetle ilgili sınırlı mesaj kanıtı yetkili ekip tarafından incelenebilir.</p>
+          <h2 id="safety-title">Sosyal alan sıcak, kontrol sende.</h2>
+          <p>
+            Özel mesajlarınız normal şartlarda Coff Circle ekibi tarafından incelenmez. Ancak bir kullanıcı güvenlik, kötüye kullanım veya uygunsuz içerik nedeniyle şikayette bulunursa, şikayetle ilişkili sınırlı mesaj kanıtı yetkili ekip tarafından incelenebilir.
+          </p>
         </div>
-        <ul class="check-list">
-          <li>Ekip sohbetleri gezmez; yalnızca şikayet edilen konuşmadan sınırlı kanıt incelenir.</li>
-          <li>Engelleme ve şikayet uygulamanın içinde, her an elinin altında.</li>
-          <li>Tam konumun kimseye gösterilmez. Kahve kaydında yeri (ev, ofis, mekan) sen seçersin.</li>
-          <li>Hesabını uygulama içinden silebilirsin.</li>
+        <ul class="safety-list">
+          <li>Canlı admin sohbet gezintisi yok; yalnızca şikayetle ilişkili sınırlı kanıt değerlendirilir.</li>
+          <li>Şikayet, engelleme ve hesap güvenliği araçları uygulama içinde erişilebilir kalır.</li>
+          <li>Profil fotoğrafları görünür olmadan önce moderasyon sürecinden geçebilir.</li>
+          <li>Hesap silme akışı uygulama içinde desteklenir; destek kanalı her zaman açıktır.</li>
         </ul>
       </div>
     </section>
 
-    <section class="section" id="sss" aria-labelledby="faq-title">
-      <div class="panel card">
-        <div class="section-head center reveal">
-          <p class="eyebrow">Sık sorulanlar</p>
-          <h2 id="faq-title">Merak edilenler</h2>
-        </div>
-        <div class="faq-list reveal" aria-label="Sık sorulan sorular">
-          <details class="faq-item" open>
-            <summary>Coff Circle nedir?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <p>Kahve alışkanlıkları üzerinden yeni insanlarla tanışmanı sağlayan bir mobil uygulama. iPhone ve Android’de çalışır.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Coff Circle ücretsiz mi?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <p>İndirmek ve temel özellikleri kullanmak ücretsiz. Sana gelen bağlantı davetlerini anında görmek gibi bazı özellikler isteğe bağlı Coff Premium aboneliğiyle gelir.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Ne zaman yayında olacak?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <p>Coff Circle, Türkiye’de App Store ve Google Play’de birlikte yayına girecek. Tarih bu sayfada duyurulacak.</p>
-          </details>
-          <details class="faq-item">
-            <summary>İngilizce kullanılabilir mi?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <p>Evet. Uygulama Türkçe ve İngilizce. Telefonunun dilini izler; yalnızca Coff Circle’ın dilini telefon ayarlarından değiştirebilirsin.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Mesajlarım güvende mi?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <p>Özel mesajlar normal şartlarda ekip tarafından okunmaz. Bir güvenlik şikayeti olduğunda yalnızca o şikayetle ilgili sınırlı kanıt incelenir.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Konumum başkalarına gösteriliyor mu?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <p>Hayır. Konum, yakınındaki kahve kayıtlarını ve mekanları göstermek için kullanılır. Kahve kaydında yeri sen seçersin; tam konumun diğer kullanıcılara gösterilmez.</p>
-          </details>
-        </div>
-
+    <section class="section faq-section" id="sss" aria-labelledby="faq-title">
+      <div class="section-heading center reveal">
+        <p class="eyebrow">Sık sorulanlar</p>
+        <h2 id="faq-title">Merak edilenler.</h2>
+      </div>
+      <div class="faq-list reveal" aria-label="Sık sorulan sorular">
+        <details class="faq-item" open>
+          <summary>Coff Circle nedir?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Kahve alışkanlıkları üzerinden yeni insanlarla tanışmanı sağlayan bir mobil uygulama. iPhone ve Android’de çalışır.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Coff Circle ücretsiz mi?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>İndirmek ve temel özellikleri kullanmak ücretsiz. Sana gelen bağlantı davetlerini anında görmek gibi bazı özellikler isteğe bağlı Coff Premium aboneliğiyle gelir.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Ne zaman yayında olacak?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Coff Circle, Türkiye’de App Store ve Google Play’de birlikte yayına girecek. Tarih bu sayfada duyurulacak.</p>
+        </details>
+        <details class="faq-item">
+          <summary>İngilizce kullanılabilir mi?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Evet. Uygulama Türkçe ve İngilizce. Telefonunun dilini izler; yalnızca Coff Circle’ın dilini telefon ayarlarından değiştirebilirsin.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Mesajlarım güvende mi?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Özel mesajlar normal şartlarda ekip tarafından okunmaz. Bir güvenlik şikayeti olduğunda yalnızca o şikayetle ilgili sınırlı kanıt incelenir.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Konumum başkalarına gösteriliyor mu?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Hayır. Konum, yakınındaki kahve kayıtlarını ve mekanları göstermek için kullanılır. Kahve kaydında yeri sen seçersin; tam konumun diğer kullanıcılara gösterilmez.</p>
+        </details>
+      </div>
       </div>
     </section>
 
     <section class="section" id="yakinda" aria-labelledby="launch-title">
-      <div class="launch card reveal">
+      <div class="coming-card reveal">
         <p class="eyebrow">iPhone ve Android</p>
         <div class="launch-copy" data-sync="launch-copy"><h2 id="launch-title">Yakında App Store ve Google Play’de.</h2><p>Lansman tarihini bu sayfada duyuracağız. Sorun ya da önerin varsa bize yaz.</p></div>
+        <div class="roadmap-pills" aria-label="Coff Circle gelecek planları">
+          <span>App Store ve Google Play lansmanı</span>
+          <span>Kahve rozetleri</span>
+          <span>Şehir bazlı keşif</span>
+          <span>Global kullanım</span>
+        </div>
         <div class="store-buttons" data-sync="stores" role="group" aria-label="Mağazalar"><span class="store-button is-soon"><small>Yakında</small>App Store</span><span class="store-button is-soon"><small>Yakında</small>Google Play</span></div>
-        <div class="hero-actions">
+        <div class="hero-actions coming-actions">
           <a class="button" href="mailto:destek@coffcircle.com">destek@coffcircle.com</a>
           <a class="button secondary" href="/support/">Destek sayfası</a>
         </div>
@@ -295,6 +407,6 @@
       <a class="lang-switch" href="/en/" hreflang="en" lang="en">English</a>
     </div>
   </footer>
-  <script src="/assets/site.js?v=9" defer></script>
+  <script src="/assets/site.js?v=10" defer></script>
 </body>
 </html>
