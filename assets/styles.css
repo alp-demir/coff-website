@@ -250,6 +250,69 @@ section[id] {
   line-height: 1.6;
 }
 
+.store-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Store links, in the shape of the stores' own badges: a small line over
+   the store name. Before launch they are white "Yakında" tiles, not links. */
+.store-button {
+  min-width: 150px;
+  min-height: 52px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6px 18px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: #ffffff;
+  background: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-decoration: none;
+  transition: background-color 0.16s ease, transform 0.16s ease;
+}
+
+.store-button small {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.78;
+}
+
+a.store-button:hover,
+a.store-button:focus-visible {
+  background: #1f2a2d;
+}
+
+a.store-button:active {
+  transform: scale(0.97);
+}
+
+.store-button.is-soon {
+  color: var(--ink);
+  background: var(--paper);
+  border-color: var(--line);
+}
+
+.store-button.is-soon small {
+  color: var(--coffee);
+  opacity: 1;
+}
+
+.launch .store-buttons {
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.launch .store-buttons + .hero-actions {
+  margin-top: 16px;
+}
+
 .hero-note {
   margin: 20px 0 0;
   color: var(--muted);
@@ -297,9 +360,10 @@ section[id] {
   width: 40px;
   height: 40px;
   padding: 9px;
+  border: 1px solid var(--line);
   border-radius: 12px;
   color: var(--coffee);
-  background: var(--surface-soft);
+  background: var(--paper);
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -607,9 +671,10 @@ section[id] {
   width: 28px;
   height: 28px;
   margin-bottom: 14px;
+  border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--coffee);
-  background: var(--surface-soft);
+  background: var(--paper);
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 0.9rem;
@@ -761,6 +826,15 @@ section[id] {
 
   .hero-actions .button {
     width: 100%;
+  }
+
+  .store-buttons {
+    width: 100%;
+  }
+
+  .store-button {
+    flex: 1 1 0;
+    min-width: 0;
   }
 }
 

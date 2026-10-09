@@ -79,6 +79,21 @@ run it.
   font.
 - **No analytics or third-party tracking scripts.**
 
+## Launch switch
+
+`STORE_STATE` in `tools/website/sync-chrome.mjs` drives the header button,
+the store buttons, the home hero note and the launch card (TR and EN):
+
+| State | When | Store buttons |
+| --- | --- | --- |
+| `soon` | store pages not public | white "Yakında" tiles, not links |
+| `preorder` | App Store pre-order and Play pre-registration are live | links: "Ön sipariş" / "Ön kayıt" |
+| `live` | the app is out | links: "İndir" |
+
+Change it, run `node tools/website/sync-chrome.mjs`, then check by hand
+what the script does not own: the FAQ answer "Ne zaman yayında olacak?"
+(TR + EN, also in the page's FAQ JSON-LD).
+
 ## Deploy
 
 The source of truth is `coff-website/` in this monorepo. The

@@ -27,7 +27,7 @@
   <link rel="shortcut icon" href="/favicon-bw-v1.ico?v=1">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-v4.png">
   <link rel="preload" href="/assets/fonts/nunito-extrabold-v1.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/styles.css?v=16">
+  <link rel="stylesheet" href="/assets/styles.css?v=17">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -139,10 +139,10 @@
         <h1 id="hero-title">A social circle that starts with coffee.</h1>
         <p class="hero-copy">Mark what you drink each day and where you drink it. See the coffee habits around you, and connect with people whose taste and reasons match yours.</p>
         <div class="hero-actions">
-          <a class="button" href="#coming-soon">Coming soon to the App Store and Google Play</a>
+          <div class="store-buttons" data-sync="stores" role="group" aria-label="App stores"><span class="store-button is-soon"><small>Coming soon</small>App Store</span><span class="store-button is-soon"><small>Coming soon</small>Google Play</span></div>
           <a class="button secondary" href="#today">How it works</a>
         </div>
-        <p class="hero-note">Launching on iPhone and Android together. In Turkish and English.</p>
+        <p class="hero-note" data-sync="hero-note">Launching on iPhone and Android together. In Turkish and English.</p>
       </div>
       <div class="hero-visual">
         <picture>
@@ -250,8 +250,8 @@
     <section class="section" id="coming-soon" aria-labelledby="launch-title">
       <div class="launch card reveal">
         <p class="eyebrow">iPhone and Android</p>
-        <h2 id="launch-title">Coming soon to the App Store and Google Play.</h2>
-        <p>We will announce the launch date on this page. If you have a question or an idea, write to us.</p>
+        <div class="launch-copy" data-sync="launch-copy"><h2 id="launch-title">Coming soon to the App Store and Google Play.</h2><p>We will announce the launch date on this page. If you have a question or an idea, write to us.</p></div>
+        <div class="store-buttons" data-sync="stores" role="group" aria-label="App stores"><span class="store-button is-soon"><small>Coming soon</small>App Store</span><span class="store-button is-soon"><small>Coming soon</small>Google Play</span></div>
         <div class="hero-actions">
           <a class="button" href="mailto:destek@coffcircle.com">destek@coffcircle.com</a>
           <a class="button secondary" href="/en/support/">Support page</a>

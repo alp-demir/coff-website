@@ -27,7 +27,7 @@
   <link rel="shortcut icon" href="/favicon-bw-v1.ico?v=1">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-v4.png">
   <link rel="preload" href="/assets/fonts/nunito-extrabold-v1.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/styles.css?v=16">
+  <link rel="stylesheet" href="/assets/styles.css?v=17">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -135,10 +135,10 @@
         <h1 id="hero-title">Kahveyle başlayan sosyal çevre.</h1>
         <p class="hero-copy">Her gün ne içtiğini ve nerede içtiğini işaretle. Yakınındaki kahve alışkanlıklarını gör, kahve zevki ve amacı sana yakın insanlarla bağlantı kur.</p>
         <div class="hero-actions">
-          <a class="button" href="#yakinda">App Store ve Google Play’de yakında</a>
+          <div class="store-buttons" data-sync="stores" role="group" aria-label="Mağazalar"><span class="store-button is-soon"><small>Yakında</small>App Store</span><span class="store-button is-soon"><small>Yakında</small>Google Play</span></div>
           <a class="button secondary" href="#bugun">Nasıl çalışır?</a>
         </div>
-        <p class="hero-note">iPhone ve Android’de birlikte yayına giriyor. Türkçe ve İngilizce.</p>
+        <p class="hero-note" data-sync="hero-note">iPhone ve Android’de birlikte yayına giriyor. Türkçe ve İngilizce.</p>
       </div>
       <div class="hero-visual">
         <picture>
@@ -246,8 +246,8 @@
     <section class="section" id="yakinda" aria-labelledby="launch-title">
       <div class="launch card reveal">
         <p class="eyebrow">iPhone ve Android</p>
-        <h2 id="launch-title">Yakında App Store ve Google Play’de.</h2>
-        <p>Lansman tarihini bu sayfada duyuracağız. Sorun ya da önerin varsa bize yaz.</p>
+        <div class="launch-copy" data-sync="launch-copy"><h2 id="launch-title">Yakında App Store ve Google Play’de.</h2><p>Lansman tarihini bu sayfada duyuracağız. Sorun ya da önerin varsa bize yaz.</p></div>
+        <div class="store-buttons" data-sync="stores" role="group" aria-label="Mağazalar"><span class="store-button is-soon"><small>Yakında</small>App Store</span><span class="store-button is-soon"><small>Yakında</small>Google Play</span></div>
         <div class="hero-actions">
           <a class="button" href="mailto:destek@coffcircle.com">destek@coffcircle.com</a>
           <a class="button secondary" href="/support/">Destek sayfası</a>
