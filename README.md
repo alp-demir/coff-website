@@ -64,6 +64,16 @@ run it.
   grep -rl "styles.css?v=" coff-website | xargs sed -i '' 's/styles.css?v=14/styles.css?v=15/'
   ```
 
+- **Look:** the palette, radii and type come from the app
+  (`coff-frontend/coff/DesignSystem/DesignSystem.swift`). Surfaces are flat
+  (cream, white cards, charcoal); no gradients, glow or blur. Headings and
+  buttons use Nunito (`assets/fonts/`, subset to Latin + Turkish, the same
+  face the Android app uses); body text uses the system font.
+- **Images:** the home hero is the real app on the store-screenshot
+  backend (see `docs/` and the hero recipe), pasted into the phone frame.
+  Link previews (`og-image-v2-{tr,en}.png`) are rendered from
+  `tools/website/og/og.html` with `tools/website/og/render.mjs`. A changed
+  image gets a new file name, since `/assets/*` is cached as immutable.
 - **No inline script or style.** The CSP in `_headers` blocks them. Put page code
   in `/assets/`. Fonts and scripts load from `'self'` only. Self-host any
   font.

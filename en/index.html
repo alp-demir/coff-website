@@ -11,11 +11,11 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="tr_TR">
   <meta property="og:url" content="https://coffcircle.com/en/">
-  <meta property="og:image" content="https://coffcircle.com/assets/og-image.png">
+  <meta property="og:image" content="https://coffcircle.com/assets/og-image-v2-en.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://coffcircle.com/assets/og-image.png">
+  <meta name="twitter:image" content="https://coffcircle.com/assets/og-image-v2-en.png">
   <meta name="theme-color" content="#fffaf3">
   <link rel="canonical" href="https://coffcircle.com/en/">
   <link rel="alternate" hreflang="tr" href="https://coffcircle.com/">
@@ -26,7 +26,8 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-bw-v1.png?v=1">
   <link rel="shortcut icon" href="/favicon-bw-v1.ico?v=1">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-v4.png">
-  <link rel="stylesheet" href="/assets/styles.css?v=14">
+  <link rel="preload" href="/assets/fonts/nunito-extrabold-v1.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/styles.css?v=16">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,8 +47,13 @@
         "operatingSystem": "iOS, Android",
         "applicationCategory": "SocialNetworkingApplication",
         "description": "A social coffee app for iPhone and Android that helps you meet new people through your coffee preferences, the coffee spots around you and safe social tools.",
-        "publisher": { "@id": "https://coffcircle.com/#org" },
-        "inLanguage": ["tr", "en"]
+        "publisher": {
+          "@id": "https://coffcircle.com/#org"
+        },
+        "inLanguage": [
+          "tr",
+          "en"
+        ]
       },
       {
         "@type": "FAQPage",
@@ -56,32 +62,50 @@
           {
             "@type": "Question",
             "name": "What is Coff Circle?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Coff Circle is a mobile app for iPhone and Android that turns your coffee habits into social discovery. It helps you build more natural connections with people around you through shared taste." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A mobile app for meeting new people through your coffee habits. It works on iPhone and Android."
+            }
           },
           {
             "@type": "Question",
             "name": "Is Coff Circle free?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Downloading Coff Circle and using the core experience is free. Some advanced features are offered through an optional premium subscription." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Downloading it and using the core features is free. Some features, like seeing connection invites right away, come with an optional Coff Premium subscription."
+            }
           },
           {
             "@type": "Question",
-            "name": "When will Coff Circle launch?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Coff Circle's first release is getting ready to launch in Turkey on the App Store and Google Play. Launch news will be shared on this page and through the support channel." }
+            "name": "When does it launch?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Coff Circle launches in Turkey on the App Store and Google Play together. We will announce the date on this page."
+            }
           },
           {
             "@type": "Question",
-            "name": "Is Coff Circle available in English?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Coff Circle works in Turkish and English. The app follows your device language, and you can change it for Coff Circle alone in your phone's settings." }
+            "name": "Is it available in English?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The app is in Turkish and English. It follows your phone’s language, and you can change the language for Coff Circle alone in your phone’s settings."
+            }
           },
           {
             "@type": "Question",
-            "name": "Are my messages and data safe?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The Coff Circle team does not review private messages under normal circumstances. Only when there is a safety report does an authorized team member review limited evidence related to that report. Profile photos may go through moderation before they are published, and you can delete your account from inside the app." }
+            "name": "Are my messages safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The team does not read private messages under normal circumstances. When there is a safety report, only limited evidence tied to that report is reviewed."
+            }
           },
           {
             "@type": "Question",
-            "name": "Is my location shared with others?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Location is used to show coffee trends near you. When you log a coffee, you choose the context (home, office or a coffee spot); your exact location is not shown to other users." }
+            "name": "Is my location shown to others?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Location is used to show coffee logs and cafés near you. You choose the place when you log a coffee; your exact location is not shown to other users."
+            }
           }
         ]
       }
@@ -89,7 +113,7 @@
   }
   </script>
 </head>
-<body class="home-page">
+<body>
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header">
     <nav class="nav" aria-label="Main menu">
@@ -109,245 +133,126 @@
   </header>
 
   <main id="content">
-    <section class="hero" aria-labelledby="hero-title" data-scroll-hero>
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
-        <p class="eyebrow">A social coffee app, made in Turkey</p>
+        <p class="eyebrow">A social coffee app</p>
         <h1 id="hero-title">A social circle that starts with coffee.</h1>
-        <p class="hero-copy">
-          Coff Circle turns what you drink today, and where you take your coffee break, into a more meaningful social signal. A small log that starts at home, at the office or at a coffee spot nearby makes the coffee rhythm around you, its trends and natural chances to meet visible.
-        </p>
-        <div class="hero-actions" aria-label="Featured links">
+        <p class="hero-copy">Mark what you drink each day and where you drink it. See the coffee habits around you, and connect with people whose taste and reasons match yours.</p>
+        <div class="hero-actions">
           <a class="button" href="#coming-soon">Coming soon to the App Store and Google Play</a>
-          <a class="button secondary" href="/en/privacy/">Privacy Policy</a>
+          <a class="button secondary" href="#today">How it works</a>
         </div>
-        <div class="hero-meta" aria-label="Coff Circle at a glance">
-          <div class="mini-stat">
-            <strong>Today feed</strong>
-            <span>Meeting someone starts from a shared taste and a real daily habit.</span>
-          </div>
-          <div class="mini-stat">
-            <strong>Local trends</strong>
-            <span>Coffee spots, check-ins and the rhythm of your city meet in one feed.</span>
-          </div>
-          <div class="mini-stat">
-            <strong>Location under your control</strong>
-            <span>Profile moderation, reporting and blocking tools are part of the experience.</span>
-          </div>
-        </div>
+        <p class="hero-note">Launching on iPhone and Android together. In Turkish and English.</p>
       </div>
-
-      <div class="hero-visual" aria-label="Coff Circle product image">
-        <div class="hero-map-layer" aria-hidden="true">
-          <svg viewBox="0 0 620 620" focusable="false">
-            <path d="M-40 166 C92 108 172 124 260 182 C344 236 434 218 662 128" />
-            <path d="M18 430 C132 352 224 350 322 392 C428 438 506 410 662 322" />
-            <path d="M132 -28 C168 88 166 188 148 292 C132 398 166 486 238 650" />
-            <path d="M436 -38 C394 98 394 214 432 318 C470 422 462 520 394 660" />
-            <path d="M-28 302 C118 276 248 288 364 328 C474 366 548 358 654 316" />
-          </svg>
-          <span class="hero-zone"></span>
-          <span class="hero-map-pin primary"></span>
-          <span class="hero-map-pin left"></span>
-          <span class="hero-map-pin right"></span>
-        </div>
-        <div class="product-shot-wrap">
-          <div class="product-phone">
-            <picture>
-              <source srcset="/assets/coff-hero-phone-en-v2.webp" type="image/webp">
-              <img class="product-shot" src="/assets/coff-hero-phone-en-v2.png" alt="The Today screen of the Coff Circle app" width="922" height="1834" decoding="async" fetchpriority="high">
-            </picture>
-          </div>
-        </div>
-      </div>
-      <div class="scroll-cue" aria-hidden="true">
-        <span>Scroll to explore</span>
-        <i></i>
+      <div class="hero-visual">
+        <picture>
+          <source srcset="/assets/coff-hero-phone-en-v2.webp" type="image/webp">
+          <img class="product-shot" src="/assets/coff-hero-phone-en-v2.png" alt="The Today screen of the Coff Circle app" width="922" height="1834" decoding="async" fetchpriority="high">
+        </picture>
       </div>
     </section>
 
-    <section class="section today-section" id="today" aria-labelledby="today-title" data-scroll-scene="today">
-      <div class="today-panel reveal">
-        <div class="today-copy">
-          <p class="eyebrow">The Today screen</p>
-          <h2 id="today-title">Your coffee diary and the pulse of your area, in one place.</h2>
-          <p>
-            On Coff Circle, the day starts by marking the coffee you drink. Log the filter coffee you brewed at home, your break at the office or the latte you had at a coffee spot nearby, then see your own coffee history and which coffees people around you choose most.
-          </p>
-          <div class="today-flow" aria-label="Today screen features">
-            <div data-scroll-step>
-              <span>01</span>
-              <strong>Add what you drink</strong>
-              <p>Log today's coffee with a quick choice.</p>
-            </div>
-            <div data-scroll-step>
-              <span>02</span>
-              <strong>Choose where you are</strong>
-              <p>You set the context: home, office or a coffee spot nearby.</p>
-            </div>
-            <div data-scroll-step>
-              <span>03</span>
-              <strong>See the trend around you</strong>
-              <p>Follow which coffee stands out near you and how many people marked it.</p>
-            </div>
-          </div>
-        </div>
-        <div class="today-map-showcase" aria-label="Coffee logs and trend map near you">
-          <div class="coffee-map" aria-hidden="true">
-            <svg class="map-lines" viewBox="0 0 520 520" focusable="false">
-              <path d="M-20 138 C94 84 154 92 230 142 C310 194 382 182 542 98" />
-              <path d="M26 384 C126 320 196 318 276 352 C368 392 426 370 540 292" />
-              <path d="M102 -14 C132 86 132 168 118 248 C104 326 126 410 188 540" />
-              <path d="M356 -20 C324 86 320 172 350 256 C382 346 378 438 330 548" />
-              <path d="M-12 252 C110 232 208 238 298 270 C394 304 472 306 536 276" />
-              <path d="M74 70 L444 438" />
-            </svg>
-            <span class="map-ring"></span>
-            <span class="map-pin pin-home"><i></i></span>
-            <span class="map-pin pin-office"><i></i></span>
-            <span class="map-pin pin-shop"><i></i></span>
-            <span class="map-pin pin-trend"><i></i></span>
-            <div class="map-center">
-              <span>Nearby</span>
-              <strong>2 km</strong>
-            </div>
-          </div>
-          <div class="trend-card trend-main" aria-hidden="true">
-            <span>Today's trend</span>
-            <strong>Latte</strong>
-            <small>Sample view · Getting attention</small>
-          </div>
-          <div class="trend-card trend-log" aria-hidden="true">
-            <span>Coffee history</span>
-            <strong>Home · Office · Spot</strong>
-            <small>Your daily logs in one place</small>
-          </div>
-          <div class="trend-card trend-place" aria-hidden="true">
-            <span>Coffee spot</span>
-            <strong>Cold Brew</strong>
-            <small>Rising in this area</small>
-          </div>
-        </div>
+    <section class="section" id="today" aria-labelledby="how-title">
+      <div class="section-head reveal">
+        <p class="eyebrow">In the app</p>
+        <h2 id="how-title">Four tabs, one coffee routine.</h2>
+        <p>Everything in Coff Circle opens from the four tabs at the bottom.</p>
       </div>
+      <ul class="tab-grid">
+          <li class="tab-card card reveal">
+            <div class="tab-label"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg><h3>Today</h3></div>
+            <p>Add today’s coffee: what you had, and whether at home, at the office or at a café. See how many people near you had coffee today and what they chose most.</p>
+          </li>
+          <li class="tab-card card reveal">
+            <div class="tab-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h13v3.5A5.5 5.5 0 0 1 11.5 19h-2A5.5 5.5 0 0 1 4 13.5Z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H16.5"/><path d="M8 3.5c-.8 1 .8 2-.1 3M12 3.5c-.8 1 .8 2-.1 3"/></svg><h3>Discover</h3></div>
+            <p>See people whose coffee taste, reasons and city are close to yours. Tap Connect on someone you’d like to meet.</p>
+          </li>
+          <li class="tab-card card reveal">
+            <div class="tab-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M19 9h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2v2.5L17 18h-4"/></svg><h3>Connections</h3></div>
+            <p>When you both want to connect, a chat opens. Blocking and reporting are inside every chat.</p>
+          </li>
+          <li class="tab-card card reveal">
+            <div class="tab-label"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg><h3>Profile</h3></div>
+            <p>Your coffee ranking, your favorite café and why you’re here. Photos may be reviewed before they go live.</p>
+          </li>
+      </ul>
     </section>
 
-    <section class="section" id="story" aria-labelledby="story-title" data-scroll-scene="story">
-      <div class="story-band reveal">
-        <div class="story-media">
+    <section class="section" id="story" aria-labelledby="story-title">
+      <div class="split reveal">
+        <div class="split-media">
           <img src="/assets/coffee-latte-art.jpg" alt="A cup of coffee topped with latte art" width="1000" height="1500" loading="lazy" decoding="async">
         </div>
-        <div class="story-copy">
-          <p class="eyebrow">Outside the dating mold</p>
-          <h2 id="story-title">Coff Circle puts meeting people back into everyday life.</h2>
-          <p>
-            Not every new connection has to feel like a big decision. Sometimes loving the same coffee, discovering a new spot in the same neighborhood or sharing where you had coffee today is enough. Coff Circle turns these small but real social signals into a safer and more refined flow.
-          </p>
+        <div class="split-copy">
+          <p class="eyebrow">Not a dating app</p>
+          <h2 id="story-title">Meeting people can start with something you already do every day.</h2>
+          <p>You choose why you’re here on your profile. Discover weighs it together with your coffee taste and your city, and a shared coffee makes the first message easier.</p>
+          <ul class="purpose-list" aria-label="Reasons you can pick on your profile">
+            <li>Meet new people</li>
+            <li>Chat over coffee</li>
+            <li>Study or work together</li>
+            <li>Build a professional network</li>
+            <li>Discover new cafés</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section" id="features" aria-labelledby="features-title">
-      <div class="section-heading reveal">
-        <p class="eyebrow">The connection experience</p>
-        <h2 id="features-title">The coffee log is the start. The real value comes after.</h2>
-        <p>The Today feed creates a shared context; Coff Circle turns that context into a real social experience with intentions, preferences and safe communication tools.</p>
-      </div>
-      <div class="feature-grid">
-        <article class="feature-card reveal">
-          <div>
-            <div class="feature-icon" aria-hidden="true">01</div>
-            <h3>You set your social intention</h3>
-            <p>Say clearly on your profile what kind of connection you want with new people, and set the direction of the experience from the start.</p>
-          </div>
-        </article>
-        <article class="feature-card reveal">
-          <div>
-            <div class="feature-icon" aria-hidden="true">02</div>
-            <h3>Shared taste makes talking easier</h3>
-            <p>Similar coffee preferences and favorite spots give you real context that makes the first message feel more natural.</p>
-          </div>
-        </article>
-        <article class="feature-card reveal">
-          <div>
-            <div class="feature-icon" aria-hidden="true">03</div>
-            <h3>Better matches through preferences</h3>
-            <p>Your coffee ranking, social intentions and profile details work together for more compatible connections.</p>
-          </div>
-        </article>
-        <article class="feature-card reveal">
-          <div>
-            <div class="feature-icon" aria-hidden="true">04</div>
-            <h3>Move from profile to chat at your pace</h3>
-            <p>Once you connect, chat, blocking and reporting tools stay within reach at every step.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="safety" aria-labelledby="safety-title" data-scroll-scene="safety">
+    <section class="section" id="safety" aria-labelledby="safety-title">
       <div class="safety-panel reveal">
         <div>
           <p class="eyebrow">Privacy and safety</p>
-          <h2 id="safety-title">A warm social space, with you in control.</h2>
-          <p>
-            The Coff Circle team does not review your private messages under normal circumstances. If a user reports someone for safety, abuse or inappropriate content, an authorized team member may review limited message evidence related to that report.
-          </p>
+          <h2 id="safety-title">You stay in control.</h2>
+          <p>The Coff Circle team does not read your private messages under normal circumstances. If someone reports a conversation for safety reasons, an authorized team member may review limited evidence tied to that report.</p>
         </div>
-        <ul class="safety-list">
-          <li>No live browsing of chats by admins; only limited evidence tied to a report is reviewed.</li>
-          <li>Reporting, blocking and account security tools stay available inside the app.</li>
-          <li>Profile photos may go through moderation before they become visible.</li>
-          <li>You can delete your account inside the app, and the support channel is always open.</li>
+        <ul class="check-list">
+          <li>No one browses chats; only limited evidence from a reported conversation is reviewed.</li>
+          <li>Blocking and reporting are always at hand inside the app.</li>
+          <li>Your exact location is never shown. When you log a coffee, you choose the place (home, office, café).</li>
+          <li>You can delete your account from inside the app.</li>
         </ul>
       </div>
     </section>
 
-    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
-      <div class="section-heading center reveal">
-        <p class="eyebrow">Frequently asked</p>
-        <h2 id="faq-title">What people ask.</h2>
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="section-head center reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-title">Common questions</h2>
       </div>
       <div class="faq-list reveal" aria-label="Frequently asked questions">
         <details class="faq-item" open>
           <summary>What is Coff Circle?<span class="faq-icon" aria-hidden="true"></span></summary>
-          <p>Coff Circle is a mobile app for iPhone and Android that turns your coffee habits into social discovery. It helps you build more natural connections with people around you through shared taste.</p>
+          <p>A mobile app for meeting new people through your coffee habits. It works on iPhone and Android.</p>
         </details>
         <details class="faq-item">
           <summary>Is Coff Circle free?<span class="faq-icon" aria-hidden="true"></span></summary>
-          <p>Downloading Coff Circle and using the core experience is free. Some advanced features are offered through an optional premium subscription.</p>
+          <p>Downloading it and using the core features is free. Some features, like seeing connection invites right away, come with an optional Coff Premium subscription.</p>
         </details>
         <details class="faq-item">
-          <summary>When will Coff Circle launch?<span class="faq-icon" aria-hidden="true"></span></summary>
-          <p>Coff Circle's first release is getting ready to launch in Turkey on the App Store and Google Play. Launch news will be shared on this page and through the support channel.</p>
+          <summary>When does it launch?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Coff Circle launches in Turkey on the App Store and Google Play together. We will announce the date on this page.</p>
         </details>
         <details class="faq-item">
-          <summary>Is Coff Circle available in English?<span class="faq-icon" aria-hidden="true"></span></summary>
-          <p>Yes. Coff Circle works in Turkish and English. The app follows your device language, and you can change it for Coff Circle alone in your phone's settings.</p>
+          <summary>Is it available in English?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Yes. The app is in Turkish and English. It follows your phone’s language, and you can change the language for Coff Circle alone in your phone’s settings.</p>
         </details>
         <details class="faq-item">
-          <summary>Are my messages and data safe?<span class="faq-icon" aria-hidden="true"></span></summary>
-          <p>The Coff Circle team does not review private messages under normal circumstances. Only when there is a safety report does an authorized team member review limited evidence related to that report. Profile photos may go through moderation before they are published, and you can delete your account from inside the app.</p>
+          <summary>Are my messages safe?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>The team does not read private messages under normal circumstances. When there is a safety report, only limited evidence tied to that report is reviewed.</p>
         </details>
         <details class="faq-item">
-          <summary>Is my location shared with others?<span class="faq-icon" aria-hidden="true"></span></summary>
-          <p>Location is used to show coffee trends near you. When you log a coffee, you choose the context (home, office or a coffee spot); your exact location is not shown to other users.</p>
+          <summary>Is my location shown to others?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>No. Location is used to show coffee logs and cafés near you. You choose the place when you log a coffee; your exact location is not shown to other users.</p>
         </details>
       </div>
     </section>
 
-    <section class="section" id="coming-soon" aria-labelledby="coming-title">
-      <div class="coming-card reveal">
+    <section class="section" id="coming-soon" aria-labelledby="launch-title">
+      <div class="launch card reveal">
         <p class="eyebrow">iPhone and Android</p>
-        <h2 id="coming-title">A new coffee circle, starting in Turkey.</h2>
-        <p>
-          Coff Circle's first release is getting ready to launch in Turkey on iPhone and Android as a simple, safe social coffee experience. After launch, badges, coffee routes, discovery across cities and use abroad will grow step by step.
-        </p>
-        <div class="roadmap-pills" aria-label="What's next for Coff Circle">
-          <span>App Store and Google Play launch</span>
-          <span>Coffee badges</span>
-          <span>City-based discovery</span>
-          <span>Global use</span>
-        </div>
-        <div class="hero-actions coming-actions">
+        <h2 id="launch-title">Coming soon to the App Store and Google Play.</h2>
+        <p>We will announce the launch date on this page. If you have a question or an idea, write to us.</p>
+        <div class="hero-actions">
           <a class="button" href="mailto:destek@coffcircle.com">destek@coffcircle.com</a>
           <a class="button secondary" href="/en/support/">Support page</a>
         </div>
@@ -389,6 +294,6 @@
       <a class="lang-switch" href="/" hreflang="tr" lang="tr">Türkçe</a>
     </div>
   </footer>
-  <script src="/assets/site.js?v=7" defer></script>
+  <script src="/assets/site.js?v=9" defer></script>
 </body>
 </html>
