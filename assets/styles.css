@@ -202,7 +202,7 @@ section[id] {
 .section {
   width: min(1160px, calc(100% - 36px));
   margin: 0 auto;
-  padding: clamp(56px, 8vw, 96px) 0;
+  padding: clamp(72px, 10vw, 128px) 0;
 }
 
 .section + .section {
@@ -211,7 +211,7 @@ section[id] {
 
 .section-head {
   max-width: 680px;
-  margin-bottom: 36px;
+  margin-bottom: 44px;
 }
 
 .section-head.center {
@@ -229,6 +229,15 @@ section[id] {
   border-radius: var(--radius);
   background: var(--paper);
   box-shadow: var(--shadow-card);
+}
+
+/* A white panel that holds a section; cards inside it keep only the hairline. */
+.panel {
+  padding: clamp(28px, 4.5vw, 56px);
+}
+
+.panel .card {
+  box-shadow: none;
 }
 
 /* ═══ Home ═══ */
@@ -388,6 +397,18 @@ a.store-button:active {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: var(--radius);
+}
+
+.split-copy.card {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.split-copy.card > :last-child {
+  margin-bottom: 0;
 }
 
 .split-copy p:not(.eyebrow) {
@@ -608,22 +629,20 @@ a.store-button:active {
 }
 
 .row-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--line);
 }
 
 .row-list li {
-  display: grid;
-  grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
-  gap: 24px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 28px;
 }
 
 .row-list h3 {
-  margin: 0;
+  margin: 0 0 10px;
 }
 
 .row-list p {
@@ -688,6 +707,7 @@ a.store-button:active {
 
 .stage-tag {
   display: inline-block;
+  align-self: flex-start;
   margin-top: 8px;
   padding: 6px 12px;
   border-radius: 999px;
@@ -702,11 +722,20 @@ a.store-button:active {
 .legal-wrap {
   width: min(880px, calc(100% - 36px));
   margin: 0 auto;
-  padding: clamp(48px, 7vw, 88px) 0;
+  padding: clamp(56px, 8vw, 112px) 0;
 }
 
 .legal-title {
-  margin-bottom: 28px;
+  margin-bottom: 32px;
+  padding: clamp(24px, 5vw, 52px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow-card);
+}
+
+.legal-title > :last-child {
+  margin-bottom: 0;
 }
 
 .legal-title h1 {
@@ -730,6 +759,7 @@ a.store-button:active {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);
+  box-shadow: var(--shadow-card);
 }
 
 .legal-card h2 {
@@ -785,6 +815,26 @@ a.store-button:active {
   font-weight: 700;
 }
 
+/* Heroes sit in a white panel like every other section. */
+.hero.panel,
+.inv-hero.panel {
+  margin-top: clamp(20px, 4vw, 48px);
+  padding: clamp(32px, 6vw, 80px);
+}
+
+/* Photos sit in a white frame, like the cards around them. */
+.photo-frame {
+  padding: clamp(10px, 1.4vw, 16px);
+}
+
+.photo-frame img {
+  border-radius: 16px;
+}
+
+.photo-band.photo-frame figcaption {
+  margin: 12px 6px 4px;
+}
+
 /* ═══ Responsive ═══ */
 
 @media (max-width: 980px) {
@@ -815,9 +865,8 @@ a.store-button:active {
     grid-template-columns: 1fr;
   }
 
-  .row-list li {
+  .row-list {
     grid-template-columns: 1fr;
-    gap: 6px;
   }
 
   .photo-band img {
