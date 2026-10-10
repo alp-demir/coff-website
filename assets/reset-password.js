@@ -70,7 +70,7 @@
     msg.className = "reset-msg";
 
     var p1 = pw.value, p2 = pw2.value;
-    if (p1.length < 6) { show("error", t("Şifre en az 6 karakter olmalı.", "Password must be at least 6 characters.")); return; }
+    if (p1.length < 8) { show("error", t("Şifre en az 8 karakter olmalı.", "Password must be at least 8 characters.")); return; }
     if (p1 !== p2) { show("error", t("Şifreler eşleşmiyor.", "Passwords don't match.")); return; }
 
     btn.disabled = true;
