@@ -34,8 +34,8 @@ App-flow pages that mail links open: `/verify-email/`, `/reset-password/` and
 `?lang=en`.
 
 Other files: `404.html`, `sitemap.xml`, `robots.txt`, `_headers` (security
-headers and caching), and `.well-known/` (iOS universal links and Android app
-links).
+headers and caching), `_redirects` (QR short links, see below), and
+`.well-known/` (iOS universal links and Android app links).
 
 ## Header and footer
 
@@ -95,6 +95,20 @@ card text (TR and EN):
 Change it, run `node tools/website/sync-chrome.mjs`, then check by hand
 what the script does not own: the FAQ answer "Ne zaman yayında olacak?"
 (TR + EN, also in the page's FAQ JSON-LD).
+
+### QR short links
+
+Printed QR codes point at `coffcircle.com/android`, `/ios` (posters,
+banners, flyers) and `/kart` (square card). The same script writes
+`_redirects` for them from `STORE_STATE`:
+
+| Path | `soon` | `preorder` / `live` |
+| --- | --- | --- |
+| `/ios` | launch card `/#yakinda` | App Store listing |
+| `/android` | launch card `/#yakinda` | Google Play listing, referrer `utm_source=qr&utm_medium=print` |
+| `/kart` | launch card `/#yakinda` | launch card `/#yakinda` (both store buttons) |
+
+Never remove or rename these paths: the codes are already printed.
 
 ## Deploy
 
