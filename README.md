@@ -110,6 +110,16 @@ banners, flyers) and `/kart` (square card). The same script writes
 
 Never remove or rename these paths: the codes are already printed.
 
+### App share link
+
+Both apps share `coffcircle.com/indir` (English: `/en/indir`) from "Coff'u
+arkadaşlarına öner" and the Keşfet invite card. `_redirects` always sends it
+to the launch card with `?indir` (`/?indir#yakinda`, `/en/?indir#coming-soon`);
+`site.js` then forwards an iPhone or Android phone to the store link in that
+card. While `STORE_STATE` is `soon` the card has no links, so everyone sees
+the card. Nothing changes at launch, and the path must never be renamed:
+shipped app builds carry it.
+
 ## Deploy
 
 The source of truth is `coff-website/` in this monorepo. The

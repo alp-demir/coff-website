@@ -1,3 +1,34 @@
+// ── /indir: the link the apps share ─────────────────────────────
+// coffcircle.com/indir (and /en/indir) redirect to the home page's launch
+// card with ?indir. A phone that lands there goes straight on to its own
+// store, so a friend who taps a shared link reaches an install button in one
+// step. The store links come from the launch card itself, which
+// sync-chrome.mjs fills from STORE_STATE: while the stores are "soon" it has
+// no links, nothing happens, and the card says when the app comes out. On a
+// desktop the card with both buttons is the right page anyway. iPads report a
+// Mac user agent and the app is iPhone-only, so they stay on the card too.
+// First in this file, so nothing below can stop it.
+(() => {
+  if (!new URLSearchParams(window.location.search).has("indir")) return;
+  const ua = navigator.userAgent;
+  const store = /iPhone|iPod/.test(ua) ? "apps.apple.com" : /Android/.test(ua) ? "play.google.com" : null;
+  if (!store) return;
+  const link = document.querySelector(`[data-sync="stores"] a[href*="${store}"]`);
+  if (!link) return;
+  const target = new URL(link.href);
+  if (store === "apps.apple.com") {
+    // The Turkish card links the /tr/ storefront; a shared link should open
+    // the friend's own (the print QR links leave the country out as well).
+    target.pathname = target.pathname.replace(/^\/[a-z]{2}\//, "/");
+  } else {
+    // Play passes the referrer to the install, so the console can tell
+    // shares apart from print (utm_source=qr). The App Store needs a provider
+    // token we do not have yet.
+    target.searchParams.set("referrer", "utm_source=share&utm_medium=app");
+  }
+  window.location.replace(target.toString());
+})();
+
 // ── Reveal on scroll (with sibling stagger) ────────────────────
 const reveals = document.querySelectorAll(".reveal");
 
