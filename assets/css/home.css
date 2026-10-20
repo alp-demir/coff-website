@@ -1,0 +1,1784 @@
+.hero-copy {
+  max-width: 610px;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 650px;
+  margin-top: clamp(22px, 3.5dvh, 34px);
+}
+
+.mini-stat {
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  box-shadow: 0 12px 34px rgba(44, 54, 57, 0.06);
+}
+
+.mini-stat strong {
+  display: block;
+  margin: 0;
+  font-size: 0.94rem;
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+.scroll-cue i {
+  position: relative;
+  width: 52px;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(63, 78, 79, 0.18);
+}
+
+.scroll-cue i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--cyan);
+  transform: translateX(-72%);
+  animation: scroll-cue-line 1.8s cubic-bezier(0.16, 1, 0.3, 1) 3;
+}
+
+.section {
+  width: min(1160px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: clamp(76px, 10vw, 128px) 0;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 42px;
+}
+
+.section-heading.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.story-band {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.story-media {
+  overflow: hidden;
+}
+
+.story-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  transform: translate3d(0, var(--story-media-shift, 0px), 0) scale(1.07);
+  will-change: transform;
+}
+
+.story-copy {
+  padding: clamp(28px, 5vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-copy h2 {
+  font-size: clamp(2rem, 4vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.story-copy p {
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+  line-height: 1.68;
+}
+
+/* Each card spans two rows of the grid (demo, text), so every demo and
+   every heading lines up across a row of cards. */
+
+.safety-panel {
+  position: relative;
+  padding: clamp(28px, 5vw, 58px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  color: #ffffff;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.safety-panel::after {
+  content: "";
+  position: absolute;
+  right: -90px;
+  top: -130px;
+  width: 340px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translate3d(0, var(--safety-orb-shift, 0px), 0);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.safety-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.safety-panel h2 {
+  margin-bottom: 18px;
+  font-size: clamp(2rem, 4vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.safety-panel p {
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.7;
+}
+
+.safety-list {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.safety-list li {
+  list-style: none;
+  padding: 18px 18px 18px 48px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.5;
+}
+
+.safety-list li::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 22px;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--cyan);
+}
+
+/* The launch card sits on the brand blue, like the Coff Premium band:
+   white text, white pills and store buttons. */
+.coming-card {
+  padding: clamp(34px, 6vw, 70px);
+  text-align: center;
+  border-color: var(--blue);
+  color: #ffffff;
+  background: var(--blue);
+}
+
+.coming-card .eyebrow {
+  color: #ffffff;
+}
+
+.coming-card .eyebrow::before {
+  background: #ffffff;
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.2);
+}
+
+.coming-card h2 {
+  margin-bottom: 16px;
+  font-size: clamp(2.2rem, 4vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+/* Large bold text: white on the brand blue passes AA at this size. */
+.launch-copy p {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.roadmap-pills {
+  margin: 28px auto 0;
+  max-width: 720px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.roadmap-pills span {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border: 1px solid rgba(243, 231, 216, 0.88);
+  border-radius: 999px;
+  color: var(--coffee-deep);
+  background: var(--white);
+  box-shadow: 0 12px 34px rgba(44, 54, 57, 0.06);
+  font-size: 0.92rem;
+  font-weight: 850;
+}
+
+.coming-actions {
+  justify-content: center;
+}
+
+@media (max-width: 980px) {
+  .story-band,
+  .safety-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+
+  .hero-copy {
+    font-size: 0.98rem;
+    line-height: 1.54;
+  }
+
+  .hero-meta {
+    display: none;
+  }
+
+  .section {
+    width: min(100% - 28px, 1160px);
+    padding: 72px 0;
+  }
+
+  .story-media img {
+    min-height: 300px;
+  }
+}
+
+@media (min-width: 981px) and (max-height: 820px) {
+
+  .hero-copy {
+    max-width: 570px;
+    font-size: 1rem;
+    line-height: 1.54;
+  }
+
+  .hero-meta {
+    margin-top: 18px;
+  }
+}
+
+/* ── Cards: hover lift ── */
+.mini-stat,
+.roadmap-pills span {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.mini-stat:hover,
+.roadmap-pills span:hover {
+  transform: translateY(-2px);
+  border-color: rgba(33, 141, 188, 0.35);
+}
+
+/* ── FAQ ── */
+.faq-list {
+  max-width: none;
+  margin: 0 auto;
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--white);
+  box-shadow: 0 14px 44px rgba(44, 54, 57, 0.05);
+  overflow: hidden;
+  transition: border-color 0.26s ease, box-shadow 0.26s ease, background-color 0.26s ease;
+}
+
+.faq-item.is-animating {
+  transition:
+    height var(--faq-duration) var(--faq-easing),
+    border-color 0.26s ease,
+    box-shadow 0.26s ease,
+    background-color 0.26s ease;
+}
+
+.faq-item[open] {
+  border-color: rgba(33, 141, 188, 0.35);
+  box-shadow: 0 20px 60px rgba(44, 54, 57, 0.09);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 19px 22px;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 800;
+  font-size: 1.04rem;
+  color: var(--ink);
+  transition: color 0.22s ease, background-color 0.22s ease;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary:hover {
+  color: var(--coffee);
+  background: rgba(33, 141, 188, 0.035);
+}
+
+.faq-item summary:active {
+  background: rgba(33, 141, 188, 0.075);
+}
+
+.faq-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.9);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--coffee);
+  transform: translate(-50%, -50%);
+}
+
+.faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.is-animating .faq-icon {
+  transition-duration: var(--faq-duration), var(--faq-duration);
+}
+
+.faq-item.is-animating .faq-icon::after {
+  transition-duration: var(--faq-duration);
+}
+
+.faq-item[open] .faq-icon {
+  background: rgba(33, 141, 188, 0.12);
+  transform: rotate(180deg);
+}
+
+.faq-item[open] .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faq-item.is-closing .faq-icon {
+  background: rgba(255, 250, 243, 0.9);
+  transform: rotate(0deg);
+}
+
+.faq-item.is-closing .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 22px 20px;
+  max-width: 920px;
+  color: var(--ink-soft);
+  line-height: 1.66;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .faq-item p {
+    transition: opacity 0.2s ease, transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .faq-item.is-preparing p,
+  .faq-item.is-closing p {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  .faq-item.is-expanding p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 720px) {
+  .faq-item summary {
+    padding: 16px 18px;
+    font-size: 0.98rem;
+  }
+
+  .faq-item p {
+    padding: 0 18px 18px;
+  }
+}
+
+/* ── Homepage: scroll-led depth and continuity ── */
+
+@media (max-width: 980px), (max-height: 820px) {
+  .scroll-cue {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .safety-panel::after {
+    transform: none;
+    will-change: auto;
+  }
+
+  .story-media img {
+    transform: scale(1.02);
+    will-change: auto;
+  }
+
+  .scroll-cue {
+    opacity: 1;
+    transform: none;
+  }
+
+  .scroll-cue i::after {
+    animation: none;
+    transform: none;
+  }
+
+  .faq-item,
+  .faq-item summary,
+  .faq-icon,
+  .faq-icon::after {
+    transition: none;
+  }
+}
+
+/* Store links, in the shape of the stores' own badges: a small line over the
+   store name. Before launch they are white "Yakında" tiles, not links. The
+   markup comes from tools/website/sync-chrome.mjs (STORE_STATE). */
+.store-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.store-button {
+  min-width: 150px;
+  min-height: 52px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6px 18px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: #ffffff;
+  background: var(--ink);
+  font-size: 1.08rem;
+  font-weight: 850;
+  line-height: 1.15;
+  text-align: left;
+  text-decoration: none;
+  transition: background-color 0.16s ease, transform 0.16s ease;
+}
+
+.store-button small {
+  font-size: 0.72rem;
+  font-weight: 650;
+  opacity: 0.78;
+}
+
+a.store-button:hover,
+a.store-button:focus-visible {
+  background: var(--slate);
+}
+
+a.store-button:active {
+  transform: scale(0.97);
+}
+
+.store-button.is-soon {
+  color: var(--ink);
+  background: var(--paper);
+  border-color: var(--line);
+}
+
+.store-button.is-soon small {
+  color: var(--coffee);
+  opacity: 1;
+}
+
+.store-buttons + .coming-actions {
+  margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+  .store-button {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+/* ── App-card demos (home) ─────────────────────────────────────
+   Small HTML copies of real app cards that stand in for screenshots.
+   The wording comes from the app (coff-frontend Localizable.xcstrings and
+   ProfileOptionCatalog); a few labels are shortened from a longer app
+   sentence, e.g. "Keşfette öne çık" from the Premium line, "Sohbet
+   açılır" from "Bir kahve daveti karşılıklı olunca sohbet burada açılır",
+   and the discovery badge without its "· +N" boost. Nothing here is
+   generated or checked against the app: recheck these cards when the app
+   copy changes. Icons come from the
+   <svg class="sprite"> symbols at the top of <main>. */
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+
+.demo-card {
+  padding: 16px;
+  border: 1px solid rgba(243, 231, 216, 0.92);
+  border-radius: 22px;
+  background: var(--white);
+  box-shadow: 0 18px 50px rgba(44, 54, 57, 0.10);
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.demo-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.demo-head strong {
+  color: var(--ink);
+  font-size: 0.98rem;
+}
+
+.demo-head small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.demo-chip,
+.demo-place {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+  background: #ffffff;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Labels wrap inside the chip when the column is narrow (small phones,
+   and desktop just above the 981px breakpoint) instead of spilling over. */
+.demo-chip {
+  gap: 8px;
+  min-height: 38px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+}
+
+.demo-chip > .icon,
+.demo-place > .icon {
+  color: var(--caramel);
+  font-size: 15px;
+}
+
+.demo-chip.is-picked,
+.demo-place.is-picked {
+  border-color: rgba(23, 63, 98, 0.34);
+  background: rgba(221, 233, 234, 0.36);
+}
+
+.demo-chip.is-picked > .icon,
+.demo-place.is-picked > .icon {
+  color: var(--coffee);
+}
+
+.demo-check {
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--cyan);
+  font-size: 11px;
+}
+
+.demo-places {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.demo-place {
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-height: 64px;
+  padding: 8px 6px;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.demo-place > .icon {
+  font-size: 18px;
+}
+
+.demo-people {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--cyan);
+  font-size: 17px;
+}
+
+.demo-map {
+  position: relative;
+  /* Keeps the own pin's z-index inside the map, under the step veil. */
+  isolation: isolate;
+  height: 150px;
+  margin: 0 -16px;
+  overflow: hidden;
+  border-top: 1px solid rgba(243, 231, 216, 0.7);
+  border-bottom: 1px solid rgba(243, 231, 216, 0.7);
+  background: var(--sand);
+}
+
+.demo-map-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.demo-map-lines path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.demo-map-lines path.minor {
+  stroke-width: 4;
+}
+
+.demo-map-lines path.park {
+  fill: var(--flow);
+  stroke: none;
+}
+
+.demo-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 132px;
+  aspect-ratio: 1;
+  border: 2px solid rgba(23, 63, 98, 0.42);
+  border-radius: 999px;
+  background: rgba(33, 141, 188, 0.10);
+  transform: translate(-50%, -50%);
+}
+
+.demo-pin {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--coffee);
+  box-shadow: 0 4px 12px rgba(23, 63, 98, 0.30);
+  font-size: 13px;
+}
+
+.demo-pin.p1 { left: 41%; top: 34%; }
+.demo-pin.p2 { left: 56%; top: 27%; }
+.demo-pin.p3 { left: 62%; top: 62%; }
+.demo-pin.p4 { left: 45%; top: 70%; }
+.demo-pin.p5 { left: 33%; top: 56%; }
+
+.demo-pin.is-own {
+  left: 52%;
+  top: 48%;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  background: var(--cyan);
+  box-shadow: 0 0 0 7px rgba(33, 141, 188, 0.18), 0 6px 16px rgba(33, 141, 188, 0.34);
+  font-size: 15px;
+}
+
+.demo-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.demo-stats > span {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(44, 54, 57, 0.045);
+}
+
+.demo-stats i {
+  grid-row: span 2;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--coffee);
+  background: #ffffff;
+  font-size: 14px;
+}
+
+.demo-stats small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.demo-stats b {
+  color: var(--ink);
+  font-size: 0.84rem;
+  line-height: 1.2;
+}
+
+.demo-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.demo-chips span {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 750;
+}
+
+.demo-chips .is-picked {
+  border-color: var(--coffee);
+  color: #ffffff;
+  background: var(--coffee);
+}
+
+.demo-rank,
+.demo-reasons {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  list-style: none;
+}
+
+.demo-rank li,
+.demo-reasons li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 6px 10px;
+  border: 1px solid rgba(243, 231, 216, 0.9);
+  border-radius: 12px;
+  color: var(--ink);
+  background: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 750;
+  line-height: 1.25;
+}
+
+.demo-rank b {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  border-radius: 999px;
+  color: var(--coffee);
+  background: var(--surface-soft);
+  font-size: 0.72rem;
+}
+
+.demo-rank em {
+  margin-left: auto;
+  padding: 2px 8px;
+  border: 1px solid var(--coffee);
+  border-radius: 999px;
+  color: var(--coffee);
+  font-size: 0.66rem;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.demo-reasons i {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  border-radius: 999px;
+  color: var(--cyan-deep);
+  background: rgba(221, 233, 234, 0.6);
+  font-size: 13px;
+}
+
+.demo-flow {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+}
+
+.demo-flow span {
+  width: 100%;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(243, 231, 216, 0.9);
+  border-radius: 999px;
+  color: var(--ink);
+  background: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.demo-flow span.is-final {
+  border-color: var(--coffee);
+  color: #ffffff;
+  background: var(--coffee);
+}
+
+.demo-flow-arrow {
+  color: var(--cyan);
+  font-size: 15px;
+}
+
+.premium-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--coffee);
+  font-size: 0.92rem;
+  font-weight: 850;
+}
+
+.meet-tips {
+  margin-top: 26px;
+}
+
+.safety-panel .meet-tips-title {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.meet-tips ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.meet-tips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.86rem;
+  font-weight: 750;
+}
+
+.meet-tips .icon {
+  color: var(--flow);
+}
+
+@media (max-width: 420px) {
+  .demo-chip {
+    gap: 6px;
+    padding: 4px 9px;
+    font-size: 0.76rem;
+  }
+
+  .demo-place {
+    font-size: 0.74rem;
+  }
+}
+
+/* ── Home tour: scroll zooms into an HTML phone, app cards fly out ──────
+   Without JS (or on a very short screen) this is a plain two-column hero
+   with the phone and the chapter text. home.js adds .is-live: the
+   stage pins for the length of the section, and home.js drives the phone,
+   the chapter texts and the flying cards from the scroll position. Phone
+   sizes are in "design" pixels of a 390×844 phone; home.js scales it. */
+
+.tour {
+  position: relative;
+}
+
+.tour-stage {
+  position: relative;
+  width: min(1220px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: clamp(32px, 6vh, 72px) 0 clamp(48px, 8vh, 96px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: clamp(28px, 5vw, 72px);
+  row-gap: 40px;
+  align-items: center;
+}
+
+.tour-hero {
+  grid-column: 1;
+}
+
+.tour.is-live .tour-hero > * {
+  pointer-events: auto;
+}
+
+.tour-hero .hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tour .mini-stat {
+  display: inline-flex;
+  align-items: center;
+  color: var(--coffee-deep);
+  font-size: 0.92rem;
+  font-weight: 850;
+}
+
+.tour-chapters {
+  grid-column: 1;
+}
+
+.tour-chapter {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.tour-chapter h2 {
+  margin-bottom: 12px;
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.tour-chapter p:last-child {
+  margin-bottom: 0;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.tour-device {
+  grid-column: 2;
+  grid-row: 1;
+  width: calc(390px * 0.74);
+  height: calc(844px * 0.74);
+}
+
+.tour-device .phone {
+  transform: scale(0.74);
+  transform-origin: 0 0;
+}
+
+.tour .scroll-cue,
+.tour:not(.is-live) .fly-from-add {
+  display: none;
+}
+
+/* Live: pinned stage, everything placed by home.js. */
+/* home.js sets --tour-length together with .is-live. */
+.tour.is-live {
+  height: calc(var(--tour-length) * 100svh);
+}
+
+/* With var() inside, an unsupported svh would not fall back to an earlier
+   declaration; it would leave height:auto and no pinned scroll. */
+@supports not (height: 100svh) {
+  .tour.is-live {
+    height: calc(var(--tour-length) * 100vh);
+  }
+}
+
+.tour.is-live .tour-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  margin: 0;
+  padding: 0;
+  display: block;
+  /* Clip sideways only: vertically the phone and its shadow may run past
+     the stage edge instead of being cut in a straight line. */
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+/* Only the hero's own text and buttons take taps, not its empty box. */
+.tour.is-live .tour-hero {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: max(24px, calc((100% - 1220px) / 2));
+  z-index: 2;
+  width: min(600px, 46%);
+  padding-top: calc(var(--header-h, 68px) + 7vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* The chapter text is transparent while the hero shows and sits over it:
+   it must not catch clicks meant for the hero buttons. */
+.tour.is-live .tour-chapters {
+  pointer-events: none;
+  position: absolute;
+  top: calc(var(--header-h, 68px) + 9vh);
+  left: max(24px, calc((100% - 1220px) / 2));
+  z-index: 2;
+  width: min(380px, 28%);
+  height: 50vh;
+  display: block;
+}
+
+.tour.is-live .tour-chapter {
+  position: absolute;
+  inset: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  opacity: 0;
+}
+
+.tour.is-live .tour-chapter h2 {
+  font-size: clamp(2rem, 3.3vw, 3.5rem);
+  line-height: 1;
+}
+
+.tour.is-live .tour-chapter p:last-child {
+  font-size: 1.04rem;
+}
+
+.tour.is-live .tour-device {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 390px;
+  height: 844px;
+  margin: -422px 0 0 -195px;
+  transform-origin: 50% 50%;
+}
+
+.tour.is-live .tour-device .phone {
+  transform: none;
+}
+
+.tour.is-live .scroll-cue {
+  left: max(24px, calc((100% - 1220px) / 2));
+  bottom: 28px;
+  z-index: 2;
+  display: inline-flex;
+  opacity: 1;
+  transform: none;
+}
+
+/* Narrow screens: the texts sit on top, the phone below them. */
+@media (max-width: 1099px) {
+  .tour.is-live .tour-hero {
+    right: 24px;
+    width: auto;
+    justify-content: flex-start;
+    padding-top: calc(var(--header-h, 68px) + 4vh);
+  }
+
+  .tour.is-live .tour-chapters {
+    top: calc(var(--header-h, 68px) + 2.5vh);
+    right: 24px;
+    width: auto;
+    max-width: 640px;
+    height: auto;
+  }
+
+  .tour.is-live .tour-chapter h2 {
+    margin-bottom: 8px;
+    font-size: clamp(1.5rem, 4.6vw, 2.4rem);
+  }
+
+  .tour.is-live .tour-chapter p:last-child {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 720px) {
+  .tour.is-live .tour-hero,
+  .tour.is-live .tour-chapters {
+    left: 18px;
+    right: 18px;
+  }
+
+  .tour.is-live .tour-hero h1 {
+    font-size: clamp(2.6rem, 12vw, 3.4rem);
+  }
+
+  .tour.is-live .tour-hero .hero-copy {
+    font-size: 0.98rem;
+  }
+
+  .tour.is-live .tour-hero .hero-meta,
+  .tour.is-live .scroll-cue {
+    display: none;
+  }
+
+  .tour.is-live .tour-chapter .eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .tour-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .tour-device {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+  }
+}
+
+/* The phone (390×844 design px) */
+.phone {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  padding: 11px;
+  border-radius: 62px;
+  background: var(--charcoal);
+  box-shadow:
+    inset 0 0 0 2px var(--slate),
+    0 30px 60px rgba(44, 54, 57, 0.18),
+    0 12px 28px rgba(23, 63, 98, 0.12);
+}
+
+.ph-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 51px;
+  background: var(--cream);
+}
+
+.ph-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  height: 54px;
+  padding: 4px 30px 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.ph-time {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.ph-island {
+  position: absolute;
+  left: 50%;
+  top: 11px;
+  width: 122px;
+  height: 35px;
+  margin-left: -61px;
+  border-radius: 999px;
+  background: var(--charcoal);
+}
+
+.ph-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+}
+
+.ph-icons .ph-battery {
+  width: 25px;
+}
+
+.ph-view {
+  position: absolute;
+  inset: 0;
+}
+
+.ph-head {
+  height: 124px;
+  padding: 62px 22px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: 51px 51px 0 0;
+  color: #ffffff;
+  background: var(--coffee-deep);
+}
+
+.ph-wordmark {
+  width: 86px;
+  height: 32px;
+  margin-top: 4px;
+  color: var(--cream);
+}
+
+.ph-hello {
+  display: grid;
+  gap: 5px;
+  text-align: right;
+}
+
+.ph-hello b {
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.ph-hello small {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.78;
+}
+
+.ph-body {
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.ph-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(44, 54, 57, 0.06);
+}
+
+.ph-add {
+  height: 74px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-color: transparent;
+  color: #ffffff;
+  background: var(--navy);
+  box-shadow: 0 14px 30px rgba(23, 63, 98, 0.28);
+}
+
+.ph-add-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 23px;
+}
+
+.ph-add-text,
+.ph-row-text {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.ph-add-text b {
+  font-size: 17px;
+}
+
+.ph-add-text small {
+  font-size: 12px;
+  opacity: 0.76;
+}
+
+.ph-add-plus {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--coffee);
+  background: #ffffff;
+  font-size: 15px;
+}
+
+.ph-row {
+  height: 60px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ph-row-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--coffee);
+  background: var(--surface-soft);
+  font-size: 17px;
+}
+
+.ph-row-text b {
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.ph-row-text small {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.ph-chevron {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--coffee);
+  font-size: 13px;
+}
+
+.ph-slot {
+  position: relative;
+}
+
+/* Where a card left the screen: a dashed outline the size of the card. */
+.ph-slot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px dashed var(--line-strong);
+  border-radius: 20px;
+  opacity: var(--out, 0);
+}
+
+.ph-mapcard {
+  --out: 0;
+  position: relative;
+  z-index: 5;
+  padding: 14px 16px 12px;
+  box-shadow: 0 calc(8px + 26px * var(--out)) calc(22px + 48px * var(--out)) rgba(23, 63, 98, calc(0.06 + 0.12 * var(--out)));
+}
+
+.ph-daily {
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 0;
+  color: #ffffff;
+  background: url("/assets/img/coffee-latte-art.jpg") center 30% / cover;
+}
+
+/* A flat charcoal veil for the white text (no gradient). */
+.ph-daily::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(44, 54, 57, 0.55);
+}
+
+.ph-daily > * {
+  position: relative;
+}
+
+.ph-daily-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ph-daily-kicker::before {
+  content: "";
+  width: 14px;
+  height: 2px;
+  background: var(--cyan);
+}
+
+.ph-daily b {
+  font-size: 28px;
+}
+
+.ph-tabbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  height: 88px;
+  padding: 14px 18px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  border-radius: 0 0 51px 51px;
+  background: var(--coffee-deep);
+}
+
+.ph-tab {
+  height: 44px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ph-tab b {
+  display: none;
+  font-size: 14px;
+}
+
+.ph-tab.is-on {
+  color: var(--coffee-deep);
+  background: var(--cream);
+}
+
+.ph-tab.is-on b {
+  display: inline;
+}
+
+/* Flying cards start hidden at their origin in the screen; home.js moves
+   and scales them out to their slot beside the phone. */
+/* Decorative copies: never catch a click meant for the phone below. */
+.tour [data-fly] {
+  pointer-events: none;
+}
+
+.fly-from-add {
+  position: absolute;
+  top: 140px;
+  left: 17px;
+  z-index: 5;
+  width: 334px;
+  opacity: 0;
+  box-shadow: 0 30px 70px rgba(23, 63, 98, 0.18);
+}
+
+/* ── Coff Premium band: the brand blue, white text ─────────────────── */
+.premium-band {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  border-radius: var(--radius);
+  color: #ffffff;
+  background: var(--blue);
+  box-shadow: var(--shadow);
+}
+
+.premium-band::before,
+.premium-band::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.premium-band::before {
+  right: -120px;
+  top: -160px;
+  width: 420px;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.premium-band::after {
+  left: -80px;
+  bottom: -200px;
+  width: 360px;
+  aspect-ratio: 1;
+  background: rgba(23, 63, 98, 0.16);
+}
+
+.premium-band > * {
+  position: relative;
+  z-index: 1;
+}
+
+.premium-band .premium-pill {
+  color: var(--navy);
+  background: #ffffff;
+}
+
+.premium-band h2 {
+  margin: 18px 0 12px;
+  font-size: clamp(2rem, 3.6vw, 3.4rem);
+  line-height: 1;
+}
+
+/* White on the brand blue passes WCAG AA only as large text: keep the
+   body copy at 19px bold or more. */
+.premium-band p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.premium-band ul {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+}
+
+.premium-band li {
+  min-height: 64px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 18px;
+  color: var(--navy);
+  background: #ffffff;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.premium-band li .icon {
+  color: var(--blue);
+  font-size: 18px;
+}
+
+@media (max-width: 860px) {
+  .premium-band {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 460px) {
+  .premium-band ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Feature cards (after the tour): what happens after the coffee log ──
+   A short heading, then the app UI as three rows. White cards, separated by
+   the sand line; no nested boxes. Each card spans two grid rows (heading,
+   UI) so headings and rows line up across a row of cards. */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.feature-card {
+  padding: 22px;
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 16px;
+  align-content: start;
+  border: 1px solid var(--sand);
+  border-radius: 24px;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+/* The transition lives on :hover so it doesn't replace the .reveal fade. */
+.feature-card:hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  transform: translateY(-4px);
+  border-color: var(--blue);
+}
+
+.feature-card h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+/* Every card shows three rows of the same height and look. */
+.feature-demo .demo-chips,
+.feature-demo .demo-flow {
+  display: grid;
+  gap: 6px;
+}
+
+.feature-demo .demo-chips span,
+.feature-demo .demo-flow span,
+.feature-demo .demo-rank li,
+.feature-demo .demo-reasons li {
+  min-height: 40px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--sand);
+  border-radius: 12px;
+  color: var(--ink);
+  background: var(--white);
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.feature-demo .demo-chips .is-picked,
+.feature-demo .demo-flow .is-final {
+  border-color: var(--navy);
+  color: #ffffff;
+  background: var(--navy);
+}
+
+.feature-demo .demo-flow {
+  justify-items: stretch;
+}
+
+.feature-demo .demo-flow-arrow {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@keyframes scroll-cue-line {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  55%,
+  100% {
+    transform: translateX(100%);
+  }
+}

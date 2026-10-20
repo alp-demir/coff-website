@@ -5,7 +5,7 @@
 # HTTPS from day one. "preload" is left out on purpose: joining the browser
 # preload list is an owner decision that takes months to undo.
 #
-# CSP allows no inline script or style: every page's code lives in /assets/.
+# CSP allows no inline script or style: every page's code lives in /assets/css and /assets/js.
 # 'self' also covers what Cloudflare adds at the edge: Email Obfuscation's
 # /cdn-cgi/scripts/.../email-decode.min.js and Speed Brain's /cdn-cgi/speculation.
 # connect-src names the API that /reset-password and /verify-email post to.
@@ -27,34 +27,21 @@
   Content-Type: application/json
   Cache-Control: public, max-age=3600
 
-/assets/*
+# Images and fonts never change under the same name. Stylesheets and scripts
+# get their own rules below; a broad /assets/* rule here would be merged into
+# theirs by Cloudflare and make them immutable too.
+/assets/img/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Code changes must propagate quickly; images stay immutable above.
-# Keep bumping ?v=N on link/script tags when these change.
-/assets/styles.css
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Code changes must propagate quickly; images and fonts stay immutable above.
+# Keep bumping ?v=N on link/script tags when a stylesheet or script changes.
+/assets/css/*
   Cache-Control: public, max-age=300, must-revalidate
 
-/assets/site.js
-  Cache-Control: public, max-age=300, must-revalidate
-
-# Page code moved out of inline <script>/<style> so the CSP can forbid inline.
-/assets/reset-password.js
-  Cache-Control: public, max-age=300, must-revalidate
-
-/assets/reset-password.css
-  Cache-Control: public, max-age=300, must-revalidate
-
-/assets/verify-email.js
-  Cache-Control: public, max-age=300, must-revalidate
-
-/assets/verify-email.css
-  Cache-Control: public, max-age=300, must-revalidate
-
-/assets/email-verified.js
-  Cache-Control: public, max-age=300, must-revalidate
-
-/assets/email-verified.css
+/assets/js/*
   Cache-Control: public, max-age=300, must-revalidate
 
 /favicon.ico
@@ -72,16 +59,16 @@
 /favicon.png
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/favicon-filled.png
+/assets/img/favicon-filled.png
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/favicon-tab.png
+/assets/img/favicon-tab.png
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/favicon-bw-v1.svg
+/assets/img/favicon-bw-v1.svg
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/favicon-bw-v1.png
+/assets/img/favicon-bw-v1.png
   Cache-Control: public, max-age=31536000, immutable
 
 /favicon-bw-v1.ico

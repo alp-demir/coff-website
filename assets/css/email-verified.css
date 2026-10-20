@@ -4,9 +4,7 @@
 .verify-card {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background:
-    radial-gradient(circle at 84% 8%, rgba(33, 141, 188, 0.14), transparent 20rem),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 250, 243, 0.80));
+  background: var(--white);
   box-shadow: var(--shadow);
   text-align: center;
 }
@@ -21,8 +19,8 @@
   margin: 4px auto 22px;
   font-size: 34px;
   font-weight: 700;
-  background: rgba(46, 125, 82, 0.12);
-  color: #226845;
+  background: rgba(46, 125, 85, 0.12);
+  color: var(--success);
 }
 
 .verify-card h2 { margin: 0 0 10px; font-size: 1.35rem; color: var(--ink); }

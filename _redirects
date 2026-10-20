@@ -23,3 +23,30 @@
 /q/stand-ios/ /#yakinda 302
 /q/stand-android /#yakinda 302
 /q/stand-android/ /#yakinda 302
+# Old image paths (before /assets/img/).
+/assets/apple-touch-icon-v4.png /assets/img/apple-touch-icon-v4.png 301
+/assets/brand-mark.png /assets/img/brand-mark.png 301
+/assets/coff-hero-phone-en-v2.png /assets/img/coff-hero-phone-en-v2.png 301
+/assets/coff-hero-phone-en-v2.webp /assets/img/coff-hero-phone-en-v2.webp 301
+/assets/coff-hero-phone-v3.png /assets/img/coff-hero-phone-v3.png 301
+/assets/coff-hero-phone-v3.webp /assets/img/coff-hero-phone-v3.webp 301
+/assets/coffee-latte-art.jpg /assets/img/coffee-latte-art.jpg 301
+/assets/favicon-bw-v1.png /assets/img/favicon-bw-v1.png 301
+/assets/favicon-bw-v1.svg /assets/img/favicon-bw-v1.svg 301
+/assets/favicon-filled.png /assets/img/favicon-filled.png 301
+/assets/favicon-tab.png /assets/img/favicon-tab.png 301
+/assets/favicon.png /assets/img/favicon.png 301
+/assets/investor-cafe-network.jpg /assets/img/investor-cafe-network.jpg 301
+/assets/og-image-v2-en.png /assets/img/og-image-v2-en.png 301
+/assets/og-image-v2-tr.png /assets/img/og-image-v2-tr.png 301
+# Old script and stylesheet paths, for pages still open or cached from
+# before the move. styles.css was split; base.css is its shared part.
+/assets/styles.css /assets/css/base.css 301
+/assets/site.js /assets/js/site.js 301
+/assets/i18n.js /assets/js/i18n.js 301
+/assets/verify-email.js /assets/js/verify-email.js 301
+/assets/verify-email.css /assets/css/verify-email.css 301
+/assets/reset-password.js /assets/js/reset-password.js 301
+/assets/reset-password.css /assets/css/reset-password.css 301
+/assets/email-verified.js /assets/js/email-verified.js 301
+/assets/email-verified.css /assets/css/email-verified.css 301

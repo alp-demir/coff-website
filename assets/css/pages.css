@@ -1,0 +1,75 @@
+.legal-wrap {
+  width: min(920px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: clamp(54px, 8vw, 92px) 0;
+}
+
+.legal-title {
+  margin-bottom: 28px;
+}
+
+.updated {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: var(--coffee);
+  font-weight: 850;
+}
+
+.legal-card {
+  padding: clamp(26px, 5vw, 54px);
+}
+
+.legal-card h2 {
+  margin: 34px 0 10px;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  letter-spacing: 0;
+}
+
+.legal-card h2:first-child {
+  margin-top: 0;
+}
+
+.legal-card p,
+.legal-card li {
+  color: var(--ink-soft);
+  line-height: 1.72;
+}
+
+.legal-card ul {
+  padding-left: 20px;
+}
+
+/* "This translation is for convenience" line under an English legal text. */
+.legal-card .legal-note {
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(44, 54, 57, 0.12);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.callout {
+  margin: 24px 0;
+  padding: 20px;
+  border-left: 4px solid var(--cyan);
+  border-radius: 18px;
+  background: rgba(33, 141, 188, 0.10);
+}
+
+.contact-box {
+  margin-top: 28px;
+  padding: 22px;
+  border-radius: 22px;
+  background: var(--coffee-deep);
+  color: #ffffff;
+}
+
+.contact-box p {
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.contact-box a {
+  color: #ffffff;
+  font-weight: 850;
+}

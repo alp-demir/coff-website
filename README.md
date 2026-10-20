@@ -37,6 +37,26 @@ Other files: `404.html`, `sitemap.xml`, `robots.txt`, `_headers` (security
 headers and caching), `_redirects` (QR short links, see below), and
 `.well-known/` (iOS universal links and Android app links).
 
+## Files
+
+```
+assets/
+  css/  base.css        tokens (the brand palette), reset, type, buttons, header, footer, shared panels
+        home.css        home page: scroll tour, the HTML phone, app-card demos, feature cards, premium, safety, FAQ, launch card
+        investors.css   investor page
+        pages.css       legal, support, account and app-flow pages
+        verify-email.css, reset-password.css, email-verified.css   one app-flow page each
+  js/   site.js         every page: reveal, header line, mobile nav, FAQ motion, scrollspy, footer year
+        home.js         home page: /indir hand-off, panel parallax, scroll tour
+        i18n.js         ?lang=en swap on the app-flow pages
+        verify-email.js, reset-password.js, email-verified.js
+  img/  images, favicons and link previews (old /assets/<image> URLs 301 here)
+  fonts/ Nunito, used only by the og image renderer
+```
+
+Every page loads `base.css` plus its group's file (`home`, `investors` or
+`pages`), and `site.js`; the home pages add `home.js`.
+
 ## Header and footer
 
 Every page carries the same header and footer. They are generated from
@@ -56,27 +76,33 @@ run it.
 - **TR and EN together.** Change a Turkish page, and change its `/en/` twin in
   the same PR. That includes images: `index.html` and `en/index.html` share
   every image slot.
-- **Bump the asset version.** `_headers` caches `/assets/*` for a long time. If
-  you change `styles.css`, `site.js` or any other asset, bump its `?v=N` in
-  every page that loads it. Otherwise production keeps serving the old file:
+- **Bump the asset version.** Browsers and Cloudflare keep `/assets/css/*` and
+  `/assets/js/*` for 5 minutes and revalidate; everything else under
+  `/assets/` is immutable. If you change a stylesheet or script, bump its
+  `?v=N` in every page that loads it:
 
   ```sh
-  grep -rl "styles.css?v=" coff-website | xargs sed -i '' 's/styles.css?v=14/styles.css?v=15/'
+  grep -rl "home.css?v=" coff-website | xargs sed -i '' 's/home.css?v=1/home.css?v=2/'
   ```
 
-- **Look:** the palette comes from the app
-  (`coff-frontend/coff/DesignSystem/DesignSystem.swift`). The page design is
-  the original one (white panels, the Today panel with the map, soft
-  gradients, scroll motion); a flat redesign was tried in October 2026 and
-  rolled back. Page text uses Inter or the system font. The Nunito files in
-  `assets/fonts/` are used only by the og image renderer.
+- **Look:** only the brand palette (`coff-designs/color-palette-coff.pdf`),
+  as tokens at the top of `assets/css/base.css`: navy `#173F62`, charcoal
+  `#2C3639`, blue `#218DBC`, cream `#FFFAF3`, slate `#3F4E4F`, taupe
+  `#736A5B`, sand `#F3E7D8`, plus white for cards and `--flow` (`#DDE9EA`),
+  the pale blue of the brand flows. The app's success and error colours are
+  used only for those states. **No gradients anywhere.** Cards are white with
+  a sand border. Behind every page is `assets/img/flow-v2.svg`, the flows of
+  the coff. poster (traced, without the wordmark), fixed to the window. White
+  text on the brand blue is large and bold (AA as large text only). Page
+  text uses Inter or the system font. The Nunito files in `assets/fonts/`
+  are used only by the og image renderer.
 - **Images:** the home hero is the real app on the store-screenshot
   backend (see `docs/` and the hero recipe), pasted into the phone frame.
   Link previews (`og-image-v2-{tr,en}.png`) are rendered from
   `tools/website/og/og.html` with `tools/website/og/render.mjs`. A changed
-  image gets a new file name, since `/assets/*` is cached as immutable.
+  image gets a new file name, since `/assets/img/*` is cached as immutable.
 - **No inline script or style.** The CSP in `_headers` blocks them. Put page code
-  in `/assets/`. Fonts and scripts load from `'self'` only. Self-host any
+  in `/assets/css/` and `/assets/js/`. Fonts and scripts load from `'self'` only. Self-host any
   font.
 - **No analytics or third-party tracking scripts.**
 
@@ -146,7 +172,7 @@ git push
 Then check production with a cache-busting request that follows redirects:
 
 ```sh
-curl -sL "https://coffcircle.com/?nocache=$(date +%s)" | grep "styles.css?v="
+curl -sL "https://coffcircle.com/?nocache=$(date +%s)" | grep -o "home.css?v=[0-9]*"
 ```
 
 ## DNS
