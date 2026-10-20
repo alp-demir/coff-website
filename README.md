@@ -82,7 +82,7 @@ run it.
   `?v=N` in every page that loads it:
 
   ```sh
-  grep -rl "home.css?v=" coff-website | xargs sed -i '' 's/home.css?v=1/home.css?v=2/'
+  grep -rl "home.css?v=" coff-website | xargs sed -i '' -E 's/home.css\?v=[0-9]+/home.css?v=NEW/'
   ```
 
 - **Look:** only the brand palette (`coff-designs/color-palette-coff.pdf`),
@@ -90,7 +90,8 @@ run it.
   `#2C3639`, blue `#218DBC`, cream `#FFFAF3`, slate `#3F4E4F`, taupe
   `#736A5B`, sand `#F3E7D8`, plus white for cards and `--flow` (`#DDE9EA`),
   the pale blue of the brand flows. The app's success and error colours are
-  used only for those states. **No gradients anywhere.** Cards are white with
+  used only for those states. The one exception is the home tour's phone,
+  whose bezel is black (`--bezel`) like real hardware. **No gradients anywhere.** Cards are white with
   a sand border. Behind every page is `assets/img/flow-v2.svg`, the flows of
   the coff. poster (traced, without the wordmark), fixed to the window. White
   text on the brand blue is large and bold (AA as large text only). Page

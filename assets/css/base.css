@@ -14,6 +14,9 @@
   /* App state colours (DesignSystem.swift), only for success and error messages. */
   --success: #2e7d55;
   --error: #b3261e;
+  /* The home tour's phone hardware: black like a real phone, not a palette colour. */
+  --bezel: #000000;
+  --bezel-rim: #2a2a2a;
 
   /* Roles */
   --ink: var(--charcoal);
