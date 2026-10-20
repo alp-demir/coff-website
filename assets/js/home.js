@@ -96,7 +96,7 @@ if (scrollScenes.length > 0) {
 // scroll offset: the phone moves from the hero spot to the middle while the
 // camera dives into its screen, then the coffee-log chapter flies its cards
 // out to slots beside the phone (one at a time on a phone screen) and back. Phone-internal sizes are design pixels of a 390×844 phone,
-// scaled as a whole by S. A window under 480px tall keeps the plain layout;
+// scaled as a whole by S. A window under 480px tall (100svh, the height with the address bar showing) keeps the plain layout;
 // the check runs again on every resize (a phone turned on its side).
 (() => {
   const tour = document.querySelector("[data-tour]");
@@ -329,10 +329,23 @@ if (scrollScenes.length > 0) {
     if (!frame) frame = window.requestAnimationFrame(render);
   };
 
+  // 100svh is the window height with the address bar showing. It does not
+  // change while a phone's bar slides in and out during a scroll, unlike
+  // innerHeight, which fires a resize on every slide and could flip a small
+  // phone between live and plain in the middle of a scroll.
+  const probe = document.createElement("div");
+  probe.style.cssText = "position:fixed;top:0;left:0;width:0;visibility:hidden;pointer-events:none;height:100vh;height:100svh";
+  probe.setAttribute("aria-hidden", "true");
+  document.body.append(probe);
+
   // Live or plain, decided again on every resize.
   const sync = () => {
-    const live = window.innerHeight >= MIN_HEIGHT;
+    // 0 if the probe could not be measured: fall back to the window height.
+    const live = (probe.offsetHeight || window.innerHeight) >= MIN_HEIGHT;
     if (live === tour.classList.contains("is-live")) {
+      // The stage is 100svh tall: when its size is the one already measured
+      // (an address bar sliding), there is nothing to measure again.
+      if (layout && stage.clientWidth === layout.W && stage.clientHeight === layout.H) return;
       needsMeasure = true;
       request();
       return;
