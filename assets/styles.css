@@ -121,30 +121,6 @@ a {
   box-shadow: 0 18px 42px rgba(36, 20, 15, 0.20);
 }
 
-.hero {
-  --hero-phone-y: 0px;
-  --hero-phone-rotate: 0deg;
-  --hero-map-y: 0px;
-  --hero-map-scale: 1;
-  --hero-cue-opacity: 1;
-  --hero-cue-y: 0px;
-  position: relative;
-  width: min(1220px, calc(100% - 36px));
-  margin: 0 auto;
-  min-height: calc(100dvh - 110px);
-  padding: clamp(30px, 6dvh, 76px) 0 clamp(24px, 4dvh, 44px);
-  display: grid;
-  grid-template-columns: minmax(0, 0.94fr) minmax(340px, 0.92fr);
-  align-items: center;
-  gap: clamp(34px, 5vw, 82px);
-  overflow: visible;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -221,134 +197,6 @@ h1 {
   font-size: 0.94rem;
 }
 
-.mini-stat span {
-  display: none;
-}
-
-.hero-visual {
-  position: relative;
-  min-height: min(720px, calc(100dvh - 78px));
-  align-self: stretch;
-  overflow: visible;
-}
-
-.hero-map-layer {
-  position: absolute;
-  inset: 5% -3% 5% 4%;
-  z-index: 1;
-  border-radius: 42px;
-  overflow: visible;
-  opacity: 0;
-  transform: translate3d(20px, 0, 0) scale(0.985);
-  animation: map-stage-enter 1s cubic-bezier(0.16, 1, 0.3, 1) 0.28s forwards;
-  pointer-events: none;
-}
-
-.hero-map-layer svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  transform: translate3d(0, var(--hero-map-y), 0) scale(var(--hero-map-scale));
-  transform-origin: center;
-  will-change: transform;
-  /* The strokes run past the svg box and were cut off in a straight line at
-     its edge; fade them out before they reach it. */
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 52%, transparent 98%);
-  mask-image: radial-gradient(ellipse at center, #000 52%, transparent 98%);
-}
-
-.hero-map-layer path {
-  fill: none;
-  stroke: rgba(63, 78, 79, 0.13);
-  stroke-width: 18;
-  stroke-linecap: round;
-}
-
-.hero-map-layer path:nth-child(2n) {
-  stroke: rgba(23, 63, 98, 0.10);
-  stroke-width: 11;
-}
-
-.hero-zone {
-  position: absolute;
-  left: 47%;
-  top: 52%;
-  width: min(310px, 58%);
-  aspect-ratio: 1;
-  border: 2px solid rgba(23, 63, 98, 0.17);
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at center, rgba(33, 141, 188, 0.14), transparent 48%),
-    rgba(207, 226, 239, 0.18);
-  transform: translate(-50%, -50%);
-}
-
-.hero-map-pin {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  background: var(--coffee);
-  box-shadow: 0 0 0 8px rgba(23, 63, 98, 0.10);
-}
-
-.hero-map-pin.primary {
-  left: 47%;
-  top: 52%;
-  width: 22px;
-  height: 22px;
-  background: var(--cyan);
-  box-shadow: 0 0 0 12px rgba(33, 141, 188, 0.14), 0 18px 40px rgba(33, 141, 188, 0.20);
-}
-
-.hero-map-pin.left {
-  left: 24%;
-  top: 33%;
-}
-
-.hero-map-pin.right {
-  right: 14%;
-  bottom: 28%;
-  background: var(--coffee-deep);
-}
-
-.product-shot-wrap {
-  position: absolute;
-  left: 48%;
-  top: 50%;
-  width: min(410px, 33vw, calc((100dvh - 74px) * 0.51));
-  min-width: 340px;
-  z-index: 3;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  animation: phone-enter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
-  isolation: isolate;
-}
-
-.product-phone {
-  position: relative;
-  z-index: 2;
-  padding: 0;
-  border-radius: 54px;
-  background: transparent;
-  box-shadow: none;
-  overflow: visible;
-  transform: translate3d(0, var(--hero-phone-y), 0) rotate(var(--hero-phone-rotate));
-  transform-origin: 50% 58%;
-  will-change: transform;
-}
-
-.product-shot {
-  width: 100%;
-  height: auto;
-  image-rendering: auto;
-  /* CSS blur radius is a Gaussian sigma: the old 58px reached ~170px past the
-     phone and was cut off in a straight line at the page edge (html/body
-     overflow-x: clip), which read as a rectangular veil on narrow screens. */
-  filter: drop-shadow(0 24px 32px rgba(44, 54, 57, 0.12));
-}
-
 .scroll-cue {
   position: absolute;
   left: 0;
@@ -359,10 +207,7 @@ h1 {
   color: var(--muted);
   font-size: 0.76rem;
   font-weight: 800;
-  opacity: var(--hero-cue-opacity);
-  transform: translate3d(0, var(--hero-cue-y), 0);
   pointer-events: none;
-  will-change: opacity, transform;
 }
 
 .scroll-cue i {
@@ -414,297 +259,6 @@ h1 {
   line-height: 1.65;
 }
 
-.today-section {
-  --scene-shift: 0px;
-  padding-top: clamp(56px, 8vw, 96px);
-}
-
-.today-panel {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(300px, 0.78fr);
-  gap: clamp(28px, 5vw, 64px);
-  align-items: center;
-  min-height: 680px;
-  padding: clamp(30px, 5vw, 62px);
-  border: 1px solid var(--line);
-  border-radius: 34px;
-  background:
-    radial-gradient(circle at 82% 14%, rgba(33, 141, 188, 0.16), transparent 22rem),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(255, 250, 243, 0.74));
-  box-shadow: 0 26px 90px rgba(44, 54, 57, 0.10);
-  overflow: hidden;
-}
-
-.today-panel::before {
-  content: "";
-  position: absolute;
-  inset: auto -10% -34% 42%;
-  height: 420px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(23, 63, 98, 0.14), rgba(33, 141, 188, 0.12));
-  filter: blur(2px);
-  transform: translate3d(0, var(--today-glow-shift, 0px), 0);
-  pointer-events: none;
-  will-change: transform;
-}
-
-.today-copy {
-  position: relative;
-  z-index: 1;
-}
-
-.today-copy h2 {
-  max-width: 720px;
-  margin-bottom: 20px;
-  font-size: clamp(2.4rem, 5vw, 5.4rem);
-  line-height: 0.96;
-  letter-spacing: 0;
-  text-wrap: balance;
-}
-
-.today-copy > p {
-  max-width: 680px;
-  color: var(--ink-soft);
-  font-size: clamp(1.02rem, 1.4vw, 1.18rem);
-  line-height: 1.68;
-}
-
-.today-flow {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: clamp(26px, 4vw, 40px);
-}
-
-.today-flow div {
-  min-height: 184px;
-  padding: 18px;
-  border: 1px solid rgba(232, 222, 210, 0.86);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.70);
-  box-shadow: 0 16px 44px rgba(44, 54, 57, 0.06);
-  transition: border-color 0.32s ease, background-color 0.32s ease, box-shadow 0.32s ease, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.today-flow div.is-active {
-  border-color: rgba(33, 141, 188, 0.42);
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 20px 54px rgba(23, 63, 98, 0.11);
-  transform: translateY(-3px);
-}
-
-.today-flow span {
-  display: inline-flex;
-  margin-bottom: 24px;
-  color: var(--cyan);
-  font-weight: 900;
-}
-
-.today-flow strong {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--ink);
-  font-size: 1.04rem;
-  line-height: 1.2;
-}
-
-.today-flow p {
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.48;
-}
-
-.today-map-showcase {
-  position: relative;
-  z-index: 1;
-  min-height: 560px;
-  transform: translate3d(0, var(--today-map-shift, 0px), 0);
-  will-change: transform;
-}
-
-.coffee-map {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: min(430px, 100%);
-  aspect-ratio: 1;
-  border: 1px solid rgba(232, 222, 210, 0.92);
-  border-radius: 34px;
-  background:
-    radial-gradient(circle at 26% 28%, rgba(33, 141, 188, 0.18), transparent 7rem),
-    radial-gradient(circle at 78% 68%, rgba(23, 63, 98, 0.12), transparent 8rem),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 250, 243, 0.72));
-  transform: translate(-50%, -50%);
-  box-shadow: 0 34px 90px rgba(44, 54, 57, 0.14);
-  overflow: hidden;
-}
-
-.coffee-map::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(217, 204, 185, 0.20) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(217, 204, 185, 0.20) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: radial-gradient(circle at center, black 42%, transparent 78%);
-}
-
-.map-lines {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.map-lines path {
-  fill: none;
-  stroke: rgba(63, 78, 79, 0.16);
-  stroke-width: 16;
-  stroke-linecap: round;
-}
-
-.map-lines path:nth-child(2n) {
-  stroke: rgba(23, 63, 98, 0.12);
-  stroke-width: 10;
-}
-
-.map-ring {
-  position: absolute;
-  left: 50%;
-  top: 52%;
-  width: 250px;
-  aspect-ratio: 1;
-  border: 2px solid rgba(23, 63, 98, 0.26);
-  border-radius: 999px;
-  background: rgba(207, 226, 239, 0.24);
-  transform: translate(-50%, -50%);
-}
-
-.map-pin {
-  position: absolute;
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px 999px 999px 8px;
-  background: var(--coffee);
-  box-shadow: 0 18px 44px rgba(23, 63, 98, 0.26);
-  transform: rotate(-45deg);
-}
-
-.map-pin i {
-  width: 13px;
-  height: 13px;
-  display: block;
-  border-radius: 999px;
-  background: #ffffff;
-}
-
-.pin-home {
-  left: 24%;
-  top: 31%;
-  background: var(--cyan);
-}
-
-.pin-office {
-  left: 58%;
-  top: 25%;
-  background: var(--coffee-deep);
-}
-
-.pin-shop {
-  left: 70%;
-  top: 61%;
-  background: var(--coffee);
-}
-
-.pin-trend {
-  left: 42%;
-  top: 53%;
-  width: 46px;
-  height: 46px;
-  background: var(--cyan);
-  box-shadow: 0 0 0 12px rgba(33, 141, 188, 0.12), 0 20px 50px rgba(33, 141, 188, 0.28);
-}
-
-.pin-trend i {
-  width: 16px;
-  height: 16px;
-}
-
-.map-center {
-  position: absolute;
-  left: 50%;
-  top: 52%;
-  min-width: 124px;
-  padding: 12px 14px;
-  border: 1px solid rgba(232, 222, 210, 0.84);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 16px 40px rgba(44, 54, 57, 0.12);
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.map-center span {
-  display: block;
-  color: var(--muted);
-  font-size: 0.76rem;
-  font-weight: 800;
-}
-
-.map-center strong {
-  display: block;
-  margin-top: 2px;
-  color: var(--coffee);
-  font-size: 1.4rem;
-}
-
-.trend-card {
-  position: absolute;
-  z-index: 2;
-  width: 220px;
-  padding: 16px 17px;
-  border: 1px solid rgba(232, 222, 210, 0.88);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 22px 62px rgba(44, 54, 57, 0.14);
-  backdrop-filter: blur(18px);
-}
-
-.trend-card span,
-.trend-card small {
-  display: block;
-  color: var(--muted);
-  font-size: 0.78rem;
-  line-height: 1.35;
-}
-
-.trend-card strong {
-  display: block;
-  margin: 5px 0;
-  color: var(--coffee);
-  font-size: 1.2rem;
-}
-
-.trend-main {
-  right: -12px;
-  top: 10%;
-}
-
-.trend-log {
-  left: -22px;
-  bottom: 12%;
-}
-
-.trend-place {
-  right: 22px;
-  bottom: 0;
-  width: 190px;
-}
 
 .story-band {
   display: grid;
@@ -715,7 +269,6 @@ h1 {
 
 .story-media,
 .story-copy,
-.feature-card,
 .safety-panel,
 .coming-card,
 .legal-card {
@@ -757,42 +310,8 @@ h1 {
   line-height: 1.68;
 }
 
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.feature-card {
-  min-height: 290px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.feature-card h3 {
-  margin-bottom: 12px;
-  font-size: 1.35rem;
-  line-height: 1.16;
-}
-
-.feature-card p {
-  color: var(--muted);
-  line-height: 1.58;
-}
-
-.feature-icon {
-  width: 46px;
-  height: 46px;
-  margin-bottom: 28px;
-  display: grid;
-  place-items: center;
-  border-radius: 16px;
-  color: var(--coffee-deep);
-  background: linear-gradient(135deg, rgba(207, 226, 239, 0.64), rgba(33, 141, 188, 0.16));
-  font-size: 1.25rem;
-}
+/* Each card spans two rows of the grid (demo, text), so every demo and
+   every heading lines up across a row of cards. */
 
 .safety-panel {
   position: relative;
@@ -841,6 +360,8 @@ h1 {
 }
 
 .safety-list {
+  margin: 0;
+  padding: 0;
   display: grid;
   gap: 12px;
 }
@@ -995,84 +516,13 @@ h1 {
 }
 
 @media (max-width: 980px) {
-  .hero {
-    min-height: auto;
-    grid-template-columns: 1fr;
-    overflow: visible;
-  }
-
-  /* Single column: take the phone out of absolute centering so it occupies its
-     real (tall) height in flow. Keeping it absolute inside a short dvh-capped
-     box made the image overflow and overlap the hero copy on non-tall phones. */
-  .hero-visual {
-    min-height: 0;
-    margin-top: clamp(28px, 7vw, 56px);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
-
-  .hero-map-layer {
-    display: none;
-  }
-
-  .product-shot-wrap {
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    animation: none;
-    opacity: 1;
-    width: min(330px, 64vw);
-    min-width: 0;
-    margin: 0 auto;
-  }
-
-  /* Keep the shadow inside the gutter beside the phone so nothing clips it. */
-  .product-shot {
-    filter: drop-shadow(0 14px 18px rgba(44, 54, 57, 0.14));
-  }
-
   .story-band,
-  .today-panel,
   .safety-panel {
     grid-template-columns: 1fr;
-  }
-
-  .today-panel {
-    min-height: auto;
-  }
-
-  .today-map-showcase {
-    min-height: 520px;
-  }
-
-  .feature-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 721px) and (max-width: 980px) {
-  .today-flow {
-    grid-template-columns: 1fr;
-  }
-
-  .today-flow div {
-    min-height: auto;
-    padding: 18px 20px;
-  }
-
-  .today-flow span {
-    margin-bottom: 10px;
   }
 }
 
 @media (max-width: 720px) {
-  .hero {
-    width: min(100% - 28px, 1160px);
-    padding-top: clamp(30px, 6dvh, 42px);
-  }
-
   h1 {
     font-size: clamp(2.48rem, 11.7vw, 3.5rem);
     line-height: 0.98;
@@ -1083,22 +533,8 @@ h1 {
     line-height: 1.54;
   }
 
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-
   .hero-meta {
     display: none;
-  }
-
-  .hero-visual {
-    min-height: 0;
-    margin-top: clamp(30px, 9vw, 52px);
-  }
-
-  .product-shot-wrap {
-    width: min(272px, 70vw);
-    top: auto;
   }
 
   .section {
@@ -1106,84 +542,12 @@ h1 {
     padding: 72px 0;
   }
 
-  .today-section {
-    padding-top: 54px;
-  }
-
-  .today-panel {
-    padding: 24px 20px 28px;
-    border-radius: 28px;
-  }
-
-  .today-copy h2 {
-    font-size: clamp(2.14rem, 10.4vw, 3.25rem);
-    line-height: 1;
-  }
-
-  .today-copy > p {
-    font-size: 0.98rem;
-    line-height: 1.58;
-  }
-
-  .today-flow {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .today-flow div {
-    min-height: auto;
-    padding: 16px;
-  }
-
-  .today-flow span {
-    margin-bottom: 12px;
-  }
-
-  .today-map-showcase {
-    min-height: 444px;
-  }
-
-  .coffee-map {
-    width: min(286px, 80vw);
-    border-radius: 28px;
-  }
-
-  .trend-card {
-    width: min(214px, 70vw);
-    padding: 14px 15px;
-  }
-
-  .trend-main {
-    right: -6px;
-    top: 12%;
-  }
-
-  .trend-log {
-    left: -6px;
-    bottom: 10%;
-  }
-
-  .trend-place {
-    display: none;
-  }
-
-  .map-ring {
-    width: 172px;
-  }
-
   .story-media img {
     min-height: 300px;
   }
-
 }
 
 @media (min-width: 981px) and (max-height: 820px) {
-  .hero {
-    min-height: calc(100dvh - 98px);
-    padding-top: 24px;
-    padding-bottom: 22px;
-  }
-
   .eyebrow {
     margin-bottom: 14px;
   }
@@ -1206,10 +570,6 @@ h1 {
   .hero-meta {
     margin-top: 18px;
   }
-
-  .product-shot-wrap {
-    width: min(386px, 30vw, calc((100dvh - 84px) * 0.50));
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1222,55 +582,6 @@ h1 {
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes phone-enter {
-  from {
-    opacity: 0;
-    transform: translate(-46%, -48%) scale(0.982);
-    filter: blur(5px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes map-stage-enter {
-  from {
-    opacity: 0;
-    transform: translate3d(26px, 0, 0) scale(0.98);
-    filter: blur(8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-    filter: blur(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .product-shot-wrap,
-  .hero-map-layer {
-    opacity: 1;
-    animation: none;
-    filter: none;
-  }
-
-  .hero-map-layer {
-    transform: none;
-  }
-}
-
-/* Desktop only: restore the centered overlay transform for reduced-motion.
-   On <=980 the phone flows in-document (transform:none) so it never overlaps. */
-@media (prefers-reduced-motion: reduce) and (min-width: 981px) {
-  .product-shot-wrap {
-    transform: translate(-50%, -50%);
   }
 }
 
@@ -1293,65 +604,11 @@ h1 {
   box-shadow: 0 10px 24px rgba(36, 20, 15, 0.16);
 }
 
-/* ── Hero: text entrance + living map pins ── */
-@media (prefers-reduced-motion: no-preference) {
-  .hero > div:first-child {
-    opacity: 0;
-    transform: translateY(14px);
-    animation: hero-copy-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
-  }
-
-  .hero-map-pin.primary::after,
-  .pin-trend::after {
-    content: "";
-    position: absolute;
-    inset: -6px;
-    border-radius: inherit;
-    border: 2px solid rgba(33, 141, 188, 0.55);
-    animation: pin-pulse 2.6s cubic-bezier(0.33, 1, 0.68, 1) infinite;
-  }
-
-  .trend-card {
-    animation: card-float 7s ease-in-out infinite;
-  }
-
-  .trend-log {
-    animation-delay: 1.8s;
-  }
-
-  .trend-place {
-    animation-delay: 3.4s;
-  }
-}
-
+/* ── Investor hero: text entrance ── */
 @keyframes hero-copy-enter {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes pin-pulse {
-  0% {
-    opacity: 0.9;
-    transform: scale(1);
-  }
-
-  70%,
-  100% {
-    opacity: 0;
-    transform: scale(2.1);
-  }
-}
-
-@keyframes card-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-7px);
   }
 }
 
@@ -1367,16 +624,9 @@ h1 {
 }
 
 /* ── Cards: hover lift ── */
-.feature-card,
 .mini-stat,
 .roadmap-pills span {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(33, 141, 188, 0.35);
-  box-shadow: 0 30px 90px rgba(44, 54, 57, 0.13);
 }
 
 .mini-stat:hover,
@@ -1541,16 +791,6 @@ h1 {
 }
 
 /* ── Homepage: scroll-led depth and continuity ── */
-@media (prefers-reduced-motion: no-preference) {
-  .home-page .trend-card {
-    animation: none;
-  }
-
-  .home-page .hero-map-pin.primary::after,
-  .home-page .pin-trend::after {
-    animation-iteration-count: 2;
-  }
-}
 
 @media (max-width: 980px), (max-height: 820px) {
   .scroll-cue {
@@ -1559,10 +799,6 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .product-phone,
-  .hero-map-layer svg,
-  .today-panel::before,
-  .today-map-showcase,
   .safety-panel::after {
     transform: none;
     will-change: auto;
@@ -1890,14 +1126,13 @@ body.investor-page {
   align-items: center;
   border: 1px solid var(--line);
   border-radius: 20px;
-  background: rgba(255, 250, 243, 0.72);
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease, background-color 0.28s ease;
+  background: #ffffff;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
 }
 
 .market-steps li:hover {
   transform: translateX(5px);
   border-color: rgba(33, 141, 188, 0.34);
-  background: rgba(255, 255, 255, 0.92);
 }
 
 .market-steps li > span {
@@ -2034,15 +1269,12 @@ body.investor-page {
 
 .investor-contact-card {
   padding: clamp(42px, 7vw, 84px);
-  border: 1px solid rgba(115, 106, 91, 0.18);
+  border: 1px solid var(--line);
   border-radius: 38px;
   color: var(--ink);
   text-align: center;
-  background:
-    radial-gradient(circle at 84% 8%, rgba(33, 141, 188, 0.16), transparent 24rem),
-    radial-gradient(circle at 10% 100%, rgba(183, 151, 112, 0.18), transparent 22rem),
-    linear-gradient(135deg, #fffdf9 0%, #f6ecde 100%);
-  box-shadow: 0 30px 90px rgba(67, 54, 38, 0.12);
+  background: #ffffff;
+  box-shadow: 0 30px 90px rgba(44, 54, 57, 0.10);
 }
 
 .investor-contact-card .eyebrow {
@@ -2658,4 +1890,1263 @@ a.store-button:active {
     flex: 1 1 0;
     min-width: 0;
   }
+}
+
+/* ── App-card demos (home) ─────────────────────────────────────
+   Small HTML copies of real app cards that stand in for screenshots.
+   The wording comes from the app (coff-frontend Localizable.xcstrings and
+   ProfileOptionCatalog); a few labels are shortened from a longer app
+   sentence, e.g. "Keşfette öne çık" from the Premium line, "Sohbet
+   açılır" from "Bir kahve daveti karşılıklı olunca sohbet burada açılır",
+   and the discovery badge without its "· +N" boost. Nothing here is
+   generated or checked against the app: recheck these cards when the app
+   copy changes. Icons come from the
+   <svg class="sprite"> symbols at the top of <main>. */
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+
+.demo-card {
+  padding: 16px;
+  border: 1px solid rgba(232, 222, 210, 0.92);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18px 50px rgba(44, 54, 57, 0.10);
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.demo-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.demo-head strong {
+  color: var(--ink);
+  font-size: 0.98rem;
+}
+
+.demo-head small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.demo-chip,
+.demo-place {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+  background: #ffffff;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Labels wrap inside the chip when the column is narrow (small phones,
+   and desktop just above the 981px breakpoint) instead of spilling over. */
+.demo-chip {
+  gap: 8px;
+  min-height: 38px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+}
+
+.demo-chip > .icon,
+.demo-place > .icon {
+  color: var(--caramel);
+  font-size: 15px;
+}
+
+.demo-chip.is-picked,
+.demo-place.is-picked {
+  border-color: rgba(23, 63, 98, 0.34);
+  background: rgba(207, 226, 239, 0.36);
+}
+
+.demo-chip.is-picked > .icon,
+.demo-place.is-picked > .icon {
+  color: var(--coffee);
+}
+
+.demo-check {
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--cyan);
+  font-size: 11px;
+}
+
+.demo-places {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.demo-place {
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-height: 64px;
+  padding: 8px 6px;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.demo-place > .icon {
+  font-size: 18px;
+}
+
+.demo-people {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--cyan);
+  font-size: 17px;
+}
+
+.demo-map {
+  position: relative;
+  /* Keeps the own pin's z-index inside the map, under the step veil. */
+  isolation: isolate;
+  height: 150px;
+  margin: 0 -16px;
+  overflow: hidden;
+  border-top: 1px solid rgba(232, 222, 210, 0.7);
+  border-bottom: 1px solid rgba(232, 222, 210, 0.7);
+  background: #f1eee7;
+}
+
+.demo-map-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.demo-map-lines path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.demo-map-lines path.minor {
+  stroke-width: 4;
+}
+
+.demo-map-lines path.park {
+  fill: #dce8d2;
+  stroke: none;
+}
+
+.demo-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 132px;
+  aspect-ratio: 1;
+  border: 2px solid rgba(23, 63, 98, 0.42);
+  border-radius: 999px;
+  background: rgba(33, 141, 188, 0.10);
+  transform: translate(-50%, -50%);
+}
+
+.demo-pin {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--coffee);
+  box-shadow: 0 4px 12px rgba(23, 63, 98, 0.30);
+  font-size: 13px;
+}
+
+.demo-pin.p1 { left: 41%; top: 34%; }
+.demo-pin.p2 { left: 56%; top: 27%; }
+.demo-pin.p3 { left: 62%; top: 62%; }
+.demo-pin.p4 { left: 45%; top: 70%; }
+.demo-pin.p5 { left: 33%; top: 56%; }
+
+.demo-pin.is-own {
+  left: 52%;
+  top: 48%;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  background: var(--cyan);
+  box-shadow: 0 0 0 7px rgba(33, 141, 188, 0.18), 0 6px 16px rgba(33, 141, 188, 0.34);
+  font-size: 15px;
+}
+
+.demo-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.demo-stats > span {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(44, 54, 57, 0.045);
+}
+
+.demo-stats i {
+  grid-row: span 2;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--coffee);
+  background: #ffffff;
+  font-size: 14px;
+}
+
+.demo-stats small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.demo-stats b {
+  color: var(--ink);
+  font-size: 0.84rem;
+  line-height: 1.2;
+}
+
+.demo-label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--coffee);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.demo-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.demo-chips span {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 750;
+}
+
+.demo-chips .is-picked {
+  border-color: var(--coffee);
+  color: #ffffff;
+  background: var(--coffee);
+}
+
+.demo-rank,
+.demo-reasons {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  list-style: none;
+}
+
+.demo-rank li,
+.demo-reasons li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 6px 10px;
+  border: 1px solid rgba(232, 222, 210, 0.9);
+  border-radius: 12px;
+  color: var(--ink);
+  background: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 750;
+  line-height: 1.25;
+}
+
+.demo-rank b {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  border-radius: 999px;
+  color: var(--coffee);
+  background: var(--surface-soft);
+  font-size: 0.72rem;
+}
+
+.demo-rank em {
+  margin-left: auto;
+  padding: 2px 8px;
+  border: 1px solid var(--coffee);
+  border-radius: 999px;
+  color: var(--coffee);
+  font-size: 0.66rem;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.demo-reasons i {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  border-radius: 999px;
+  color: var(--cyan-deep);
+  background: rgba(207, 226, 239, 0.6);
+  font-size: 13px;
+}
+
+.demo-flow {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+}
+
+.demo-flow span {
+  width: 100%;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(232, 222, 210, 0.9);
+  border-radius: 999px;
+  color: var(--ink);
+  background: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.demo-flow span.is-final {
+  border-color: var(--coffee);
+  color: #ffffff;
+  background: var(--coffee);
+}
+
+.demo-flow-arrow {
+  color: var(--cyan);
+  font-size: 15px;
+}
+
+.premium-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--coffee);
+  font-size: 0.92rem;
+  font-weight: 850;
+}
+
+.meet-tips {
+  margin-top: 26px;
+}
+
+.safety-panel .meet-tips-title {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.meet-tips ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.meet-tips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.86rem;
+  font-weight: 750;
+}
+
+.meet-tips .icon {
+  color: #7cc4e4;
+}
+
+@media (max-width: 420px) {
+  .demo-chip {
+    gap: 6px;
+    padding: 4px 9px;
+    font-size: 0.76rem;
+  }
+
+  .demo-place {
+    font-size: 0.74rem;
+  }
+}
+
+/* ── Home tour: scroll zooms into an HTML phone, app cards fly out ──────
+   Without JS (or on a very short screen) this is a plain two-column hero
+   with the phone and the chapter text. site.js adds .is-live: the
+   stage pins for the length of the section, and site.js drives the phone,
+   the chapter texts and the flying cards from the scroll position. Phone
+   sizes are in "design" pixels of a 390×844 phone; site.js scales it. */
+.home-page {
+  --page: #f6eee3;
+}
+
+:root:has(body.home-page) {
+  --edge-top: #f6eee3;
+}
+
+body.home-page {
+  background: var(--page);
+}
+
+.home-page .site-header {
+  background: var(--page);
+}
+
+.tour {
+  position: relative;
+}
+
+.tour-stage {
+  position: relative;
+  width: min(1220px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: clamp(32px, 6vh, 72px) 0 clamp(48px, 8vh, 96px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: clamp(28px, 5vw, 72px);
+  row-gap: 40px;
+  align-items: center;
+}
+
+.tour-hero {
+  grid-column: 1;
+}
+
+.tour.is-live .tour-hero > * {
+  pointer-events: auto;
+}
+
+.tour-hero .hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tour .mini-stat {
+  display: inline-flex;
+  align-items: center;
+  color: var(--coffee-deep);
+  font-size: 0.92rem;
+  font-weight: 850;
+}
+
+.tour-chapters {
+  grid-column: 1;
+}
+
+.tour-chapter {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.tour-chapter h2 {
+  margin-bottom: 12px;
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.tour-chapter p:last-child {
+  margin-bottom: 0;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.tour-device {
+  grid-column: 2;
+  grid-row: 1;
+  width: calc(390px * 0.74);
+  height: calc(844px * 0.74);
+}
+
+.tour-device .phone {
+  transform: scale(0.74);
+  transform-origin: 0 0;
+}
+
+.tour-glow,
+.tour .scroll-cue,
+.tour:not(.is-live) .fly-from-add {
+  display: none;
+}
+
+/* Live: pinned stage, everything placed by site.js. */
+/* site.js sets --tour-length together with .is-live. */
+.tour.is-live {
+  height: calc(var(--tour-length) * 100svh);
+}
+
+/* With var() inside, an unsupported svh would not fall back to an earlier
+   declaration; it would leave height:auto and no pinned scroll. */
+@supports not (height: 100svh) {
+  .tour.is-live {
+    height: calc(var(--tour-length) * 100vh);
+  }
+}
+
+.tour.is-live .tour-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  margin: 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+
+/* Only the hero's own text and buttons take taps, not its empty box. */
+.tour.is-live .tour-hero {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: max(24px, calc((100% - 1220px) / 2));
+  z-index: 2;
+  width: min(600px, 46%);
+  padding-top: calc(var(--header-h, 68px) + 7vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* The chapter text is transparent while the hero shows and sits over it:
+   it must not catch clicks meant for the hero buttons. */
+.tour.is-live .tour-chapters {
+  pointer-events: none;
+  position: absolute;
+  top: calc(var(--header-h, 68px) + 9vh);
+  left: max(24px, calc((100% - 1220px) / 2));
+  z-index: 2;
+  width: min(380px, 28%);
+  height: 50vh;
+  display: block;
+}
+
+.tour.is-live .tour-chapter {
+  position: absolute;
+  inset: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  opacity: 0;
+}
+
+.tour.is-live .tour-chapter h2 {
+  font-size: clamp(2rem, 3.3vw, 3.5rem);
+  line-height: 1;
+}
+
+.tour.is-live .tour-chapter p:last-child {
+  font-size: 1.04rem;
+}
+
+.tour.is-live .tour-device {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 390px;
+  height: 844px;
+  margin: -422px 0 0 -195px;
+  transform-origin: 50% 50%;
+}
+
+.tour.is-live .tour-device .phone {
+  transform: none;
+}
+
+.tour.is-live .tour-glow {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.tour-glow span {
+  position: absolute;
+  border-radius: 999px;
+}
+
+/* Soft brand circles, as on the store visuals: cyan, info blue, taupe. */
+.tour-glow .glow-a {
+  left: 50%;
+  top: 50%;
+  width: min(820px, 90vw);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(33, 141, 188, 0.16), rgba(33, 141, 188, 0) 68%);
+  transform: translate(-50%, -50%);
+}
+
+.tour-glow .glow-b {
+  left: -8vw;
+  bottom: -18vh;
+  width: 46vw;
+  aspect-ratio: 1;
+  background: rgba(115, 106, 91, 0.08);
+}
+
+.tour-glow .glow-c {
+  right: -10vw;
+  top: -14vh;
+  width: 38vw;
+  aspect-ratio: 1;
+  background: rgba(207, 226, 239, 0.55);
+}
+
+.tour.is-live .scroll-cue {
+  left: max(24px, calc((100% - 1220px) / 2));
+  bottom: 28px;
+  z-index: 2;
+  display: inline-flex;
+  opacity: 1;
+  transform: none;
+}
+
+/* Narrow screens: the texts sit on top, the phone below them. */
+@media (max-width: 1099px) {
+  .tour.is-live .tour-hero {
+    right: 24px;
+    width: auto;
+    justify-content: flex-start;
+    padding-top: calc(var(--header-h, 68px) + 4vh);
+  }
+
+  .tour.is-live .tour-chapters {
+    top: calc(var(--header-h, 68px) + 2.5vh);
+    right: 24px;
+    width: auto;
+    max-width: 640px;
+    height: auto;
+  }
+
+  .tour.is-live .tour-chapter h2 {
+    margin-bottom: 8px;
+    font-size: clamp(1.5rem, 4.6vw, 2.4rem);
+  }
+
+  .tour.is-live .tour-chapter p:last-child {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+}
+
+@media (max-width: 720px) {
+  .tour.is-live .tour-hero,
+  .tour.is-live .tour-chapters {
+    left: 18px;
+    right: 18px;
+  }
+
+  .tour.is-live .tour-hero h1 {
+    font-size: clamp(2.6rem, 12vw, 3.4rem);
+  }
+
+  .tour.is-live .tour-hero .hero-copy {
+    font-size: 0.98rem;
+  }
+
+  .tour.is-live .tour-hero .hero-meta,
+  .tour.is-live .scroll-cue {
+    display: none;
+  }
+
+  .tour.is-live .tour-chapter .eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .tour-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .tour-device {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+  }
+
+}
+
+/* The phone (390×844 design px) */
+.phone {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  padding: 11px;
+  border-radius: 62px;
+  background: #1c2325;
+  box-shadow:
+    inset 0 0 0 2px #3b4648,
+    0 50px 100px rgba(44, 54, 57, 0.26),
+    0 18px 40px rgba(23, 63, 98, 0.16);
+}
+
+.ph-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 51px;
+  background: var(--cream);
+}
+
+.ph-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  height: 54px;
+  padding: 4px 30px 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.ph-time {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.ph-island {
+  position: absolute;
+  left: 50%;
+  top: 11px;
+  width: 122px;
+  height: 35px;
+  margin-left: -61px;
+  border-radius: 999px;
+  background: #000000;
+}
+
+.ph-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+}
+
+.ph-icons .ph-battery {
+  width: 25px;
+}
+
+.ph-view {
+  position: absolute;
+  inset: 0;
+}
+
+.ph-head {
+  height: 124px;
+  padding: 62px 22px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: 51px 51px 0 0;
+  color: #ffffff;
+  background: var(--coffee-deep);
+}
+
+.ph-wordmark {
+  width: 86px;
+  height: 32px;
+  margin-top: 4px;
+  color: var(--cream);
+}
+
+.ph-hello {
+  display: grid;
+  gap: 5px;
+  text-align: right;
+}
+
+.ph-hello b {
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.ph-hello small {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.78;
+}
+
+.ph-head-title {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.ph-head-title b {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 750;
+}
+
+.ph-head-title b::before {
+  content: "";
+  width: 18px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--cyan);
+}
+
+.ph-head-title small {
+  padding-left: 28px;
+  font-size: 12px;
+  opacity: 0.78;
+}
+
+.ph-body {
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.ph-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(44, 54, 57, 0.06);
+}
+
+.ph-add {
+  height: 74px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-color: transparent;
+  color: #ffffff;
+  background: linear-gradient(135deg, #1f4d76, var(--coffee));
+  box-shadow: 0 14px 30px rgba(23, 63, 98, 0.28);
+}
+
+.ph-add-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 23px;
+}
+
+.ph-add-text,
+.ph-row-text {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.ph-add-text b {
+  font-size: 17px;
+}
+
+.ph-add-text small {
+  font-size: 12px;
+  opacity: 0.76;
+}
+
+.ph-add-plus {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--coffee);
+  background: #ffffff;
+  font-size: 15px;
+}
+
+.ph-row {
+  height: 60px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ph-row-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--coffee);
+  background: var(--surface-soft);
+  font-size: 17px;
+}
+
+.ph-row-text b {
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.ph-row-text small {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.ph-chevron {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--coffee);
+  font-size: 13px;
+}
+
+.ph-slot {
+  position: relative;
+}
+
+/* Where a card left the screen: a dashed outline the size of the card. */
+.ph-slot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px dashed var(--line-strong);
+  border-radius: 20px;
+  opacity: var(--out, 0);
+}
+
+.ph-mapcard {
+  --out: 0;
+  position: relative;
+  z-index: 5;
+  padding: 14px 16px 12px;
+  box-shadow: 0 calc(8px + 26px * var(--out)) calc(22px + 48px * var(--out)) rgba(23, 63, 98, calc(0.06 + 0.12 * var(--out)));
+}
+
+.ph-daily {
+  height: 150px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 0;
+  color: #ffffff;
+  background:
+    linear-gradient(180deg, rgba(23, 63, 98, 0.10), rgba(44, 54, 57, 0.86)),
+    url("/assets/coffee-latte-art.jpg") center 30% / cover;
+}
+
+.ph-daily-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ph-daily-kicker::before {
+  content: "";
+  width: 14px;
+  height: 2px;
+  background: var(--cyan);
+}
+
+.ph-daily b {
+  font-size: 28px;
+}
+
+.ph-tabbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  height: 88px;
+  padding: 14px 18px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  border-radius: 0 0 51px 51px;
+  background: var(--coffee-deep);
+}
+
+.ph-tab {
+  height: 44px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ph-tab b {
+  display: none;
+  font-size: 14px;
+}
+
+.ph-tab.is-on {
+  color: var(--coffee-deep);
+  background: var(--cream);
+}
+
+.ph-tab.is-on b {
+  display: inline;
+}
+
+/* Flying cards start hidden at their origin in the screen; site.js moves
+   and scales them out to their slot beside the phone. */
+/* Decorative copies: never catch a click meant for the phone below. */
+.tour [data-fly] {
+  pointer-events: none;
+}
+
+.fly-from-add {
+  position: absolute;
+  top: 140px;
+  left: 17px;
+  z-index: 5;
+  width: 334px;
+  opacity: 0;
+  box-shadow: 0 30px 70px rgba(23, 63, 98, 0.18);
+}
+
+/* ── Coff Premium band (the app's pale info blue) ───────────────────── */
+.premium-band {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  border: 1px solid rgba(33, 141, 188, 0.22);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background: var(--info-soft);
+  box-shadow: 0 30px 80px rgba(23, 63, 98, 0.12);
+}
+
+.premium-band::before,
+.premium-band::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.premium-band::before {
+  right: -120px;
+  top: -160px;
+  width: 420px;
+  aspect-ratio: 1;
+  background: rgba(33, 141, 188, 0.18);
+}
+
+.premium-band::after {
+  left: -80px;
+  bottom: -200px;
+  width: 360px;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.premium-band > * {
+  position: relative;
+  z-index: 1;
+}
+
+.premium-band h2 {
+  margin: 18px 0 12px;
+  color: var(--coffee);
+  font-size: clamp(2rem, 3.6vw, 3.4rem);
+  line-height: 1;
+}
+
+.premium-band p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.premium-band ul {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+}
+
+.premium-band li {
+  min-height: 64px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(33, 141, 188, 0.18);
+  border-radius: 18px;
+  color: var(--coffee-deep);
+  background: #ffffff;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.premium-band li .icon {
+  color: var(--cyan);
+  font-size: 18px;
+}
+
+@media (max-width: 860px) {
+  .premium-band {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 460px) {
+  .premium-band ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Feature cards (after the tour): what happens after the coffee log ──
+   Each card spans two rows of the grid (demo, text), so every demo and
+   every heading lines up across a row of cards. */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.feature-card {
+  padding: 24px;
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 22px;
+  align-content: start;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #ffffff;
+  box-shadow: 0 20px 80px rgba(44, 54, 57, 0.08);
+}
+
+/* The transition lives on :hover so it doesn't replace the .reveal fade. */
+.feature-card:hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  transform: translateY(-5px);
+  border-color: rgba(33, 141, 188, 0.35);
+  box-shadow: 0 30px 90px rgba(44, 54, 57, 0.13);
+}
+
+.feature-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.feature-demo {
+  padding: 14px;
+  border: 1px solid rgba(232, 222, 210, 0.82);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fffaf3, #ffffff);
+}
+
+@media (max-width: 980px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cream page: the white panels below the tour keep their white; the
+   launch card takes the same pale info blue as the Coff Premium band. */
+.home-page .coming-card {
+  border-color: rgba(33, 141, 188, 0.22);
+  background: var(--info-soft);
 }
