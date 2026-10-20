@@ -176,6 +176,11 @@ Then check production with a cache-busting request that follows redirects:
 curl -sL "https://coffcircle.com/?nocache=$(date +%s)" | grep -o "home.css?v=[0-9]*"
 ```
 
+Only after the deploy has finished, fetch the new stylesheet URL and grep
+for something the change added. Requesting a new `?v=N` before the deploy
+is live lets Cloudflare cache the old file under the new key; if that
+happens, bump to another number.
+
 ## DNS
 
 - `coffcircle.com` is the Pages project, and `www` redirects to the apex.
