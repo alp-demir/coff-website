@@ -18,22 +18,43 @@ const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 // Mac user agent and the app is iPhone-only, so they stay on the card too.
 // First in this file, so nothing below can stop it.
 (() => {
-  if (!new URLSearchParams(window.location.search).has("indir")) return;
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has("indir")) return;
+  // k=<channel> comes from the social short links (coffcircle.com/ig, /tt, /x,
+  // /li, /r; CHANNEL_LINKS in sync-chrome.mjs). It tags the store link so the
+  // consoles count installs per channel: ct on the App Store (counted once
+  // the provider token is in the link), utm_campaign in the Play referrer.
+  // Only the known channels (CHANNELS in sync-chrome.mjs, which --check
+  // keeps equal to this list), so a typo or a made-up k never becomes a
+  // campaign in the store reports.
+  const CHANNELS = ["ig", "tt", "x", "li", "r"];
+  const channel = CHANNELS.includes(params.get("k")) ? params.get("k") : null;
+  const tag = (href) => {
+    const target = new URL(href);
+    if (target.hostname === "apps.apple.com") {
+      if (channel) target.searchParams.set("ct", channel);
+    } else {
+      // Play passes the referrer to the install, so the console can tell
+      // shares and channels apart from print (utm_source=qr).
+      target.searchParams.set("referrer", channel
+        ? `utm_source=${channel}&utm_medium=social&utm_campaign=${channel}`
+        : "utm_source=share&utm_medium=app");
+    }
+    return target;
+  };
+  const links = document.querySelectorAll('[data-sync="stores"] a[href*="apps.apple.com"], [data-sync="stores"] a[href*="play.google.com"]');
+  // A desktop visitor from a channel stays on the card: tag its buttons.
+  if (channel) links.forEach((link) => { link.href = tag(link.href).toString(); });
   const ua = navigator.userAgent;
   const store = /iPhone|iPod/.test(ua) ? "apps.apple.com" : /Android/.test(ua) ? "play.google.com" : null;
   if (!store) return;
-  const link = document.querySelector(`[data-sync="stores"] a[href*="${store}"]`);
+  const link = [...links].find((a) => a.href.includes(store));
   if (!link) return;
-  const target = new URL(link.href);
+  const target = tag(link.href);
   if (store === "apps.apple.com") {
     // The Turkish card links the /tr/ storefront; a shared link should open
     // the friend's own (the print QR links leave the country out as well).
     target.pathname = target.pathname.replace(/^\/[a-z]{2}\//, "/");
-  } else {
-    // Play passes the referrer to the install, so the console can tell
-    // shares apart from print (utm_source=qr). The App Store needs a provider
-    // token we do not have yet.
-    target.searchParams.set("referrer", "utm_source=share&utm_medium=app");
   }
   window.location.replace(target.toString());
 })();
@@ -269,8 +290,10 @@ if (scrollScenes.length > 0) {
     hero.style.transform = reduced ? "" : `translate3d(0, ${(-70 * ease(heroOut)).toFixed(1)}px, 0)`;
     // Hidden once gone, so its links can't be hit through the chapter text.
     hero.style.visibility = heroOut > 0.99 ? "hidden" : "";
-    // Half faded, its buttons stop taking clicks and focus.
-    hero.inert = heroOut > 0.5;
+    // Half faded, its buttons stop taking clicks and focus. Set only on a
+    // change: every write restyles the hero, even with the same value.
+    const heroInert = heroOut > 0.5;
+    if (hero.inert !== heroInert) hero.inert = heroInert;
     if (cue) cue.style.opacity = String(1 - span(u, 0, 0.25));
 
     // Phone: from the hero spot the camera dives into the screen (zoom), then

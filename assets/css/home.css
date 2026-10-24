@@ -589,7 +589,6 @@ a.store-button:active {
   border-radius: 22px;
   background: var(--white);
   box-shadow: 0 18px 50px rgba(44, 54, 57, 0.10);
-  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease, box-shadow 0.45s ease;
 }
 
 .demo-head {
@@ -1175,6 +1174,24 @@ a.store-button:active {
   transform: none;
 }
 
+/* home.js moves, scales and fades these on every scroll frame. Their own
+   layers let the compositor do it: without the hint the browser drew the
+   whole phone again at each new zoom, which small phones could not keep
+   up with. */
+.tour.is-live .tour-device,
+.tour.is-live [data-fly] {
+  will-change: transform;
+}
+
+.tour.is-live .fly-from-add {
+  will-change: transform, opacity;
+}
+
+.tour.is-live .ph-slot::before,
+.tour.is-live .ph-mapcard::after {
+  will-change: opacity;
+}
+
 .tour.is-live .scroll-cue {
   left: max(24px, calc((100% - 1220px) / 2));
   bottom: 28px;
@@ -1473,7 +1490,22 @@ a.store-button:active {
   position: relative;
   z-index: 5;
   padding: 14px 16px 12px;
-  box-shadow: 0 calc(8px + 26px * var(--out)) calc(22px + 48px * var(--out)) rgba(23, 63, 98, calc(0.06 + 0.12 * var(--out)));
+  box-shadow: 0 8px 22px rgba(23, 63, 98, 0.06);
+}
+
+/* The deeper shadow of a card lifted out of the screen fades in with
+   opacity. A box-shadow that grew every frame repainted the card and
+   resized its layer on every scroll frame. */
+.ph-mapcard::after {
+  content: "";
+  position: absolute;
+  /* The card's border box, where its own box-shadow starts. */
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  box-shadow: 0 34px 70px rgba(23, 63, 98, 0.12);
+  opacity: var(--out);
+  pointer-events: none;
 }
 
 .ph-daily {
