@@ -272,29 +272,18 @@ if (scrollScenes.length > 0) {
     return ease(span(t, start, start + 0.28)) * (1 - ease(span(t, 0.8, 0.97)));
   };
 
-  const render = () => {
-    frame = 0;
-    if (!tour.classList.contains("is-live")) return;
-    if (needsMeasure) measure();
-    const rect = tour.getBoundingClientRect();
-    // Nothing to draw while the section is off screen.
-    if (rect.bottom < 0 || rect.top > layout.H) return;
-    const u = clamp(-rect.top / layout.H, 0, LENGTH);
-    if (u === lastU) return;
-    lastU = u;
-    const reduced = motionPreference.matches;
-
+  // Everything one scroll position shows, as plain values with no DOM
+  // writes: the scroll-driven animations are sampled from it, and the
+  // scripted fallback paints it frame by frame.
+  const frameAt = (u, reduced) => {
     // Hero text and the scroll cue leave first.
     const heroOut = span(u, 0.08, 0.55);
-    hero.style.opacity = String(1 - heroOut);
-    hero.style.transform = reduced ? "" : `translate3d(0, ${(-70 * ease(heroOut)).toFixed(1)}px, 0)`;
-    // Hidden once gone, so its links can't be hit through the chapter text.
-    hero.style.visibility = heroOut > 0.99 ? "hidden" : "";
-    // Half faded, its buttons stop taking clicks and focus. Set only on a
-    // change: every write restyles the hero, even with the same value.
-    const heroInert = heroOut > 0.5;
-    if (hero.inert !== heroInert) hero.inert = heroInert;
-    if (cue) cue.style.opacity = String(1 - span(u, 0, 0.25));
+    const f = {
+      heroOut,
+      heroOpacity: 1 - heroOut,
+      heroTransform: reduced ? "" : `translate3d(0, ${(-70 * ease(heroOut)).toFixed(1)}px, 0)`,
+      cueOpacity: 1 - span(u, 0, 0.25),
+    };
 
     // Phone: from the hero spot the camera dives into the screen (zoom), then
     // pulls back to the chapter spot while the first cards fly out of it.
@@ -317,7 +306,7 @@ if (scrollScenes.length > 0) {
     }
     const dx = px - layout.W / 2;
     const dy = py - layout.H / 2;
-    device.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0) scale(${S.toFixed(4)})`;
+    f.deviceTransform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0) scale(${S.toFixed(4)})`;
 
     // Chapter text only fades: it stays in the accessibility tree and in
     // find-in-page even while transparent. It waits until the camera has
@@ -325,10 +314,10 @@ if (scrollScenes.length > 0) {
     const t = (u - INTRO) / CHAPTER;
     const inT = span(t, 0.1, 0.26);
     const outT = span(u, LENGTH - OUTRO, LENGTH - 0.05);
-    chapter.style.opacity = (inT * (1 - outT)).toFixed(3);
-    chapter.style.transform = reduced ? "" : `translate3d(0, ${((1 - inT) * 26 - outT * 26).toFixed(1)}px, 0)`;
+    f.chapterOpacity = inT * (1 - outT);
+    f.chapterTransform = reduced ? "" : `translate3d(0, ${((1 - inT) * 26 - outT * 26).toFixed(1)}px, 0)`;
 
-    flies.forEach((fly) => {
+    f.flies = flies.map((fly) => {
       const e = flyAmount(fly, t);
       const slot = layout.slots[fly.slot];
       // Slot centre in phone design px: undo the phone's translate and scale.
@@ -338,12 +327,128 @@ if (scrollScenes.length > 0) {
       // Reduced motion: no flight, the card fades in at its slot.
       const move = reduced ? (e > 0.02 ? 1 : 0) : e;
       const scale = lerp(fly.inFlow ? 1 : 0.5, k, move);
-      fly.el.style.transform = `translate3d(${(tx * move).toFixed(1)}px, ${(ty * move).toFixed(1)}px, 0) scale(${scale.toFixed(4)})`;
+      return {
+        out: e,
+        opacity: clamp(e * 2.4),
+        transform: `translate3d(${(tx * move).toFixed(1)}px, ${(ty * move).toFixed(1)}px, 0) scale(${scale.toFixed(4)})`,
+      };
+    });
+    return f;
+  };
+
+  // Hidden once gone, so its links can't be hit through the chapter text.
+  // Half faded, its buttons stop taking clicks and focus. Set only on a
+  // change: every write restyles the hero, even with the same value.
+  const settleHero = (heroOut) => {
+    const gone = heroOut > 0.99 ? "hidden" : "";
+    if (hero.style.visibility !== gone) hero.style.visibility = gone;
+    const heroInert = heroOut > 0.5;
+    if (hero.inert !== heroInert) hero.inert = heroInert;
+  };
+
+  // Scroll-driven animations: the browser runs them with the scroll itself,
+  // so they cannot fall a frame behind the finger the way styles written
+  // from a scroll handler do (a phone then moved in visible steps). Sampled
+  // from frameAt; the range is in page pixels, so it needs no scroll maths.
+  const SAMPLES = 200;
+  const canTimeline =
+    typeof ScrollTimeline === "function" && "rangeStart" in Animation.prototype && typeof Element.prototype.animate === "function";
+  let timeline = null;
+
+  const clearInline = () => {
+    styled.forEach((el) => {
+      el.style.removeProperty("opacity");
+      el.style.removeProperty("transform");
+      el.style.removeProperty("--out");
+    });
+  };
+
+  const dropTimeline = () => {
+    if (!timeline) return;
+    timeline.animations.forEach((animation) => animation.cancel());
+    timeline = null;
+    lastU = -1;
+  };
+
+  const buildTimeline = (top, key) => {
+    dropTimeline();
+    clearInline();
+    const frames = Array.from({ length: SAMPLES + 1 }, (_, i) => frameAt((LENGTH * i) / SAMPLES, false));
+    const options = {
+      timeline: new ScrollTimeline({ source: document.scrollingElement, axis: "block" }),
+      fill: "both",
+      easing: "linear",
+      rangeStart: `${top.toFixed(1)}px`,
+      rangeEnd: `${(top + LENGTH * layout.H).toFixed(1)}px`,
+    };
+    const animations = [];
+    const run = (el, pick, pseudoElement) => {
+      const keyframes = frames.map((f, i) => ({ offset: i / SAMPLES, ...pick(f) }));
+      animations.push(el.animate(keyframes, pseudoElement ? { ...options, pseudoElement } : options));
+    };
+    run(hero, (f) => ({ opacity: f.heroOpacity, transform: f.heroTransform }));
+    if (cue) run(cue, (f) => ({ opacity: f.cueOpacity }));
+    run(device, (f) => ({ transform: f.deviceTransform }));
+    run(chapter, (f) => ({ opacity: f.chapterOpacity, transform: f.chapterTransform }));
+    flies.forEach((fly, n) => {
       if (fly.inFlow) {
-        fly.el.style.setProperty("--out", e.toFixed(3));
-        fly.el.parentElement.style.setProperty("--out", e.toFixed(3));
+        run(fly.el, (f) => ({ transform: f.flies[n].transform }));
+        // The dashed outline and the deep shadow fade with --out in the
+        // scripted version; here their own opacity is animated.
+        run(fly.el, (f) => ({ opacity: f.flies[n].out }), "::after");
+        run(fly.el.parentElement, (f) => ({ opacity: f.flies[n].out }), "::before");
       } else {
-        fly.el.style.opacity = clamp(e * 2.4).toFixed(3);
+        run(fly.el, (f) => ({ transform: f.flies[n].transform, opacity: f.flies[n].opacity }));
+      }
+    });
+    timeline = { top, key, animations };
+  };
+
+  const render = () => {
+    frame = 0;
+    if (!tour.classList.contains("is-live")) return;
+    const remeasured = needsMeasure;
+    if (needsMeasure) measure();
+    const reduced = motionPreference.matches;
+
+    if (canTimeline && !reduced) {
+      // The browser moves everything; this only settles the hero's links.
+      // The animations are baked from the layout and the section's place in
+      // the page, so they are built again when either changed (measuring
+      // runs on resizes and size changes, not on every scroll).
+      if (!timeline || remeasured) {
+        const top = window.scrollY + tour.getBoundingClientRect().top;
+        const key = JSON.stringify([Math.round(top * 2), layout, flies.map((fly) => fly.home)]);
+        if (!timeline || timeline.key !== key) buildTimeline(top, key);
+      }
+      settleHero(span(clamp((window.scrollY - timeline.top) / layout.H, 0, LENGTH), 0.08, 0.55));
+      return;
+    }
+    dropTimeline();
+
+    const rect = tour.getBoundingClientRect();
+    // Nothing to draw while the section is off screen.
+    if (rect.bottom < 0 || rect.top > layout.H) return;
+    const u = clamp(-rect.top / layout.H, 0, LENGTH);
+    if (u === lastU) return;
+    lastU = u;
+    const f = frameAt(u, reduced);
+
+    hero.style.opacity = String(f.heroOpacity);
+    hero.style.transform = f.heroTransform;
+    settleHero(f.heroOut);
+    if (cue) cue.style.opacity = String(f.cueOpacity);
+    device.style.transform = f.deviceTransform;
+    chapter.style.opacity = f.chapterOpacity.toFixed(3);
+    chapter.style.transform = f.chapterTransform;
+    flies.forEach((fly, n) => {
+      const v = f.flies[n];
+      fly.el.style.transform = v.transform;
+      if (fly.inFlow) {
+        fly.el.style.setProperty("--out", v.out.toFixed(3));
+        fly.el.parentElement.style.setProperty("--out", v.out.toFixed(3));
+      } else {
+        fly.el.style.opacity = v.opacity.toFixed(3);
       }
     });
   };
@@ -382,12 +487,9 @@ if (scrollScenes.length > 0) {
       tour.classList.remove("is-live");
       tour.style.removeProperty("--tour-length");
       hero.inert = false;
-      styled.forEach((el) => {
-        el.style.removeProperty("opacity");
-        el.style.removeProperty("transform");
-        el.style.removeProperty("visibility");
-        el.style.removeProperty("--out");
-      });
+      dropTimeline();
+      clearInline();
+      styled.forEach((el) => el.style.removeProperty("visibility"));
     }
   };
 
@@ -415,7 +517,7 @@ if (scrollScenes.length > 0) {
       needsMeasure = true;
       request();
     });
-    [header, hero, chapter].filter(Boolean).forEach((el) => observer.observe(el));
+    [header, hero, chapter, document.body].filter(Boolean).forEach((el) => observer.observe(el));
   }
   sync();
   render();
