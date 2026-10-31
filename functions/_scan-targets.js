@@ -9,6 +9,10 @@ export const SCAN_TARGETS = {
   "q/brosur-android": "/#yakinda",
   "q/stand-ios": "/#yakinda",
   "q/stand-android": "/#yakinda",
+  "q/kayip": "/?indir&k=kayip#yakinda",
+  "q/recete": "/?indir&k=recete#yakinda",
+  "q/bilet": "/?indir&k=bilet#yakinda",
+  "q/kafe": "/?indir&k=kafe#yakinda",
 };
 export const SECURITY_HEADERS = {
   "X-Content-Type-Options": "nosniff",

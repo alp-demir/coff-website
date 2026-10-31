@@ -28,7 +28,13 @@ const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
   // keeps equal to this list), so a typo or a made-up k never becomes a
   // campaign in the store reports.
   const CHANNELS = ["ig", "tt", "x", "li", "r"];
-  const channel = CHANNELS.includes(params.get("k")) ? params.get("k") : null;
+  // k=<code> also comes from the single-QR printed pieces (q/kayip, q/recete,
+  // q/bilet, q/kafe; PRINT_CARDS in sync-chrome.mjs, kept equal by --check):
+  // the same store tags, but the Play referrer says print, not social.
+  const PRINT_CARDS = ["kayip", "recete", "bilet", "kafe"];
+  const k = params.get("k");
+  const print = PRINT_CARDS.includes(k);
+  const channel = print || CHANNELS.includes(k) ? k : null;
   const tag = (href) => {
     const target = new URL(href);
     if (target.hostname === "apps.apple.com") {
@@ -36,8 +42,9 @@ const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
     } else {
       // Play passes the referrer to the install, so the console can tell
       // shares and channels apart from print (utm_source=qr).
+      const source = print ? "utm_source=qr&utm_medium=print" : `utm_source=${channel}&utm_medium=social`;
       target.searchParams.set("referrer", channel
-        ? `utm_source=${channel}&utm_medium=social&utm_campaign=${channel}`
+        ? `${source}&utm_campaign=${channel}`
         : "utm_source=share&utm_medium=app");
     }
     return target;

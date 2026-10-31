@@ -43,6 +43,14 @@
 /q/stand-ios/ /#yakinda 302
 /q/stand-android /#yakinda 302
 /q/stand-android/ /#yakinda 302
+/q/kayip /?indir&k=kayip#yakinda 302
+/q/kayip/ /?indir&k=kayip#yakinda 302
+/q/recete /?indir&k=recete#yakinda 302
+/q/recete/ /?indir&k=recete#yakinda 302
+/q/bilet /?indir&k=bilet#yakinda 302
+/q/bilet/ /?indir&k=bilet#yakinda 302
+/q/kafe /?indir&k=kafe#yakinda 302
+/q/kafe/ /?indir&k=kafe#yakinda 302
 # Old image paths (before /assets/img/).
 /assets/apple-touch-icon-v4.png /assets/img/apple-touch-icon-v4.png 301
 /assets/brand-mark.png /assets/img/brand-mark.png 301
