@@ -117,11 +117,14 @@ card text (TR and EN):
 | --- | --- | --- |
 | `soon` | store pages not public | white "Yakında" tiles, not links |
 | `preorder` | App Store pre-order and Play pre-registration are live | links: "Ön sipariş" / "Ön kayıt" |
-| `live` | the app is out | links: "İndir" |
+| `live` | the app is out | official App Store / Google Play badges (`assets/img/badges/`) |
 
 Change it, run `node tools/website/sync-chrome.mjs`, then check by hand
-what the script does not own: the FAQ answer "Ne zaman yayında olacak?"
-(TR + EN, also in the page's FAQ JSON-LD).
+what the script does not own (TR + EN): the launch FAQ ("Ne zaman yayında
+olacak?" before launch, "Nereden indirebilirim?" after; also in the FAQ
+JSON-LD), the investors page stage block and roadmap item 01, and the
+MobileApplication JSON-LD `offers`/`sameAs` (store links, added at
+launch).
 
 ### QR short links
 

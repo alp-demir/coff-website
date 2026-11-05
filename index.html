@@ -26,7 +26,7 @@
   <link rel="shortcut icon" href="/favicon-bw-v1.ico?v=1">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon-v4.png">
   <link rel="stylesheet" href="/assets/css/base.css?v=3">
-  <link rel="stylesheet" href="/assets/css/home.css?v=4">
+  <link rel="stylesheet" href="/assets/css/home.css?v=8">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,6 +49,15 @@
         "publisher": {
           "@id": "https://coffcircle.com/#org"
         },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "sameAs": [
+          "https://apps.apple.com/app/id6774281181",
+          "https://play.google.com/store/apps/details?id=com.coffcircle.CoffAndroid"
+        ],
         "inLanguage": "tr"
       },
       {
@@ -88,10 +97,10 @@
           },
           {
             "@type": "Question",
-            "name": "Ne zaman yayında olacak?",
+            "name": "Nereden indirebilirim?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Coff Circle, Türkiye’de App Store ve Google Play’de birlikte yayına girecek. Tarih bu sayfada duyurulacak."
+              "text": "Coff Circle, Türkiye’de App Store ve Google Play’de. İndirmesi ücretsiz; Coff Premium isteğe bağlı."
             }
           },
           {
@@ -137,7 +146,7 @@
         <a class="nav-lang" href="/en/" hreflang="en" lang="en">English</a>
       </div>
       <div class="nav-side">
-        <a class="nav-cta" href="#yakinda">Yakında</a>
+        <a class="nav-cta" href="#yakinda">İndir</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menüyü aç"><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
       </div>
     </nav>
@@ -175,7 +184,7 @@
           <h1 id="hero-title">Kahveyle başlayan sosyal çevre.</h1>
           <p class="hero-copy">Kahveni kaydet, çevrendeki kahve ritmini gör, aynı zevki paylaşanlarla tanış. Evde, ofiste ya da kafede içtiğin kahve, yakınındaki insanlarla tanışmanın doğal bir başlangıcı olur.</p>
           <div class="hero-actions" aria-label="Öne çıkan bağlantılar">
-            <a class="button" data-sync="hero-cta" href="#yakinda">App Store ve Google Play’de yakında</a>
+            <a class="button" data-sync="hero-cta" href="#yakinda">App Store ve Google Play’den indir</a>
             <a class="button secondary" href="#bolum-bugun" data-goto="0">Nasıl çalışır?</a>
           </div>
           <div class="hero-meta" aria-label="Coff Circle özet özellikleri">
@@ -420,8 +429,8 @@
           <p>Coff Circle’ı kullanmak için en az 18 yaşında olmalısın. Hesabını açarken e-posta adresini doğrularsın.</p>
         </details>
         <details class="faq-item">
-          <summary>Ne zaman yayında olacak?<span class="faq-icon" aria-hidden="true"></span></summary>
-          <p>Coff Circle, Türkiye’de App Store ve Google Play’de birlikte yayına girecek. Tarih bu sayfada duyurulacak.</p>
+          <summary>Nereden indirebilirim?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Coff Circle, Türkiye’de App Store ve Google Play’de. İndirmesi ücretsiz; Coff Premium isteğe bağlı.</p>
         </details>
         <details class="faq-item">
           <summary>İngilizce kullanılabilir mi?<span class="faq-icon" aria-hidden="true"></span></summary>
@@ -441,18 +450,8 @@
     <section class="section" id="yakinda" aria-labelledby="launch-title">
       <div class="coming-card reveal">
         <p class="eyebrow">iPhone ve Android</p>
-        <div class="launch-copy" data-sync="launch-copy"><h2 id="launch-title">Yakında App Store ve Google Play’de.</h2><p>Lansman tarihini bu sayfada duyuracağız. Sorun ya da önerin varsa bize yaz.</p></div>
-        <div class="roadmap-pills" aria-label="Coff Circle gelecek planları">
-          <span>App Store ve Google Play lansmanı</span>
-          <span>Kahve rozetleri</span>
-          <span>Şehir bazlı keşif</span>
-          <span>Global kullanım</span>
-        </div>
-        <div class="store-buttons" data-sync="stores" role="group" aria-label="Mağazalar"><span class="store-button is-soon"><small>Yakında</small>App Store</span><span class="store-button is-soon"><small>Yakında</small>Google Play</span></div>
-        <div class="hero-actions coming-actions">
-          <a class="button" href="mailto:destek@coffcircle.com">destek@coffcircle.com</a>
-          <a class="button secondary" href="/support/">Destek sayfası</a>
-        </div>
+        <div class="launch-copy" data-sync="launch-copy"><h2 id="launch-title">App Store ve Google Play’de.</h2><p>Coff Circle’ı indir, bugünkü kahveni ekle.</p></div>
+        <div class="store-buttons" data-sync="stores" role="group" aria-label="Mağazalar"><a class="store-badge" href="https://apps.apple.com/tr/app/id6774281181" rel="noopener"><img src="/assets/img/badges/app-store-tr.svg" alt="App Store’dan İndirin" width="151" height="40" decoding="async"></a><a class="store-badge" href="https://play.google.com/store/apps/details?id=com.coffcircle.CoffAndroid&amp;hl=tr" rel="noopener"><img src="/assets/img/badges/google-play-tr.png" alt="Google Play’den İndirin" width="646" height="250" decoding="async"></a></div>
       </div>
     </section>
   </main>
