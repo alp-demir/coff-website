@@ -150,6 +150,25 @@ card. While `STORE_STATE` is `soon` the card has no links, so everyone sees
 the card. Nothing changes at launch, and the path must never be renamed:
 shipped app builds carry it.
 
+## Maintenance screen
+
+`/status.json` is read by the iOS and Android apps. It is served from here, not
+from the backend, because a backend that is down cannot announce it.
+
+```json
+{ "maintenance": false, "message": { "tr": "", "en": "" } }
+```
+
+- **Unplanned outage:** nothing to do. The apps show the maintenance screen on
+  their own when the backend stops answering, and lift it when it is back.
+- **Planned maintenance:** set `"maintenance": true` and, optionally, a message
+  in both languages ("Bu gece 03:00'e kadar planlı bakım yapıyoruz."). Deploy.
+  Every open app shows the screen on its next check (launch, return to the
+  foreground, or a failed request). Set it back to `false` when done; the
+  screen also needs the backend healthy before it lifts.
+- An empty message uses the app's built-in copy. The path must never be
+  renamed: shipped app builds carry it.
+
 ## Deploy
 
 The source of truth is `coff-website/` in this monorepo. The

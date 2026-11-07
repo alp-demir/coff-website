@@ -22,6 +22,12 @@
   Content-Type: application/json
   Cache-Control: public, max-age=3600
 
+# The apps' maintenance switch (see README, "Maintenance screen"). Never
+# cached: flipping it must reach phones on their next check, not in an hour.
+/status.json
+  Content-Type: application/json
+  Cache-Control: no-store
+
 # Android's App Links verifier wants the same shape: application/json, no redirects.
 /.well-known/assetlinks.json
   Content-Type: application/json
