@@ -1,5 +1,6 @@
-// The printed QR codes: coffcircle.com/q/<material>-<platform>, /kart and the
-// older /ios and /android. Sends the visitor on to the same target _redirects
+// The printed QR codes (coffcircle.com/q/<material>-<platform>, /kart and the
+// older /ios and /android) and the short links (/indir, the social links /ig
+// /tt /x /li /r and their /en/ twins). Sends the visitor on to the same target _redirects
 // would (generated into _scan-targets.js by tools/website/sync-chrome.mjs),
 // then reports the scan to the backend in the background, so a slow or down
 // API never delays or breaks a scan; a failed report is only a scan not
@@ -23,7 +24,12 @@ const SCAN_API = "https://api.coffcircle.com/api/qr/scan";
 // redirect but are not counted. Any "...bot" token except CUBOT, a phone
 // brand; app names alone (Pinterest) are left out, because their in-app
 // browsers are people tapping. An empty user agent is a script too.
-const NOT_A_PERSON = /(?<!cu)bot\b|crawl|spider|slurp|facebookexternalhit|whatsapp|embedly|skypeuripreview|curl\/|wget\/|python|go-http|headless|uptimerobot|^$/i;
+// Fediverse servers (Mastodon, Pleroma, Akkoma, Misskey) fetch a boosted
+// post's link once per server, and Iframely (Notion, Medium) unfurls links,
+// all without a bot token. A server names itself with its instance URL
+// ("http.rb/5 (Mastodon/4.3; +https://mastodon.social/)"), which a person's
+// in-app WebView that merely carries the client's name does not.
+const NOT_A_PERSON = /(?<!cu)bot\b|crawl|spider|slurp|facebookexternalhit|whatsapp|embedly|iframely|skypeuripreview|(?:mastodon|pleroma|akkoma|misskey)[^)]{0,40}https?:\/\/|http\.rb|curl\/|wget\/|python|go-http|headless|uptimerobot|^$/i;
 // Only the live site reports. Branch previews (*.pages.dev) and local runs
 // redirect the same way but would otherwise land in the production counts.
 const LIVE_HOSTS = ["coffcircle.com", "www.coffcircle.com"];
@@ -41,11 +47,13 @@ export async function onRequest(context) {
 
   // Browsers prefetch or prerender links they expect a tap on (Sec-Purpose,
   // older Purpose); nobody scanned anything yet.
-  const purpose = `${request.headers.get("sec-purpose") || ""} ${request.headers.get("purpose") || ""}`;
+  // Meta's in-app browsers (Instagram, Facebook) mark a link prefetch with
+  // X-Purpose: preview.
+  const purpose = ["sec-purpose", "purpose", "x-purpose"].map((h) => request.headers.get(h) || "").join(" ");
   const counted = request.method === "GET"
     && LIVE_HOSTS.includes(url.hostname)
     && !NOT_A_PERSON.test(request.headers.get("user-agent") || "")
-    && !/prefetch|prerender/i.test(purpose);
+    && !/prefetch|prerender|preview/i.test(purpose);
   if (counted) {
     const code = path.replace(/^q\//, "");
     // Only the code goes out: nothing about the visitor, so the count is
