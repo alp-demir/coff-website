@@ -99,9 +99,13 @@ run it.
   are used only by the og image renderer.
 - **Images:** the home hero is the real app on the store-screenshot
   backend (see `docs/` and the hero recipe), pasted into the phone frame.
-  Link previews (`og-image-v2-{tr,en}.png`) are rendered from
+  Link previews (`og-image-v3-{tr,en}.png`) are rendered from
   `tools/website/og/og.html` with `tools/website/og/render.mjs`. A changed
   image gets a new file name, since `/assets/img/*` is cached as immutable.
+  One deliberate exception: `og-image-v2-{tr,en}.png` hold the same bytes as
+  v3. The old v2 said "Yakında / Coming soon" after launch, and scrapers that
+  kept the v2 URL should get the launch image on their next fetch. Keep the
+  v2 files; `/assets/og-image-v2-*.png` still 301s to them.
 - **No inline script or style.** The CSP in `_headers` blocks them. Put page code
   in `/assets/css/` and `/assets/js/`. Fonts and scripts load from `'self'` only. Self-host any
   font.
