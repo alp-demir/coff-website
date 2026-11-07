@@ -17,9 +17,9 @@ const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 // desktop the card with both buttons is the right page anyway. iPads report a
 // Mac user agent and the app is iPhone-only, so they stay on the card too.
 // First in this file, so nothing below can stop it.
-(() => {
+const handedOff = (() => {
   const params = new URLSearchParams(window.location.search);
-  if (!params.has("indir")) return;
+  if (!params.has("indir")) return false;
   // k=<channel> comes from the social short links (coffcircle.com/ig, /tt, /x,
   // /li, /r; CHANNEL_LINKS in sync-chrome.mjs). It tags the store link so the
   // consoles count installs per channel: ct on the App Store (counted once
@@ -54,9 +54,9 @@ const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
   if (channel) links.forEach((link) => { link.href = tag(link.href).toString(); });
   const ua = navigator.userAgent;
   const store = /iPhone|iPod/.test(ua) ? "apps.apple.com" : /Android/.test(ua) ? "play.google.com" : null;
-  if (!store) return;
+  if (!store) return false;
   const link = [...links].find((a) => a.href.includes(store));
-  if (!link) return;
+  if (!link) return false;
   const target = tag(link.href);
   if (store === "apps.apple.com") {
     // The Turkish card links the /tr/ storefront; a shared link should open
@@ -64,7 +64,27 @@ const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
     target.pathname = target.pathname.replace(/^\/[a-z]{2}\//, "/");
   }
   window.location.replace(target.toString());
+  return true;
 })();
+
+// ── Old launch card hashes ────────────────────────────────────
+// The launch card was #yakinda / #coming-soon until 2026-11-07 (now #indir /
+// #download, LAUNCH_ID in sync-chrome.mjs, which --check keeps equal to the
+// map below). The server-side links (/indir, /ig, /q/*, /kart) already send
+// the new hash; only cached pages and URLs people copied from the address
+// bar still carry the old one. When the hand-off above is already on its
+// way to the store, only the hash is fixed (a tab left behind shows the new
+// one) and nothing scrolls. replaceState + an instant scroll, because a hash
+// navigation would follow the page's smooth scroll-behavior.
+{
+  const LEGACY_LAUNCH_HASH = { "#yakinda": "#indir", "#coming-soon": "#download" };
+  const moved = LEGACY_LAUNCH_HASH[window.location.hash];
+  const card = moved && document.getElementById(moved.slice(1));
+  if (card) {
+    history.replaceState(history.state, "", `${window.location.pathname}${window.location.search}${moved}`);
+    if (!handedOff) card.scrollIntoView({ block: "start", behavior: "instant" });
+  }
+}
 
 // ── Premium scroll continuity ─────────────────────────────────
 const scrollScenes = Array.from(document.querySelectorAll("[data-scroll-scene]")).map((element) => ({
@@ -530,7 +550,7 @@ if (scrollScenes.length > 0) {
   render();
 
   // Going live makes this section several screens tall. A link that already
-  // jumped to a later section (/#yakinda, /#sss) now points too high: jump
+  // jumped to a later section (/#indir, /#sss) now points too high: jump
   // again to the same target.
   const anchored = window.location.hash && document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
   if (anchored && !tour.contains(anchored) && tour.classList.contains("is-live")) {

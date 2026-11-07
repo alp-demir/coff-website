@@ -138,9 +138,9 @@ banners, flyers) and `/kart` (square card). The same script writes
 
 | Path | `soon` | `preorder` / `live` |
 | --- | --- | --- |
-| `/ios` | launch card `/#yakinda` | App Store listing |
-| `/android` | launch card `/#yakinda` | Google Play listing, referrer `utm_source=qr&utm_medium=print` |
-| `/kart` | launch card `/#yakinda` | launch card `/#yakinda` (both store buttons) |
+| `/ios` | launch card `/#indir` | App Store listing |
+| `/android` | launch card `/#indir` | Google Play listing, referrer `utm_source=qr&utm_medium=print` |
+| `/kart` | launch card `/#indir` | launch card `/#indir` (both store buttons) |
 
 Never remove or rename these paths: the codes are already printed.
 
@@ -148,7 +148,7 @@ Never remove or rename these paths: the codes are already printed.
 
 Both apps share `coffcircle.com/indir` (English: `/en/indir`) from "Coff'u
 arkadaşlarına öner" and the Keşfet invite card. `_redirects` always sends it
-to the launch card with `?indir` (`/?indir#yakinda`, `/en/?indir#coming-soon`);
+to the launch card with `?indir` (`/?indir#indir`, `/en/?indir#download`; the old `#yakinda` / `#coming-soon` still work through home.js);
 `site.js` then forwards an iPhone or Android phone to the store link in that
 card. While `STORE_STATE` is `soon` the card has no links, so everyone sees
 the card. Nothing changes at launch, and the path must never be renamed:

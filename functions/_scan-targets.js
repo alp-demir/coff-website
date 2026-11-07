@@ -2,17 +2,17 @@
 export const SCAN_TARGETS = {
   "ios": "https://apps.apple.com/app/id6774281181",
   "android": "https://play.google.com/store/apps/details?id=com.coffcircle.CoffAndroid&referrer=utm_source%3Dqr%26utm_medium%3Dprint",
-  "kart": "/#yakinda",
+  "kart": "/#indir",
   "q/rollup-ios": "https://apps.apple.com/app/id6774281181?ct=rollup",
   "q/rollup-android": "https://play.google.com/store/apps/details?id=com.coffcircle.CoffAndroid&referrer=utm_source%3Dqr%26utm_medium%3Dprint%26utm_campaign%3Drollup",
   "q/brosur-ios": "https://apps.apple.com/app/id6774281181?ct=brosur",
   "q/brosur-android": "https://play.google.com/store/apps/details?id=com.coffcircle.CoffAndroid&referrer=utm_source%3Dqr%26utm_medium%3Dprint%26utm_campaign%3Dbrosur",
   "q/stand-ios": "https://apps.apple.com/app/id6774281181?ct=stand",
   "q/stand-android": "https://play.google.com/store/apps/details?id=com.coffcircle.CoffAndroid&referrer=utm_source%3Dqr%26utm_medium%3Dprint%26utm_campaign%3Dstand",
-  "q/kayip": "/?indir&k=kayip#yakinda",
-  "q/recete": "/?indir&k=recete#yakinda",
-  "q/bilet": "/?indir&k=bilet#yakinda",
-  "q/kafe": "/?indir&k=kafe#yakinda",
+  "q/kayip": "/?indir&k=kayip#indir",
+  "q/recete": "/?indir&k=recete#indir",
+  "q/bilet": "/?indir&k=bilet#indir",
+  "q/kafe": "/?indir&k=kafe#indir",
 };
 export const SECURITY_HEADERS = {
   "X-Content-Type-Options": "nosniff",
