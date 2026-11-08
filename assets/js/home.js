@@ -28,6 +28,9 @@ const handedOff = (() => {
   // keeps equal to this list), so a typo or a made-up k never becomes a
   // campaign in the store reports.
   const CHANNELS = ["ig", "tt", "x", "li", "r"];
+  // App Store Connect provider token (public, it sits in every campaign link);
+  // without it ct is not counted. --check keeps it equal to sync-chrome.mjs.
+  const APP_STORE_PT = "128945825";
   // k=<code> also comes from the single-QR printed pieces (q/kayip, q/recete,
   // q/bilet, q/kafe; PRINT_CARDS in sync-chrome.mjs, kept equal by --check):
   // the same store tags, but the Play referrer says print, not social.
@@ -38,7 +41,10 @@ const handedOff = (() => {
   const tag = (href) => {
     const target = new URL(href);
     if (target.hostname === "apps.apple.com") {
-      if (channel) target.searchParams.set("ct", channel);
+      if (channel) {
+        if (APP_STORE_PT) target.searchParams.set("pt", APP_STORE_PT);
+        target.searchParams.set("ct", channel);
+      }
     } else {
       // Play passes the referrer to the install, so the console can tell
       // shares and channels apart from print (utm_source=qr).
