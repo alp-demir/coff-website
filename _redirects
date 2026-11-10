@@ -31,6 +31,10 @@
 /r/ /?indir&k=r#indir 302
 /en/r /en/?indir&k=r#download 302
 /en/r/ /en/?indir&k=r#download 302
+/m /?indir&k=m#indir 302
+/m/ /?indir&k=m#indir 302
+/en/m /en/?indir&k=m#download 302
+/en/m/ /en/?indir&k=m#download 302
 /q/rollup-ios https://apps.apple.com/app/id6774281181?pt=128945825&ct=rollup 302
 /q/rollup-ios/ https://apps.apple.com/app/id6774281181?pt=128945825&ct=rollup 302
 /q/rollup-android https://play.google.com/store/apps/details?id=com.coffcircle.CoffAndroid&referrer=utm_source%3Dqr%26utm_medium%3Dprint%26utm_campaign%3Drollup 302

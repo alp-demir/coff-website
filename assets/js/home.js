@@ -21,13 +21,19 @@ const handedOff = (() => {
   const params = new URLSearchParams(window.location.search);
   if (!params.has("indir")) return false;
   // k=<channel> comes from the social short links (coffcircle.com/ig, /tt, /x,
-  // /li, /r; CHANNEL_LINKS in sync-chrome.mjs). It tags the store link so the
+  // /li, /r) and the paid-ad link (/m; CHANNEL_LINKS in sync-chrome.mjs). It tags the store link so the
   // consoles count installs per channel: ct on the App Store (counted once
   // the provider token is in the link), utm_campaign in the Play referrer.
   // Only the known channels (CHANNELS in sync-chrome.mjs, which --check
   // keeps equal to this list), so a typo or a made-up k never becomes a
   // campaign in the store reports.
-  const CHANNELS = ["ig", "tt", "x", "li", "r"];
+  const CHANNELS = ["ig", "tt", "x", "li", "r", "m"];
+  // Paid-ad links (coffcircle.com/m): utm_medium=cpc (as V79 documents) instead of social, and
+  // no automatic jump to a store. An ad's landing page must look the same to
+  // the ad network's reviewer (a desktop or a crawler) and to a phone, or the
+  // ad can be read as cloaking, so a paid visitor stays on the card and taps a
+  // store button there. --check keeps this list equal to sync-chrome.mjs.
+  const PAID_CHANNELS = ["m"];
   // App Store Connect provider token (public, it sits in every campaign link);
   // without it ct is not counted. --check keeps it equal to sync-chrome.mjs.
   const APP_STORE_PT = "128945825";
@@ -38,17 +44,22 @@ const handedOff = (() => {
   const k = params.get("k");
   const print = PRINT_CARDS.includes(k);
   const channel = print || CHANNELS.includes(k) ? k : null;
+  const paid = PAID_CHANNELS.includes(k);
   const tag = (href) => {
     const target = new URL(href);
     if (target.hostname === "apps.apple.com") {
       if (channel) {
         if (APP_STORE_PT) target.searchParams.set("pt", APP_STORE_PT);
         target.searchParams.set("ct", channel);
+        // The Turkish card links the /tr/ storefront; a tagged link opens the
+        // visitor's own (the print QR links leave the country out as well).
+        target.pathname = target.pathname.replace(/^\/[a-z]{2}\//, "/");
       }
     } else {
       // Play passes the referrer to the install, so the console can tell
       // shares and channels apart from print (utm_source=qr).
-      const source = print ? "utm_source=qr&utm_medium=print" : `utm_source=${channel}&utm_medium=social`;
+      const medium = paid ? "cpc" : "social";
+      const source = print ? "utm_source=qr&utm_medium=print" : `utm_source=${channel}&utm_medium=${medium}`;
       target.searchParams.set("referrer", channel
         ? `${source}&utm_campaign=${channel}`
         : "utm_source=share&utm_medium=app");
@@ -58,6 +69,7 @@ const handedOff = (() => {
   const links = document.querySelectorAll('[data-sync="stores"] a[href*="apps.apple.com"], [data-sync="stores"] a[href*="play.google.com"]');
   // A desktop visitor from a channel stays on the card: tag its buttons.
   if (channel) links.forEach((link) => { link.href = tag(link.href).toString(); });
+  if (paid) return false;
   const ua = navigator.userAgent;
   const store = /iPhone|iPod/.test(ua) ? "apps.apple.com" : /Android/.test(ua) ? "play.google.com" : null;
   if (!store) return false;
@@ -65,8 +77,7 @@ const handedOff = (() => {
   if (!link) return false;
   const target = tag(link.href);
   if (store === "apps.apple.com") {
-    // The Turkish card links the /tr/ storefront; a shared link should open
-    // the friend's own (the print QR links leave the country out as well).
+    // An untagged share link (no k) still opens the friend's own storefront.
     target.pathname = target.pathname.replace(/^\/[a-z]{2}\//, "/");
   }
   window.location.replace(target.toString());

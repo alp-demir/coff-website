@@ -32,6 +32,10 @@
     "/r/",
     "/en/r",
     "/en/r/",
+    "/m",
+    "/m/",
+    "/en/m",
+    "/en/m/",
     "/functions/*"
   ],
   "exclude": []

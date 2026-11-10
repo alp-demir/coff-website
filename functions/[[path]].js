@@ -1,6 +1,6 @@
 // The printed QR codes (coffcircle.com/q/<material>-<platform>, /kart and the
 // older /ios and /android) and the short links (/indir, the social links /ig
-// /tt /x /li /r and their /en/ twins). Sends the visitor on to the same target _redirects
+// /tt /x /li /r, the paid-ad link /m, and their /en/ twins). Sends the visitor on to the same target _redirects
 // would (generated into _scan-targets.js by tools/website/sync-chrome.mjs),
 // then reports the scan to the backend in the background, so a slow or down
 // API never delays or breaks a scan; a failed report is only a scan not

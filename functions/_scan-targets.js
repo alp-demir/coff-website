@@ -15,6 +15,8 @@ export const SCAN_TARGETS = {
   "en/li": "/en/?indir&k=li#download",
   "r": "/?indir&k=r#indir",
   "en/r": "/en/?indir&k=r#download",
+  "m": "/?indir&k=m#indir",
+  "en/m": "/en/?indir&k=m#download",
   "q/rollup-ios": "https://apps.apple.com/app/id6774281181?pt=128945825&ct=rollup",
   "q/rollup-android": "https://play.google.com/store/apps/details?id=com.coffcircle.CoffAndroid&referrer=utm_source%3Dqr%26utm_medium%3Dprint%26utm_campaign%3Drollup",
   "q/brosur-ios": "https://apps.apple.com/app/id6774281181?pt=128945825&ct=brosur",
