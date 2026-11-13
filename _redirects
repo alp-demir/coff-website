@@ -55,6 +55,11 @@
 /q/bilet/ /?indir&k=bilet#indir 302
 /q/kafe /?indir&k=kafe#indir 302
 /q/kafe/ /?indir&k=kafe#indir 302
+# Invite links: one page per language for every code (200 rewrite, the URL keeps the code).
+# The target is the directory, not .../index.html: Cloudflare Pages drops a
+# "/*" rule whose target ends in "/index.html" as an infinite loop.
+/d/* /d/ 200
+/en/d/* /en/d/ 200
 # Old image paths (before /assets/img/).
 /assets/apple-touch-icon-v4.png /assets/img/apple-touch-icon-v4.png 301
 /assets/brand-mark.png /assets/img/brand-mark.png 301

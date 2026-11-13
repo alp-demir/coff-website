@@ -1,0 +1,289 @@
+/* coffcircle.com/d/<CODE> and /en/d/<CODE>: the invite page (frame 9 of the
+   1.0.4 design). One file for both languages. Flat colours only, from the
+   tokens in base.css: no gradients. The page has no site header or footer
+   (data-chrome="none", see sync-chrome.mjs): it is a landing card someone
+   opens from WhatsApp, not a page of the site. */
+
+.invite-page {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+}
+
+/* No header band: the page is one landing card, so the wordmark alone sits
+   centred on the page background and the cards start below it. */
+.invite-band {
+  padding: 30px 0 18px;
+  text-align: center;
+}
+
+.invite-band a {
+  display: inline-block;
+  border-radius: 6px;
+}
+
+.invite-band a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.invite-band img {
+  display: block;
+  width: 84px;
+  height: auto;
+}
+
+.invite-main {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+}
+
+.invite-card {
+  margin: 0 0 12px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+
+.invite-who {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.invite-avatar {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--navy);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.invite-avatar svg {
+  width: 26px;
+  height: 26px;
+}
+
+.invite-who h1 {
+  max-width: none;
+  margin: 0;
+  font-size: 1.28rem;
+  font-weight: 850;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.invite-who p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.invite-label {
+  display: block;
+  margin: 0;
+  color: var(--slate);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.invite-preview {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.invite-friends {
+  display: flex;
+  gap: 14px;
+  margin: 10px 0 0;
+  padding: 4px 2px 0;
+  list-style: none;
+}
+
+.invite-friend {
+  width: 60px;
+  flex: none;
+  text-align: center;
+}
+
+.invite-friend .dot {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 7px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+
+.invite-friend.is-on .dot {
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--blue);
+}
+
+.invite-friend.is-dim .dot {
+  opacity: 0.38;
+}
+
+.invite-friend .cup {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 19px;
+  height: 19px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 1px 3px rgba(44, 54, 57, 0.18);
+}
+
+.invite-friend .cup svg {
+  width: 12px;
+  height: 12px;
+}
+
+.invite-friend > b {
+  display: block;
+  overflow: hidden;
+  font-size: 0.78rem;
+  font-weight: 750;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.invite-friend > span:not(.dot) {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.25;
+}
+
+.tone-navy { background: var(--navy); }
+.tone-blue { background: var(--blue); }
+.tone-taupe { background: var(--taupe); }
+.tone-slate { background: var(--slate); }
+
+/* Official badges, one per row, the same visible height. Google's PNGs
+   carry transparent clear space (TR 29/250, EN 41/250 top and bottom), so
+   they are drawn taller and pulled in by that space. */
+.invite-stores .store-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.invite-stores .store-badge {
+  display: inline-flex;
+  border-radius: 10px;
+}
+
+.invite-stores .store-badge:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.invite-stores .store-badge img {
+  display: block;
+  width: auto;
+  max-width: none;
+  height: 50px;
+}
+
+.invite-stores .store-badge img[src$="google-play-tr.png"] {
+  height: 65px;
+  margin: -7.5px 0;
+}
+
+.invite-stores .store-badge img[src$="google-play-en.png"] {
+  height: 74px;
+  margin: -12px 0;
+}
+
+.invite-code-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.invite-code-row output {
+  color: var(--navy);
+  font-size: 1.6rem;
+  font-weight: 850;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
+}
+
+.invite-copy {
+  margin-left: auto;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 12px;
+  color: var(--navy);
+  background: var(--flow);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.16s ease, background-color 0.16s ease;
+}
+
+.invite-copy:active {
+  transform: scale(0.97);
+}
+
+.invite-copy:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.invite-hint {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.invite-foot {
+  margin: 18px 0 0;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.invite-foot a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.invite-foot a:hover,
+.invite-foot a:focus-visible {
+  text-decoration: underline;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invite-copy {
+    transition: none;
+  }
+}

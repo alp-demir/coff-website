@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>An invite to Coff | Coff Circle</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="A friend invites you to Coff. Log your coffee, see what your friends are drinking.">
+  <meta property="og:title" content="An invite to Coff">
+  <meta property="og:description" content="A friend invites you to Coff. Log your coffee, see what your friends are drinking.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://coffcircle.com/assets/img/og-image-v3-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://coffcircle.com/assets/img/og-image-v3-en.png">
+  <meta name="theme-color" content="#fffaf3">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon-bw-v1.svg?v=1">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-bw-v1.png?v=1">
+  <link rel="shortcut icon" href="/favicon-bw-v1.ico?v=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon-v4.png">
+  <link rel="stylesheet" href="/assets/css/base.css?v=3">
+  <link rel="stylesheet" href="/assets/css/invite.css?v=2">
+</head>
+<!-- The invite link coffcircle.com/en/d/<CODE>. _redirects serves this file for every
+     code (a 200 rewrite), so the address bar keeps the code; invite.js reads
+     it, asks the API for the inviter's first name and tags the store links.
+     No site header or footer: data-chrome="none" (sync-chrome.mjs). -->
+<body class="invite-page" data-chrome="none">
+  <div class="invite-band">
+    <a href="/en/" aria-label="Coff Circle home"><img src="/assets/img/wordmark-dark-v1.png" alt="coff." width="84" height="31" decoding="async"></a>
+  </div>
+  <main class="invite-main" id="content">
+    <section class="invite-card" aria-labelledby="inviteTitle">
+      <div class="invite-who">
+        <div class="invite-avatar" id="inviteAvatar" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9h13v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6V9Z" fill="#ffffff"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17" stroke="#ffffff" stroke-width="1.8" fill="none"/><path d="M3 21h15" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div>
+          <h1 id="inviteTitle" data-generic="A friend invites you to Coff">A friend invites you to Coff</h1>
+          <p>Log your coffee, see what your friends are drinking.</p>
+        </div>
+      </div>
+      <div class="invite-preview">
+        <span class="invite-label">Sample view</span>
+        <ul class="invite-friends" aria-label="Example friends list">
+          <li class="invite-friend is-on"><span class="dot tone-navy">D<span class="cup"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9h13v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6V9Z" fill="#173f62"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17" stroke="#173f62" stroke-width="1.8" fill="none"/><path d="M3 21h15" stroke="#173f62" stroke-width="1.8" stroke-linecap="round"/></svg></span></span><b>Deniz</b><span>Latte</span></li>
+          <li class="invite-friend is-on"><span class="dot tone-blue">E<span class="cup"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9h13v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6V9Z" fill="#173f62"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17" stroke="#173f62" stroke-width="1.8" fill="none"/><path d="M3 21h15" stroke="#173f62" stroke-width="1.8" stroke-linecap="round"/></svg></span></span><b>Ece</b><span>Filter</span></li>
+          <li class="invite-friend is-on"><span class="dot tone-taupe">M<span class="cup"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9h13v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6V9Z" fill="#173f62"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17" stroke="#173f62" stroke-width="1.8" fill="none"/><path d="M3 21h15" stroke="#173f62" stroke-width="1.8" stroke-linecap="round"/></svg></span></span><b>Mert</b><span>Americano</span></li>
+          <li class="invite-friend is-dim"><span class="dot tone-slate">Y</span><b>You</b><span>?</span></li>
+        </ul>
+      </div>
+    </section>
+    <section class="invite-card invite-stores" aria-label="Get the app">
+      <div class="store-buttons" data-sync="stores" role="group" aria-label="App stores"><a class="store-badge" href="https://apps.apple.com/app/id6774281181" rel="noopener"><img src="/assets/img/badges/app-store-en.svg" alt="Download on the App Store" width="120" height="40" decoding="async"></a><a class="store-badge" href="https://play.google.com/store/apps/details?id=com.coffcircle.CoffAndroid&amp;hl=en" rel="noopener"><img src="/assets/img/badges/google-play-en.png" alt="Get it on Google Play" width="646" height="250" decoding="async"></a></div>
+    </section>
+    <section class="invite-card" id="inviteCodeCard" aria-labelledby="inviteCodeLabel" hidden>
+      <span class="invite-label" id="inviteCodeLabel">Your invite code</span>
+      <div class="invite-code-row">
+        <output id="inviteCode" aria-live="polite"></output>
+        <button class="invite-copy" id="inviteCopy" type="button" data-done="Copied">Copy</button>
+      </div>
+      <p class="invite-hint">After you install the app and create your account, tap this link again or enter the code in the app.</p>
+    </section>
+    <p class="invite-foot"><a href="/en/">coffcircle.com</a> · <a id="inviteOtherLang" href="/d/" hreflang="tr" lang="tr">Türkçe</a></p>
+  </main>
+  <script src="/assets/js/invite.js?v=2" defer></script>
+</body>
+</html>
